@@ -1,2 +1,2 @@
-# Maneki-Adventures
+# ManekiAdventures
 Our repo!
