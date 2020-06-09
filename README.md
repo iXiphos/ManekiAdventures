@@ -1,0 +1,2 @@
+# Maneki-Adventures
+Our repo!
