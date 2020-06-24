@@ -55,4 +55,15 @@ public class PotionCreation : MonoBehaviour
         piece2 = null;
     }
 
+    void addItem1(GameObject obj)
+    {
+        piece1 = obj;
+    }
+
+    void addItem2(GameObject obj)
+    {
+        piece2 = obj;
+    }
+
+
 }

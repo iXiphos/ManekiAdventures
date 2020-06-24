@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Holds all the Attibutes, Discriptors
 public enum attribute
 {
     Weight,
@@ -23,25 +24,4 @@ public enum type
 {
     discriptor,
     attribute
-}
-
-public class Word
-{
-
-    public string word { get; set; }
-
-    public type wordType;
-
-    public Word()
-    {
-        word = "";
-    }
-
-    public Word(string Word)
-    {
-        word = Word;
-    }
-
-
-
 }

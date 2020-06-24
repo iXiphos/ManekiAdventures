@@ -30,6 +30,15 @@ public class Potion : MonoBehaviour
     }
 
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.layer == 8)
+        {
+            StartCoroutine(Explosion(collision.gameObject));
+        }
+    }
+
+
     IEnumerator Explosion(GameObject coll)
     {
         yield return new WaitForSeconds(0.1f);
