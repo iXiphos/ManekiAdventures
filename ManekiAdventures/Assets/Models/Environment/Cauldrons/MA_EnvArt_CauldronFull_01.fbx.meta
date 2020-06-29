@@ -3,7 +3,12 @@ guid: 0c847073dcab55d4e91188d2328d269b
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cauldron_Full
+    second: {fileID: 2100000, guid: 8f2b50ae48c3a7e418b2b8154392185b, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -31,7 +36,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1

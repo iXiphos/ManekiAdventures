@@ -3,7 +3,27 @@ guid: e772944a459dfe9458caee14c073ebff
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BambooLeaf1
+    second: {fileID: 2100000, guid: f45d7f6833a9f3545b5c46e78174da50, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rock
+    second: {fileID: 2100000, guid: 9212a2c7f328ba246a3ef3f34b1d495e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rock_Big
+    second: {fileID: 2100000, guid: b0d830d719adc8646afb864e59de7000, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tree
+    second: {fileID: 2100000, guid: 1a9b952ee34777746afc95ffdefc7cb3, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
