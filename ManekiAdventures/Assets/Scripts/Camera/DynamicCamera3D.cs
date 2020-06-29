@@ -15,12 +15,13 @@ public class DynamicCamera3D : MonoBehaviour
     [SerializeField] private GameObject player; // player
     public GameObject focusObj; // obj to focus
 
+    //keep X and Z the same for isometric
     public float cameraOffsetX = -8f;
     public float cameraOffsetY = 10f;
     public float cameraOffsetZ = -8f;
 
     [SerializeField] private float minCameraSize = 4f;
-    [SerializeField] private float normalCameraSize = 5f;
+    //[SerializeField] private float normalCameraSize = 5f;
     //[SerializeField] private float maxCameraSize = 8f;
 
     [SerializeField] private float lerpSpeed = 1f;
@@ -37,7 +38,7 @@ public class DynamicCamera3D : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (focusObj != null)
         {
@@ -55,10 +56,6 @@ public class DynamicCamera3D : MonoBehaviour
     {
         // lerp towards player
         gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, new Vector3(player.transform.position.x + cameraOffsetX, player.transform.position.y + cameraOffsetY, player.transform.position.z + cameraOffsetZ), Time.deltaTime * lerpSpeed);
-        //gameObject.transform.rotation;
-
-        // reset camera size to normal 
-        gameObject.GetComponent<Camera>().orthographicSize = Mathf.Lerp(gameObject.GetComponent<Camera>().orthographicSize, normalCameraSize, Time.deltaTime * lerpSpeed);
     }
 
     void CalculateDistanceBetweenPlayers()
@@ -74,7 +71,7 @@ public class DynamicCamera3D : MonoBehaviour
         distanceBetweenPlayers = Mathf.Sqrt(Mathf.Pow(displacement.x, 2) + Mathf.Pow(displacement.z, 2)); //square root of (x^2 + y^2)
 
         // Uncomment for debug
-        //Debug.Log(distanceBetweenPlayers);
+        Debug.Log(distanceBetweenPlayers);
     }
 
     void CameraFollow2Players()
@@ -92,15 +89,16 @@ public class DynamicCamera3D : MonoBehaviour
         //min size
         if (distanceBetweenPlayers < minCameraSize)
         {
-            //camera size: current size --> min size
-            gameObject.GetComponent<Camera>().orthographicSize = Mathf.Lerp(gameObject.GetComponent<Camera>().orthographicSize, minCameraSize, Time.deltaTime * lerpSpeed);
+            // 3D: DO NOTHING
         }
         //in between size
         else if (distanceBetweenPlayers > minCameraSize /*&& distanceBetweenPlayers < maxCameraSize*/)
         {
-            //camera size: current size --> minimum size + position difference / 5
-            gameObject.GetComponent<Camera>().orthographicSize = Mathf.Lerp(gameObject.GetComponent<Camera>().orthographicSize, minCameraSize + (distanceBetweenPlayers / 5), Time.deltaTime * lerpSpeed);
+            // 3D: "ZOOM" OUT (back up)
+            Debug.Log((distanceBetweenPlayers - minCameraSize) / (cameraOffsetX * 2) + "," + (distanceBetweenPlayers - minCameraSize) / (cameraOffsetZ * 2));
+            gameObject.transform.position += new Vector3((distanceBetweenPlayers - minCameraSize) / (cameraOffsetX * 2), 0, (distanceBetweenPlayers - minCameraSize) / (cameraOffsetZ * 2));
         }
+        // add max camera size if needed...
     }
 
     Vector3 GetVector3DistanceBetweenPlayers()

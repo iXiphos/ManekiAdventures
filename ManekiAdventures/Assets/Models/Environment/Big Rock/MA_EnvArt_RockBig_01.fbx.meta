@@ -3,7 +3,13 @@ guid: a545b1defdee44944ae187a6d5d81ae3
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rock_Big
+    second: {fileID: -7456954957279636018, guid: a545b1defdee44944ae187a6d5d81ae3,
+      type: 3}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -31,7 +37,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
