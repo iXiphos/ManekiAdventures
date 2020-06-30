@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class Potion : MonoBehaviour
 {
-    [HideInInspector]
     public attribute pAttribute;
 
-    [HideInInspector]
     public discriptor pDiscriptor;
 
     public int explosionSize;
@@ -29,6 +27,14 @@ public class Potion : MonoBehaviour
              
     }
 
+    private void OnTriggerEnter(Collider collision)
+    {
+        if(collision.tag == "Interactable")
+        {
+            StartCoroutine(Explosion(collision.gameObject));
+            
+        }
+    }
 
     IEnumerator Explosion(GameObject coll)
     {
@@ -40,10 +46,12 @@ public class Potion : MonoBehaviour
                 if (pDiscriptor == discriptor.Increases)
                 {
                     coll.GetComponent<PhysicMaterial>().dynamicFriction = 0.9f;
+                    Destroy(gameObject);
                 }
                 else if (pDiscriptor == discriptor.Decreases)
                 {
                     coll.GetComponent<PhysicMaterial>().dynamicFriction = 0.1f;
+                    Destroy(gameObject);
                 }
                 else
                 {
@@ -56,11 +64,14 @@ public class Potion : MonoBehaviour
                 //Change the Size of the Object
                 if (pDiscriptor == discriptor.Increases)
                 {
-                    coll.transform.localScale *= 2;
+                    coll.gameObject.transform.localScale *= 2;
+                    Debug.Log("Grow");
+                    Destroy(gameObject);
                 }
                 else if (pDiscriptor == discriptor.Decreases)
                 {
-                    coll.transform.localScale /= 2;
+                    coll.gameObject.transform.localScale /= 2;
+                    Destroy(gameObject);
                 }
                 else
                 {
@@ -72,10 +83,12 @@ public class Potion : MonoBehaviour
                 if(pDiscriptor == discriptor.Increases)
                 {
                     coll.GetComponent<Rigidbody>().mass *= 2;
+                    Destroy(gameObject);
                 }
                 else if(pDiscriptor == discriptor.Decreases)
                 {
                     coll.GetComponent<Rigidbody>().mass /= 2;
+                    Destroy(gameObject);
                 }
                 else
                 {

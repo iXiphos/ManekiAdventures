@@ -49,6 +49,8 @@ public class Inventory : MonoBehaviour
         return true;
     }
 
+    
+
     public void Remove(Item item) //if the "X" is hit, removes item from inventory
     {
         items.Remove(item);

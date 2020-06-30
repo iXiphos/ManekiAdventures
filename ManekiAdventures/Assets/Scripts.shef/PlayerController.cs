@@ -26,18 +26,18 @@ public class PlayerController : MonoBehaviour
 
   
 
-        if (Input.GetMouseButtonDown(0)) //using left mouse click will move the player to that poing
-        {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+        //if (Input.GetMouseButtonDown(0)) //using left mouse click will move the player to that poing
+        //{
+        //    Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        //    RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, 100, movementMask))
-            {
-                moter.MoveToPoint(hit.point);
+        //    if (Physics.Raycast(ray, out hit, 100, movementMask))
+        //    {
+        //        moter.MoveToPoint(hit.point);
 
-                RemoveFocus();
-            }
-        }
+        //        RemoveFocus();
+        //    }
+        //}
 
         if (Input.GetMouseButtonDown(1)) //using right mouse click will interact with an object
         {

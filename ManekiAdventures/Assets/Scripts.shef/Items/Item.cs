@@ -9,12 +9,23 @@ public class Item : ScriptableObject
     public Sprite icon = null;
     public bool isDefaultItem = false;
 
+    public discriptor Discriptor;
+    public attribute Attribute;
+
 
     public virtual void Use()
     {
 
-        Debug.Log("Using " + name); //if item is used, display this message
+    }
+    
+    public discriptor getDiscriptor()
+    {
+        return Discriptor;
+    }
 
+    public attribute getAttribute()
+    {
+        return Attribute;
     }
 
 }

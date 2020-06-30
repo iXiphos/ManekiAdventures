@@ -6,6 +6,8 @@ public class InventorySlot : MonoBehaviour
     public Image icon;
     public Button removeButton;
 
+    public GameObject craftingSystem;
+
     Item item;
 
     public void AddItem (Item newItem) //adds icon of item to inveotory
@@ -31,11 +33,25 @@ public class InventorySlot : MonoBehaviour
         Inventory.instance.Remove(item);
     }
 
-    public void UseItem() //button to use item in inventory
+    public void UseItem(GameObject crafting) //button to use item in inventory
     {
         if (item != null)
         {
-            item.Use();
+
+            if (item.Attribute != attribute.empty && item.Discriptor != discriptor.empty)
+            {
+                GameObject.Find("Player").GetComponent<tossPotion>().createPotion(item);
+                Inventory.instance.Remove(item);
+                ClearSlot();
+            }
+            else if (crafting.activeInHierarchy)
+            {
+                if (crafting.GetComponent<PotionCreation>().piece1 == null)
+                    crafting.GetComponent<PotionCreation>().piece1 = item;
+                else
+                    crafting.GetComponent<PotionCreation>().piece2 = item;
+                ClearSlot();
+            }
         }
     }
 

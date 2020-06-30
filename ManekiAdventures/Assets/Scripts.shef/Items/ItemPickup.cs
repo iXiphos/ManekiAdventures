@@ -13,7 +13,7 @@ public class ItemPickup : Interactable
 
         PickUp();
     }
-
+     
     void PickUp()
     {
 
@@ -21,9 +21,11 @@ public class ItemPickup : Interactable
         bool wasPickedUp = Inventory.instance.Add(item);
 
 
-       if (wasPickedUp) //if the item was picked up and added to the inventory, delete object from the scene
+       if (wasPickedUp && gameObject.tag != "Respawnable") //if the item was picked up and added to the inventory, delete object from the scene
             Destroy(gameObject);
 
     }
+
+    
 
 }
