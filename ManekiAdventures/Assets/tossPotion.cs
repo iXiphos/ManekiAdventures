@@ -34,6 +34,7 @@ public class tossPotion : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 potion.GetComponent<Rigidbody>().AddForce(Vector3.forward * speed);
+                potion.transform.parent = null;
             }
         }
     }
@@ -67,6 +68,7 @@ public class tossPotion : MonoBehaviour
     public void createPotion(Item item)
     {
         GameObject temp = Instantiate(potionTemplete, hand.transform.position, hand.transform.rotation);
+        temp.transform.parent = hand.transform;
         temp.GetComponent<Potion>().pAttribute = item.Attribute;
         temp.GetComponent<Potion>().pDiscriptor = item.Discriptor;
         //temp.SetActive(false);

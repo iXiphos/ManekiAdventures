@@ -41,6 +41,7 @@ public class InventorySlot : MonoBehaviour
             if (item.Attribute != attribute.empty && item.Discriptor != discriptor.empty)
             {
                 GameObject.Find("Player").GetComponent<tossPotion>().createPotion(item);
+                Inventory.instance.Remove(item);
                 ClearSlot();
             }
             else if (crafting.activeInHierarchy)
