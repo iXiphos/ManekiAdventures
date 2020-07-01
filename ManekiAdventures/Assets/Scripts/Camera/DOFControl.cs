@@ -102,20 +102,19 @@ public class DOFControl : MonoBehaviour
             Vector3 side1 = (parentObj.transform.position + new Vector3(0,1,0)) - parentObj.transform.position;
             Vector3 side2 = player.transform.position - parentObj.transform.position;
 
-            // calculate which item is to the right
+            // calculate which item is to the right using dot product
             float dot = Vector3.Dot(side2, parentObj.transform.right);
             if(dot >= 0) { 
                 normalVector = Vector3.Cross(side1, side2); // if the player is to the right of the object, do perp (clockwise)
-                Debug.Log("Player is to the RIGHT");
+                //Debug.Log("Player is to the RIGHT");
             }
             else { 
-                normalVector = -Vector3.Cross(side1, side2); // otherwise, do perp (counter-clockwise [negative perp]
-                Debug.Log("Player is to the LEFT");
+                normalVector = -Vector3.Cross(side1, side2); // otherwise, do negative perp (counter-clockwise [negative perp]
+                //Debug.Log("Player is to the LEFT");
             }
-
             normalVector /= normalVector.magnitude; //normalize for a more predictable value
 
-            newCameraPosition = midpoint + (normalVector * cameraDisplacement) + new Vector3(0, (2 * newCameraPositionY.y/3), 0);
+            newCameraPosition = midpoint + (normalVector * cameraDisplacement) + new Vector3(0, (2 * newCameraPositionY.y / 3), 0);
                 
         }
 
@@ -147,7 +146,6 @@ public class DOFControl : MonoBehaviour
         // DynamicCamera3D will put the camera back to its correct position
         
         hasExecutedFocus = true;
-        
     }
 
     private void OnDestroy()
