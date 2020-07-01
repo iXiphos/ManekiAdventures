@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3345259042552181859}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.008429735, y: 0.009912286, z: 0.015943807}
-  m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -43,5 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49284825ac1da114caecae27469562b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  focusValue: 0.1
+  defaultFocus: 10
+  defaultAperture: 5.6
+  focusValue: 3
+  apertureValue: 3
+  rotationSpeed: 15
+  playerHeight: 3
   postProcProf: {fileID: 11400000, guid: 885382809ee86be4a8e1792213cb41ed, type: 2}
