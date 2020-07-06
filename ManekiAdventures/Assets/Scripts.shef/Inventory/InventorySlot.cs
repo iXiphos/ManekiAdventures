@@ -44,12 +44,17 @@ public class InventorySlot : MonoBehaviour
                 Inventory.instance.Remove(item);
                 ClearSlot();
             }
-            else if (crafting.activeInHierarchy)
+            else
             {
+                Debug.LogError("Adding stt");
                 if (crafting.GetComponent<PotionCreation>().piece1 == null)
+                {
                     crafting.GetComponent<PotionCreation>().piece1 = item;
+                }
                 else
+                {
                     crafting.GetComponent<PotionCreation>().piece2 = item;
+                }
                 ClearSlot();
             }
         }

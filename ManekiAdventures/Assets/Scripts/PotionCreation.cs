@@ -10,6 +10,10 @@ public class PotionCreation : MonoBehaviour
 
     public GameObject basePotion;
 
+    public Text ingredient1;
+
+    public Text ingredient2;
+
     public Text potionText;
 
     public Sprite potionSprite;
@@ -27,22 +31,22 @@ public class PotionCreation : MonoBehaviour
         {
             if (piece2.getAttribute() != attribute.empty)
             {
-                potionText.text = piece1.getDiscriptor().ToString() + " " + piece2.getAttribute().ToString() + " Potion";
+                ingredient2.text = piece2.getAttribute().ToString();
             }
             else if (piece2.getDiscriptor() != discriptor.empty)
             {
-                potionText.text = piece1.getAttribute().ToString() + " " + piece2.getDiscriptor().ToString() + " Potion";
+                ingredient2.text = piece2.getDiscriptor().ToString();
             }
         }
-        if (piece1 != null && piece2 == null)
+        if (piece1 != null)
         {
             if (piece1.getAttribute() != attribute.empty)
             {
-                potionText.text = piece1.getAttribute().ToString();
+                ingredient1.text = piece1.getAttribute().ToString();
             }
             else if (piece1.getDiscriptor() != discriptor.empty)
             {
-                potionText.text = piece1.getDiscriptor().ToString();
+                ingredient1.text = piece1.getDiscriptor().ToString();
             }
         }
         
@@ -74,7 +78,7 @@ public class PotionCreation : MonoBehaviour
         }
     }
 
-    void craftPotion()
+    public void craftPotion()
     {
         Item potion = new Item();
         potion.name = piece1.getAttribute().ToString() + " " + piece2.getDiscriptor().ToString() + " Potion";
