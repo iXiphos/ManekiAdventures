@@ -65,7 +65,6 @@ public class tossPotion : MonoBehaviour
 
     public void createPotion(Item item)
     {
-        Debug.LogError("Mem");
         GameObject temp = Instantiate(potionTemplete, hand.transform.position, hand.transform.rotation);
         temp.transform.parent = hand.transform;
         temp.GetComponent<Potion>().pAttribute = item.Attribute;
