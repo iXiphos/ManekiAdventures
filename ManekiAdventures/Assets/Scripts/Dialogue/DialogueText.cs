@@ -48,7 +48,7 @@ public class DialogueText
             if (processedLine.IndexOf(':') > -1) // determine speaker OR effect
             {
                 string preText = processedLine.Substring(0, processedLine.IndexOf(':'));
-                processedLine = processedLine.Remove(0, processedLine.IndexOf(':')); // remove pretext from the line
+                processedLine = processedLine.Remove(0, processedLine.IndexOf(':') + 1); // remove pretext from the line
                 preText = preText.Replace(":", string.Empty);
 
                 bool isSpeakingLine = true;
@@ -159,9 +159,9 @@ public class DialogueText
         {
             string lineEffectStr = lineText.Substring(lineText.IndexOf('['), lineText.IndexOf(']') - lineText.IndexOf('['));
             lineEffect = stringToLineEffect(lineEffectStr);
-            lineText = lineText.Remove(lineText.IndexOf('['), lineText.IndexOf(']') - lineText.IndexOf('['));
+            lineText = lineText.Remove(lineText.IndexOf('['), lineText.IndexOf(']') - lineText.IndexOf('[') + 1);
         }
-        
+
         return lineText;
     }
 
