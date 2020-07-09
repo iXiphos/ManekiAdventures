@@ -46,16 +46,33 @@ public class InventorySlot : MonoBehaviour
                 Inventory.instance.Remove(item);
                 ClearSlot();
             }
-            else
+            else if(craftingSystem.activeSelf)
             {
-                if (crafting.GetComponent<PotionCreation>().piece1 == null)
+                if(item.Attribute != attribute.empty)
                 {
-                    crafting.GetComponent<PotionCreation>().piece1 = item;
+                    if (crafting.GetComponent<PotionCreation>().piece1 == null)
+                    {
+                        crafting.GetComponent<PotionCreation>().piece1 = item;
+                    }
+                    else
+                    {
+                        Inventory.instance.Add(crafting.GetComponent<PotionCreation>().piece1);
+                        crafting.GetComponent<PotionCreation>().piece1 = item;
+                    }
                 }
-                else
+                else if(item.Discriptor != discriptor.empty)
                 {
-                    crafting.GetComponent<PotionCreation>().piece2 = item;
+                    if (crafting.GetComponent<PotionCreation>().piece2 == null)
+                    {
+                        crafting.GetComponent<PotionCreation>().piece2 = item;
+                    }
+                    else
+                    {
+                        Inventory.instance.Add(crafting.GetComponent<PotionCreation>().piece2);
+                        crafting.GetComponent<PotionCreation>().piece2 = item;
+                    }
                 }
+               
                 ClearSlot();
             }
         }
