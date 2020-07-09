@@ -54,8 +54,6 @@ public class DialogueText
                 processedLine = processedLine.Remove(0, processedLine.IndexOf(':') + 1); // remove pretext from the line
                 preText = preText.Replace(":", string.Empty);
 
-                
-
                 // process preText
                 if (!string.IsNullOrEmpty(preText))
                 {
@@ -136,6 +134,9 @@ public class DialogueText
                 currentLines.Add(lineToAdd);
             }
         }
+
+        // add the last line
+        if (currentLines.Count > 0) { lines.Add(currentLines); }
     }
     
     string ProcessSpeech(string lineText, ref LineEffect lineEffect)
