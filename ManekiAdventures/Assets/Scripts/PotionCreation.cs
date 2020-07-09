@@ -100,15 +100,29 @@ public class PotionCreation : MonoBehaviour
 
     public void returnObjectsToInventory()
     {
-        if(piece1 != null)
+        if (piece1 != null)
+        {
+            Inventory.instance.Remove(piece1);
+            Inventory.instance.Remove(piece2);
             Inventory.instance.Add(piece1);
-        if(piece2 != null)
-            Inventory.instance.Add(piece1);
+            piece1 = null;
+        }
+        if (piece2 != null)
+        {
+            Inventory.instance.Remove(piece2);
+            Inventory.instance.Remove(piece2);
+            Inventory.instance.Add(piece2);
+            piece2 = null;
+        }
         ingredient1.text = "";
         ingredient2.text = "";
+        potionText.text = "";
         craftingImage1.enabled = false;
+        craftingImage1.sprite = null;
         craftingImage2.enabled = false;
+        craftingImage2.sprite = null;
         craftingImage3.enabled = false;
+        craftingImage3.sprite = null;
     }
 
 }

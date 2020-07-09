@@ -12,6 +12,11 @@ public class Potion : MonoBehaviour
 
     private Rigidbody rb;
 
+    public float WeightIncrease;
+    public float WeightDecrease;
+
+    public float SizeIncrease;
+    public float SizeDecrease;
 
     // Start is called before the first frame update
     void Start()
@@ -63,13 +68,13 @@ public class Potion : MonoBehaviour
                 //Change the Size of the Object
                 if (pDiscriptor == discriptor.Increases)
                 {
-                    coll.gameObject.transform.localScale *= 2;
+                    coll.gameObject.transform.localScale *= SizeIncrease;
                     Debug.Log("Grow");
                     Destroy(gameObject);
                 }
                 else if (pDiscriptor == discriptor.Decreases)
                 {
-                    coll.gameObject.transform.localScale /= 2;
+                    coll.gameObject.transform.localScale /= SizeDecrease;
                     Destroy(gameObject);
                 }
                 else
@@ -81,12 +86,12 @@ public class Potion : MonoBehaviour
             case attribute.Weight:
                 if(pDiscriptor == discriptor.Increases)
                 {
-                    coll.GetComponent<Rigidbody>().mass *= 2;
+                    coll.GetComponent<Rigidbody>().mass *= WeightIncrease;
                     Destroy(gameObject);
                 }
                 else if(pDiscriptor == discriptor.Decreases)
                 {
-                    coll.GetComponent<Rigidbody>().mass /= 2;
+                    coll.GetComponent<Rigidbody>().mass /= WeightDecrease;
                     Destroy(gameObject);
                 }
                 else

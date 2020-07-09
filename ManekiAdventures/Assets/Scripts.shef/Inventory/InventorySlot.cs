@@ -40,7 +40,6 @@ public class InventorySlot : MonoBehaviour
 
             if (item.Attribute != attribute.empty && item.Discriptor != discriptor.empty)
             {
-                Debug.LogError("Yikes");
                 GameObject.Find("Player").GetComponent<tossPotion>().createPotion(item);
                 StartCoroutine(GameObject.Find("Player").GetComponent<tossPotion>().createTarget());
                 Inventory.instance.Remove(item);
@@ -58,6 +57,7 @@ public class InventorySlot : MonoBehaviour
                     {
                         Inventory.instance.Add(crafting.GetComponent<PotionCreation>().piece1);
                         crafting.GetComponent<PotionCreation>().piece1 = item;
+                        Inventory.instance.Remove(item);
                     }
                 }
                 else if(item.Discriptor != discriptor.empty)
@@ -70,6 +70,7 @@ public class InventorySlot : MonoBehaviour
                     {
                         Inventory.instance.Add(crafting.GetComponent<PotionCreation>().piece2);
                         crafting.GetComponent<PotionCreation>().piece2 = item;
+                        Inventory.instance.Remove(item);
                     }
                 }
                

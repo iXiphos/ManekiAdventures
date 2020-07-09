@@ -34,7 +34,7 @@ public class InventoryUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             craftingUI.SetActive(!craftingUI.activeSelf);
-            if (craftingObject.activeSelf)
+            if (craftingObject.activeSelf == true)
             {
                 craftingObject.GetComponent<PotionCreation>().returnObjectsToInventory();
             }
