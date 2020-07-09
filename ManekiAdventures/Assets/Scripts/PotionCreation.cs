@@ -80,11 +80,13 @@ public class PotionCreation : MonoBehaviour
 
     public void craftPotion()
     {
-        Item potion = new Item();
-        potion.name = piece1.getAttribute().ToString() + " " + piece2.getDiscriptor().ToString() + " Potion";
-        potion.Attribute = piece1.getAttribute();
-        potion.Discriptor = piece2.getDiscriptor();
-        potion.icon = potionSprite;
+        Item potion = new Item
+        {
+            name = piece1.getAttribute().ToString() + " " + piece2.getDiscriptor().ToString() + " Potion",
+            Attribute = piece1.getAttribute(),
+            Discriptor = piece2.getDiscriptor(),
+            icon = potionSprite
+        };
         Inventory.instance.Add(potion);
 
         Inventory.instance.Remove(piece1);

@@ -32,7 +32,6 @@ public class Potion : MonoBehaviour
         if(collision.tag == "Interactable")
         {
             StartCoroutine(Explosion(collision.gameObject));
-            
         }
     }
 
@@ -97,8 +96,12 @@ public class Potion : MonoBehaviour
                 break;
 
             case attribute.Location:
-                //Do something at Location It Hits(Cordinates)
-
+                //Do something at Location It Hits(Cordinates)**
+                if (pDiscriptor == discriptor.Frozen)
+                {
+                    coll.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationZ;
+                    Destroy(gameObject);
+                }
                 break;
         }
 
