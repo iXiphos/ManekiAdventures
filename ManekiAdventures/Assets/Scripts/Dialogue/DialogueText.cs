@@ -134,23 +134,35 @@ public class DialogueText
         // process and format TMP font sizes
         while (lineText.IndexOf("<<") > 0) // keep processing until there are no more increases
         {
-            string stringToReplace = lineText.Substring(lineText.IndexOf("<<"), lineText.IndexOf(">>") - lineText.IndexOf("<<"));
+            int indexOfLastBracket = lineText.IndexOf(">>");
+            while ((indexOfLastBracket + 1) < lineText.Length && lineText[indexOfLastBracket + 1]  == '>')
+            {
+                indexOfLastBracket++;
+            }
+
+            string stringToReplace = lineText.Substring(lineText.IndexOf("<<"), indexOfLastBracket - lineText.IndexOf("<<") + 1);
             string stringToFormat = stringToReplace;
             int timesToInc = stringToFormat.Split('<').Length; // counts how many brackets: if there is none, this should be 1(?)
             stringToFormat = stringToFormat.Replace("<", string.Empty).Replace(">", string.Empty); //clean the string of << and >> characters
 
-            stringToFormat = "<size=" + (100 + (10 * timesToInc)).ToString() + "%>" + stringToFormat;
+            stringToFormat = "<size=" + (100 + (10 * timesToInc)).ToString() + "%>" + stringToFormat + "<size=100%>";
             lineText = lineText.Replace(stringToReplace, stringToFormat);
         }
 
         while (lineText.IndexOf("[[") > 0) // keep processing until there are no more decreases
         {
-            string stringToReplace = lineText.Substring(lineText.IndexOf("[["), lineText.IndexOf("]]") - lineText.IndexOf("[["));
+            int indexOfLastBracket = lineText.IndexOf("]]");
+            while ((indexOfLastBracket + 1) < lineText.Length && lineText[indexOfLastBracket + 1] == ']')
+            {
+                indexOfLastBracket++;
+            }
+
+            string stringToReplace = lineText.Substring(lineText.IndexOf("[["), indexOfLastBracket - lineText.IndexOf("[[") + 1);
             string stringToFormat = stringToReplace;
             int timesToInc = stringToFormat.Split('[').Length; // counts how many brackets: if there is none, this should be 1(?)
             stringToFormat = stringToFormat.Replace("[", string.Empty).Replace("]", string.Empty); //clean the string of << and >> characters
 
-            stringToFormat = "<size=" + (100 - (10 * timesToInc)).ToString() + "%>" + stringToFormat;
+            stringToFormat = "<size=" + (100 - (10 * timesToInc)).ToString() + "%>" + stringToFormat + "<size=100%>";
             lineText = lineText.Replace(stringToReplace, stringToFormat);
         }
 
