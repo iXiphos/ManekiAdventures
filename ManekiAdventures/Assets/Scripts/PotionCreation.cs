@@ -10,9 +10,18 @@ public class PotionCreation : MonoBehaviour
 
     public GameObject basePotion;
 
+    public Text ingredient1;
+
+    public Text ingredient2;
+
     public Text potionText;
 
     public Sprite potionSprite;
+
+    public Image craftingImage1;
+    public Image craftingImage2;
+    public Image craftingImage3;
+
 
     // Start is called before the first frame update
     void Start()
@@ -25,62 +34,60 @@ public class PotionCreation : MonoBehaviour
     {
         if (piece2 != null)
         {
-            if (piece2.getAttribute() != attribute.empty)
+            if (piece2.getDiscriptor() != discriptor.empty)
             {
-                potionText.text = piece1.getDiscriptor().ToString() + " " + piece2.getAttribute().ToString() + " Potion";
-            }
-            else if (piece2.getDiscriptor() != discriptor.empty)
-            {
-                potionText.text = piece1.getAttribute().ToString() + " " + piece2.getDiscriptor().ToString() + " Potion";
+
+                ingredient2.text = piece2.getDiscriptor().ToString();
+                craftingImage2.enabled = true;
+                craftingImage2.sprite = piece2.icon;
             }
         }
-        if (piece1 != null && piece2 == null)
+        if (piece1 != null)
         {
             if (piece1.getAttribute() != attribute.empty)
             {
-                potionText.text = piece1.getAttribute().ToString();
+                ingredient1.text = piece1.getAttribute().ToString();
+                craftingImage1.enabled = true;
+                craftingImage1.sprite = piece1.icon;
             }
-            else if (piece1.getDiscriptor() != discriptor.empty)
-            {
-                potionText.text = piece1.getDiscriptor().ToString();
-            }
+        }
+        if(piece1 != null && piece2 != null)
+        {
+            potionText.text = piece1.getAttribute().ToString() + " " + piece2.getDiscriptor().ToString() + " Potion";
+            craftingImage3.sprite = potionSprite;
+            craftingImage3.enabled = true;
         }
         
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (piece1 != null && piece2 != null)
-            if (piece1.getAttribute() != attribute.empty && piece2.getDiscriptor() != discriptor.empty)
-            {
-                //This is where Cases will come in, avoid Potions that can't be made
-
-                craftPotion();
-            }
-            else if (piece2.getAttribute() != attribute.empty && piece1.getDiscriptor() != discriptor.empty)
-            {
-                //This is where Cases will come in, avoid Potions that can't be made
-                Item temp = piece1;
-                piece1 = piece2;
-                piece2 = temp;
-
-                craftPotion();
-            }
-            else
-            {
-                Debug.LogError("These potion ingredents are bad and dumb and stupid, please stop being dumb and a smart ass and trying to break my system");
-                piece1 = null;
-                piece2 = null;
-            }
-        }
     }
 
-    void craftPotion()
+    public void craftPotion()
     {
-        Item potion = new Item();
-        potion.name = piece1.getAttribute().ToString() + " " + piece2.getDiscriptor().ToString() + " Potion";
-        potion.Attribute = piece1.getAttribute();
-        potion.Discriptor = piece2.getDiscriptor();
-        potion.icon = potionSprite;
+        ingredient1.text = "";
+        ingredient2.text = "";
+        potionText.text = "";
+        craftingImage1.enabled = false;
+        craftingImage1.sprite = null;
+        craftingImage2.enabled = false;
+        craftingImage2.sprite = null;
+        craftingImage3.enabled = false;
+        craftingImage3.sprite = null;
+        if (piece2.getAttribute() != attribute.empty && piece1.getDiscriptor() != discriptor.empty)
+        {
+            //This is where Cases will come in, avoid Potions that can't be made
+            Item temp = piece1;
+            piece1 = piece2;
+            piece2 = temp;
+
+            craftPotion();
+        }
+        Item potion = new Item
+        {
+            name = piece1.getAttribute().ToString() + " " + piece2.getDiscriptor().ToString() + " Potion",
+            Attribute = piece1.getAttribute(),
+            Discriptor = piece2.getDiscriptor(),
+            icon = potionSprite
+        };
         Inventory.instance.Add(potion);
 
         Inventory.instance.Remove(piece1);
@@ -89,6 +96,33 @@ public class PotionCreation : MonoBehaviour
         piece1 = null;
         piece2 = null;
         potionText.text = "";
+    }
+
+    public void returnObjectsToInventory()
+    {
+        if (piece1 != null)
+        {
+            Inventory.instance.Remove(piece1);
+            Inventory.instance.Remove(piece2);
+            Inventory.instance.Add(piece1);
+            piece1 = null;
+        }
+        if (piece2 != null)
+        {
+            Inventory.instance.Remove(piece2);
+            Inventory.instance.Remove(piece2);
+            Inventory.instance.Add(piece2);
+            piece2 = null;
+        }
+        ingredient1.text = "";
+        ingredient2.text = "";
+        potionText.text = "";
+        craftingImage1.enabled = false;
+        craftingImage1.sprite = null;
+        craftingImage2.enabled = false;
+        craftingImage2.sprite = null;
+        craftingImage3.enabled = false;
+        craftingImage3.sprite = null;
     }
 
 }

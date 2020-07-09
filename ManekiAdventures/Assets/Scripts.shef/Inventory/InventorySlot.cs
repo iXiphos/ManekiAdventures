@@ -41,15 +41,39 @@ public class InventorySlot : MonoBehaviour
             if (item.Attribute != attribute.empty && item.Discriptor != discriptor.empty)
             {
                 GameObject.Find("Player").GetComponent<tossPotion>().createPotion(item);
+                StartCoroutine(GameObject.Find("Player").GetComponent<tossPotion>().createTarget());
                 Inventory.instance.Remove(item);
                 ClearSlot();
             }
-            else if (crafting.activeInHierarchy)
+            else if(craftingSystem.activeSelf)
             {
-                if (crafting.GetComponent<PotionCreation>().piece1 == null)
-                    crafting.GetComponent<PotionCreation>().piece1 = item;
-                else
-                    crafting.GetComponent<PotionCreation>().piece2 = item;
+                if(item.Attribute != attribute.empty)
+                {
+                    if (crafting.GetComponent<PotionCreation>().piece1 == null)
+                    {
+                        crafting.GetComponent<PotionCreation>().piece1 = item;
+                    }
+                    else
+                    {
+                        Inventory.instance.Add(crafting.GetComponent<PotionCreation>().piece1);
+                        crafting.GetComponent<PotionCreation>().piece1 = item;
+                        Inventory.instance.Remove(item);
+                    }
+                }
+                else if(item.Discriptor != discriptor.empty)
+                {
+                    if (crafting.GetComponent<PotionCreation>().piece2 == null)
+                    {
+                        crafting.GetComponent<PotionCreation>().piece2 = item;
+                    }
+                    else
+                    {
+                        Inventory.instance.Add(crafting.GetComponent<PotionCreation>().piece2);
+                        crafting.GetComponent<PotionCreation>().piece2 = item;
+                        Inventory.instance.Remove(item);
+                    }
+                }
+               
                 ClearSlot();
             }
         }

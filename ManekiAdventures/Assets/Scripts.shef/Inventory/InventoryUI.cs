@@ -6,6 +6,7 @@ public class InventoryUI : MonoBehaviour
     public Transform itemsParent;
     public GameObject inventoryUI;
     public GameObject craftingUI;
+    public GameObject craftingObject;
 
     Inventory inventory;
 
@@ -33,6 +34,11 @@ public class InventoryUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             craftingUI.SetActive(!craftingUI.activeSelf);
+            if (craftingObject.activeSelf == true)
+            {
+                craftingObject.GetComponent<PotionCreation>().returnObjectsToInventory();
+            }
+            craftingObject.SetActive(!craftingObject.activeSelf);
         }
     }
 
