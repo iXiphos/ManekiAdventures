@@ -2,17 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueEvent : MonoBehaviour
+public class DialogueEvent
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    // NOTE: SPEECHLINE VARIABLES ARE {{ }}, THIS CLASS SHOULD INJECT THE CORRECT VARIABLE FOR THE SITUATION
 
-    // Update is called once per frame
-    void Update()
+    
+    public static void DebugPrintEvent()
     {
-        
+        // DEBUG TESTING:
+        DialogueText testText = new DialogueText();
+        testText.ReadRawLinesFromFile("SAMPLE_DIALOGUE");
+
+        string effects = "";
+        foreach (string str in testText.interactionEffects)
+        {
+            effects += str + " ";
+        }
+        Debug.Log(effects);
+
+        Debug.Log("Number of Lines: " + testText.lines.Count);
+        foreach(List<SpeechLine> lines in testText.lines)
+        {
+            foreach(SpeechLine line in lines)
+            {
+                Debug.Log(line.lineText);
+            }
+        }
+       
     }
+    
 }

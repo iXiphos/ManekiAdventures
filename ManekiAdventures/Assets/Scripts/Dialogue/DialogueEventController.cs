@@ -7,7 +7,7 @@ public class DialogueEventController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        DialogueEvent.DebugPrintEvent();
     }
 
     // Update is called once per frame

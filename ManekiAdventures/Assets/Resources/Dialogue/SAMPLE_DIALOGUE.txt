@@ -1,0 +1,15 @@
+//Kiki found something shiny that Ru likes.
+EFFECTS: FREEZE_CHAR_ZOOM
+
+RU: [RUMBLE] <<OMG SHINY!!!!>>
+RU: This {{item}} is the best...thing...
+RU: [RUMBLE] <<<<EVER!!>>>>
+
+KIKI:
+~1 %Shiny...% [SLOW] Very shiny...almost like looking into the sun...
+~2 %It's for Master!% Don't get too attached, Ru! We need to give it to Master!
+RU:
+~1 [[[So that's why your vision sucks...]]]
+~2 Alright, alright! But I want to look at it until then.
+
+RU: Anyway, let's get going!
