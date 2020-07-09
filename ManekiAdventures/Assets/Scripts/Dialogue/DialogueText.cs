@@ -45,17 +45,19 @@ public class DialogueText
             string processedLine = line;
             if (line.IndexOf("//") > -1) { processedLine = line.Substring(0, line.IndexOf("//")); } // remove comments
 
+            bool isSpeakingLine = true;
+            string speaker = "";
+
             if (processedLine.IndexOf(':') > -1) // determine speaker OR effect
             {
                 string preText = processedLine.Substring(0, processedLine.IndexOf(':'));
                 processedLine = processedLine.Remove(0, processedLine.IndexOf(':') + 1); // remove pretext from the line
                 preText = preText.Replace(":", string.Empty);
 
-                bool isSpeakingLine = true;
-                string speaker = "";
                 
+
                 // process preText
-                if(!string.IsNullOrEmpty(preText))
+                if (!string.IsNullOrEmpty(preText))
                 {
                     // if this line has pretext, save and clear the previous line(s)
                     if (currentLines.Count > 0) { lines.Add(currentLines); } // add prev if it had anything
@@ -77,54 +79,61 @@ public class DialogueText
                             break;
                     }
                 }
-                
+            }
 
-                if (!isSpeakingLine) { continue; }
-                else //continue processing if this is a speaker line
+            if (!isSpeakingLine || string.IsNullOrEmpty(processedLine)) { continue; }
+            else //continue processing if this is a speaker line
+            {
+                int optionNum = -1; // defaults to -1 if no branching
+                string lineText = "";
+                string synopsisText = "";
+                LineEffect lineEffect = (LineEffect)0;
+                bool isBranching = false;
+
+                // check if this is a branching line
+                if (processedLine.Contains("~"))
                 {
-                    int optionNum = -1; // defaults to -1 if no branching
-                    string lineText = "";
-                    string synopsisText = "";
-                    LineEffect lineEffect = (LineEffect)0;
-                    bool isBranching = false;
-
-                    // check if this is a branching line
-                    if (processedLine.Contains("~"))
+                    isBranching = true;
+                    string[] branches = processedLine.Split('~');
+                    foreach (string option in branches)
                     {
-                        isBranching = true;
-                        string[] branches = processedLine.Split('~');
-                        foreach (string option in branches)
+                        if(!string.IsNullOrEmpty(option))
                         {
                             // get option number (and remove it from the rest of the string)
-                            optionNum = Int32.Parse(option.Substring(option.IndexOf('~'), option.IndexOf(string.Empty) - option.IndexOf('~')));
-                            lineText = option.Remove(0, option.IndexOf(string.Empty)); // remove the number in the beginning
+                            optionNum = Int32.Parse(option.Substring(0, option.IndexOf(" ")));
+                            lineText = option.Remove(0, option.IndexOf(" ")); // remove the number in the beginning
 
                             // process the synopsis text (and remove it)
-                            synopsisText = lineText.Substring(lineText.IndexOf('%'), lineText.LastIndexOf('%') - lineText.IndexOf('%'));
-                            lineText = lineText.Remove(lineText.IndexOf('%'), lineText.LastIndexOf('%') - lineText.IndexOf('%'));
+                            if(lineText.IndexOf('%') != -1)
+                            {
+                                synopsisText = lineText.Substring(lineText.IndexOf('%'), lineText.LastIndexOf('%') - lineText.IndexOf('%'));
+                                lineText = lineText.Remove(lineText.IndexOf('%'), lineText.LastIndexOf('%') - lineText.IndexOf('%') + 1);
 
+                            }
+
+                            // process lines
                             processedLine = ProcessSpeech(lineText, ref lineEffect);
                         }
                     }
-                    else //non-branching: process normally
-                    {
-                        // process lines
-                        processedLine = ProcessSpeech(processedLine, ref lineEffect);
-                    }
-
-                    // after processing is complete, make a SpeechLine & add it
-                    SpeechLine lineToAdd = new SpeechLine()
-                    {
-                        speakerName = speaker,
-                        synopsisText = synopsisText,
-                        lineText = processedLine,
-                        lineEffect = lineEffect,
-                        isBranch = isBranching,
-                        optionNum = optionNum
-                    };
-
-                    currentLines.Add(lineToAdd);
                 }
+                else //non-branching: process normally
+                {
+                    // process lines
+                    processedLine = ProcessSpeech(processedLine, ref lineEffect);
+                }
+
+                // after processing is complete, make a SpeechLine & add it
+                SpeechLine lineToAdd = new SpeechLine()
+                {
+                    speakerName = speaker,
+                    synopsisText = synopsisText,
+                    lineText = processedLine,
+                    lineEffect = lineEffect,
+                    isBranch = isBranching,
+                    optionNum = optionNum
+                };
+
+                currentLines.Add(lineToAdd);
             }
         }
     }
@@ -173,6 +182,9 @@ public class DialogueText
             lineEffect = stringToLineEffect(lineEffectStr);
             lineText = lineText.Remove(lineText.IndexOf('['), lineText.IndexOf(']') - lineText.IndexOf('[') + 1);
         }
+
+        // remove extra whitespace
+        lineText = lineText.Trim(' ');
 
         return lineText;
     }
