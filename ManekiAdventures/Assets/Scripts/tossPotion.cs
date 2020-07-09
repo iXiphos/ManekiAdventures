@@ -29,14 +29,16 @@ public class tossPotion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
     }
 
     public IEnumerator createTarget()
+
     {
         Ray ray;
         RaycastHit hit;
         Vector3 clickPosition = -Vector3.one;
-        active = true;
+
         while (active)
         {
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -57,6 +59,7 @@ public class tossPotion : MonoBehaviour
                         active = false;
                         break;
                     }
+
                 }
             }
             yield return null;
