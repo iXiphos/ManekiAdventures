@@ -11,8 +11,8 @@ public class DialogueBoxFollow : MonoBehaviour
     public string currLine;
 
     public Vector3 displacement = new Vector3(0, 0, 0);
-    float ruHeight = 4; // TO DO: implement
-    float kikiHeight = 5;
+    //float ruHeight = 4; // TO DO: implement if needed
+    //float kikiHeight = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -40,5 +40,13 @@ public class DialogueBoxFollow : MonoBehaviour
             // assign text
             textUI.text = currLine;
         }
+    }
+
+    private void Update()
+    {
+        // NOTE THAT THIS IS HARDCODED AND SHOULD BE FIXED!!!!!!!!!!1 ********************
+        GameObject ru = GameObject.Find("RU");
+        GameObject kiki = GameObject.Find("KIKI");
+        displacement = new Vector3(0, Vector3.Distance(ru.transform.position, kiki.transform.position), 0);
     }
 }

@@ -265,8 +265,16 @@ public class DialogueEvent
                     //...TODO: FREEZE CHARACTER CONTROL*******************
                     //break;
                 case "FREEZE_CHAR": // TODO: MAKE THIS MORE GENERIC (CURRENTLY HARD-CODED FOR RU)
-                    dofControl = GameObject.Instantiate(DialogueEventController.dofController, characters["RU"].transform);
+                    if(characters["RU"].GetComponentInChildren<DOFControl>() == null)
+                    {
+                        dofControl = GameObject.Instantiate(DialogueEventController.dofController, characters["RU"].transform);
+                    }
+                    else
+                    {
+                        dofControl = characters["RU"].GetComponentInChildren<DOFControl>().gameObject;
+                    }
                     dofControl.GetComponent<DOFControl>().ToggleFocusCamera();
+
                     break;
                 default: break;
             }

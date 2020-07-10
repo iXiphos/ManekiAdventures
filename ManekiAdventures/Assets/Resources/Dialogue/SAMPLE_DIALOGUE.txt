@@ -1,5 +1,5 @@
 //Kiki found something shiny that Ru likes.
-//EFFECTS: FREEZE_CHAR_ZOOM
+EFFECTS: FREEZE_CHAR_ZOOM
 
 RU: [RUMBLE] <<OMG SHINY!!!!>> Shiny shiny shiny!!!
 RU: This {{item}} is the best...thing...
