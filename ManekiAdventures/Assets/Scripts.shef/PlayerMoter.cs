@@ -25,7 +25,7 @@ public class PlayerMoter : MonoBehaviour
         if (target != null)
         {
             agent.SetDestination(target.position);
-            FaceTarget();
+            //FaceTarget();
         }
     }
 
