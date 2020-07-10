@@ -18,8 +18,8 @@ public class DialogueEvent
         // ....
         // string name, GameObject reference to character
         Dictionary<string, GameObject> characters = new Dictionary<string, GameObject>();
-        characters.Add("RU", GameObject.Find("RU"));
-        characters.Add("KIKI", GameObject.Find("KIKI"));
+        characters.Add("RU", GameObject.Find("RU")); // DEBUG
+        characters.Add("KIKI", GameObject.Find("KIKI")); // DEBUG
 
         // apply dialogue effects
         ApplyDialogueEffects(dialogueText, characters);
