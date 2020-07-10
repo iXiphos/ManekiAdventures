@@ -4,58 +4,124 @@ using UnityEngine;
 
 public class DialogueEvent
 {
+    static Dictionary<string, GameObject> characters; // string name, GameObject reference to character
+    static Dictionary<string, GameObject> uiElements; // string character name, GameObject ref to its UI chat bubble
+    static DialogueText currentDialogue;
+    public static bool inDialogue;
+    static int lineNum;
 
-    // NOTE: SPEECHLINE VARIABLES ARE {{ }}, THIS CLASS SHOULD INJECT THE CORRECT VARIABLE FOR THE SITUATION
-
-    public static void ExecuteEvent(string filename)
+    // for branching
+    public static bool inBranch;
+    public static int currOptionNum;
+    
+    public static void ExecuteEvent(DialogueText dialogueText)
     {
-        // fetch the dialogue information
-        DialogueText dialogueText = new DialogueText();
-        dialogueText.ReadRawLinesFromFile(filename);
-
-        // find characters speaking to get references to them
-        // FOR THIS BUILD: just ru and maneki will ever speak
-        // ....
-        // string name, GameObject reference to character
-        Dictionary<string, GameObject> characters = new Dictionary<string, GameObject>();
-        characters.Add("RU", GameObject.Find("RU")); // DEBUG
-        characters.Add("KIKI", GameObject.Find("KIKI")); // DEBUG
+        currentDialogue = dialogueText;
+        inDialogue = true;
+        
+        characters = new Dictionary<string, GameObject>(); // string name, GameObject reference to character
+        foreach (List<SpeechLine> lines in currentDialogue.lines) // find characters speaking to get references to them
+        {
+            foreach(SpeechLine line in lines)
+            {
+                if(!characters.ContainsKey(line.speakerName)) // if this character hasn't been added yet
+                {
+                    // find and add the character object reference to the dictionary
+                    characters.Add(line.speakerName, GameObject.Find(line.speakerName));
+                }
+            }
+        }
 
         // apply dialogue effects
-        ApplyDialogueEffects(dialogueText, characters);
+        ApplyDialogueEffects();
 
-        // spawn text boxes above the entities
-        GameObject ruWorldspaceUI = GameObject.Instantiate(DialogueEventController.worldspaceUIPrefab, characters["RU"].transform);
-        GameObject kikiWorldspaceUI = GameObject.Instantiate(DialogueEventController.worldspaceUIPrefab, characters["KIKI"].transform);
-
-        // hide/show/assign text as needed
-        for(int i = 0; i < dialogueText.lines.Count; i++)
+        // spawn text boxes above the entities for each character
+        foreach(KeyValuePair<string, GameObject> entry in characters)
         {
-            List<SpeechLine> currLine = dialogueText.lines[i];
-            // check if next dialogue has options; if it is, show it at the same time (with synopsis)
-        }
+            GameObject currTextBox = GameObject.Instantiate(DialogueEventController.worldspaceUIPrefab, characters[entry.Key].transform);
+            uiElements.Add(entry.Key, currTextBox);
 
-        foreach (List<SpeechLine> lines in dialogueText.lines)
+            // position text box
+            // ....
+        }
+       
+        // show first text
+        lineNum = 0;
+        ShowLine(currentDialogue.lines[lineNum][0]);
+
+        if(CheckIfNextHasOptions(lineNum)) // check if next dialogue has options; if it is, show it at the same time (with synopsis)
         {
-            if (lines.Count > 1)
-            {
-                // do branching...
-            }
-            else // singular text line for 1 person
-            {
-
-            }
-            /*foreach (SpeechLine line in lines)
-            {
-                Debug.Log(line.lineText);
-            }*/
+            inBranch = true;
+            lineNum++;
+            // show options
+            ShowOptions(currentDialogue.lines[lineNum]);
         }
+    }
+
+    public static void ProgressDialogue()
+    {
+        if(lineNum + 1 < currentDialogue.lines.Count)
+        {
+            // progress dialogue if there are still lines
+            lineNum++;
+
+            if (inBranch)
+            {
+                if (CheckIfNextHasOptions(lineNum)) // check if next dialogue has options; if it is, show it at the same time (with synopsis)
+                {
+                    // if it's branching, fetch the option route
+                    foreach(SpeechLine line in currentDialogue.lines[lineNum])
+                    {
+                        if(line.optionNum == currOptionNum)
+                        {
+                            // show this dialogue if it matches the option num chosen
+                            ShowLine(line);
+                        }
+                    }
+                }
+                else
+                {
+                    inBranch = false;
+                    currOptionNum = -1;
+                    // show next dialogue
+                    ShowLine(currentDialogue.lines[lineNum][0]);
+                }
+            }
+        }
+        else
+        {
+            // once you're out of lines, stop any effects
+            RevertDialogueEffects();
+
+            // clean up the UI elements
+            //...
+
+            // flush dialogue event vars
+            inDialogue = false;
+            lineNum = -1;
+            currentDialogue = null;
+            characters.Clear();
+        }
+    }
+
+    static void ShowLine(SpeechLine line)
+    {
 
     }
 
-    void ExecuteEvent(string filename, string[] vars) // if the lines have vars, pass them in with a string array
+    static void ShowOptions(List<SpeechLine> options)
     {
 
+    }
+
+    static bool CheckIfNextHasOptions(int lineNum)
+    {
+        List<SpeechLine> nextLine = currentDialogue.lines[lineNum+1];
+        if(nextLine.Count > 1)
+        {
+            return true;
+        }
+        return false;
     }
 
     public static void DebugPrintEvent()
@@ -82,9 +148,9 @@ public class DialogueEvent
        
     }
 
-    public static void ApplyDialogueEffects(DialogueText dt, Dictionary<string, GameObject> characters)
+    public static void ApplyDialogueEffects()
     {
-        foreach (string str in dt.interactionEffects)
+        foreach (string str in currentDialogue.interactionEffects)
         {
             switch(str)
             {
@@ -93,6 +159,26 @@ public class DialogueEvent
                     //break;
                 case "FREEZE_CHAR": // TODO: MAKE THIS MORE GENERIC (CURRENTLY HARD-CODED FOR RU)
                     GameObject.Instantiate(DialogueEventController.dofController, characters["RU"].transform);
+                    break;
+                default: break;
+            }
+        }
+    }
+
+    public static void RevertDialogueEffects()
+    {
+        foreach (string str in currentDialogue.interactionEffects)
+        {
+            switch (str)
+            {
+                case "FREEZE_CHAR_ZOOM":
+                //...TODO: GIVE BACK CHARACTER CONTROL*******************
+                //break;
+                case "FREEZE_CHAR": // TODO: MAKE THIS MORE GENERIC (CURRENTLY HARD-CODED FOR RU)
+                                    
+
+                    // delete the DOF controller...
+
                     break;
                 default: break;
             }
