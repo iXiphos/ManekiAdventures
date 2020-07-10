@@ -35,6 +35,7 @@ public class DOFControl : MonoBehaviour
     {
         dc = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<DynamicCamera3D>(); //find dynamic camera
         parentObj = gameObject.GetComponentInParent<Transform>().gameObject; //find reference to parent
+        dc.inInteraction = false;
 
         originalCameraRotation = dc.transform.rotation; // save the original position & rotation of the camera
         originalCameraPosition = dc.transform.position;
@@ -46,17 +47,18 @@ public class DOFControl : MonoBehaviour
         hasExecutedFocus = false;
     }
 
-    private void Update()
+    public void ToggleFocusCamera()
     {
         // toggle, change later
-        if (Input.GetKeyDown(KeyCode.Space)) // ***** THIS SHOULD BE REPLACED WITH THE INTERACTION TRIGGER ********
-        {                                   // THE PARENT SHOULD NOTIFY ANY CHILDREN CONTROLS OF AN INTERACTION (& prevent the character from moving) ***********
-            dc.inInteraction = !dc.inInteraction;
-            isFocusing = !isFocusing;
-            hasExecutedFocus = false;
-            TurnAndZoomCamera();
-        }
+        dc.inInteraction = !dc.inInteraction;
+        isFocusing = !isFocusing;
+        hasExecutedFocus = false;
+        TurnAndZoomCamera();
+        
+    }
 
+    private void Update()
+    {
         if(isFocusing)
         {
             TurnAndZoomCamera();

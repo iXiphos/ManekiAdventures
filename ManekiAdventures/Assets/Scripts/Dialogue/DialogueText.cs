@@ -38,6 +38,7 @@ public class DialogueText
     void ProcessLines()
     {
         List<SpeechLine> currentLines = new List<SpeechLine>();
+        string speaker = "";
 
         foreach (string line in rawTextArray)
         {
@@ -47,7 +48,6 @@ public class DialogueText
             if (line.IndexOf("//") > -1) { processedLine = line.Substring(0, line.IndexOf("//")); } // remove comments
 
             bool isSpeakingLine = true;
-            string speaker = "";
 
             if (processedLine.IndexOf(':') > -1) // determine speaker OR effect
             {
@@ -105,7 +105,7 @@ public class DialogueText
                             // process the synopsis text (and remove it)
                             if(lineText.IndexOf('%') != -1)
                             {
-                                synopsisText = lineText.Substring(lineText.IndexOf('%'), lineText.LastIndexOf('%') - lineText.IndexOf('%'));
+                                synopsisText = lineText.Substring(lineText.IndexOf('%')+1, lineText.LastIndexOf('%') - lineText.IndexOf('%')-1);
                                 lineText = lineText.Remove(lineText.IndexOf('%'), lineText.LastIndexOf('%') - lineText.IndexOf('%') + 1);
 
                             }

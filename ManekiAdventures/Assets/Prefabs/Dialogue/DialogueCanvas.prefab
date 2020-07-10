@@ -48,7 +48,7 @@ Canvas:
   m_GameObject: {fileID: 6012534572683887846}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 2
   m_PixelPerfect: 0
@@ -56,7 +56,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -109,7 +109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6012534574360559693}
   - component: {fileID: 6012534574360559694}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DialogueEventController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueCanvasRef: {fileID: 6012534572683887846}
-  dialogueBoxPrefabRef: {fileID: 6270979340485289555, guid: cc55dcb4e8af4c049adde47612cb2db8,
+  dialogueBoxPrefabRef: {fileID: 1044516235916537901, guid: cc55dcb4e8af4c049adde47612cb2db8,
     type: 3}
   dofControllerRef: {fileID: 3345259042552181859, guid: 85eaf4faf32e57c46a344cff9e785cd3,
     type: 3}

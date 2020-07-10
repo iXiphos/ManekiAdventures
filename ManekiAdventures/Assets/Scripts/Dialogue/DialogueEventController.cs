@@ -18,29 +18,48 @@ public class DialogueEventController : MonoBehaviour
         dialogueBoxPrefab = dialogueBoxPrefabRef;
         dofController = dofControllerRef;
 
-        
+
         // DEBUG:
-        ExecuteEvent("SAMPLE_DIALOGUE");
+        //ExecuteEvent("SAMPLE_DIALOGUE");
+        Dictionary<string, string> vars = new Dictionary<string, string>();
+        vars.Add("item", "piece of shit");
+        ExecuteEventWithVars("SAMPLE_DIALOGUE", vars);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!DialogueEvent.inBranch)
+        if(!DialogueEvent.isChoosing)
         {
-            if (Input.GetKeyDown(KeyCode.Space) && DialogueEvent.inDialogue)
+            if (Input.GetKeyUp(KeyCode.Space) && DialogueEvent.inDialogue)
             {
                 DialogueEvent.ProgressDialogue();
             }
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.Q) && DialogueEvent.inDialogue)
+            /* attempted to make this more generic...
+            if(DialogueEvent.inDialogue)
+            {
+                int optionChosen = -1;
+                int.TryParse(Input.inputString, out optionChosen);
+                foreach (SpeechLine line in DialogueEvent.currentDialogue.lines[DialogueEvent.lineNum])
+                {
+                    Debug.Log(line.optionNum + " " + optionChosen);
+                    if (line.optionNum == optionChosen)
+                    {
+                        DialogueEvent.currOptionNum = optionChosen;
+                        DialogueEvent.ProgressDialogue();
+                    }
+                }
+            }*/
+            
+            if (Input.GetKeyUp(KeyCode.Alpha1) && DialogueEvent.inDialogue)
             {
                 DialogueEvent.currOptionNum = 1;
                 DialogueEvent.ProgressDialogue();
             }
-            else if (Input.GetKeyDown(KeyCode.E) && DialogueEvent.inDialogue)
+            else if (Input.GetKeyUp(KeyCode.Alpha2) && DialogueEvent.inDialogue)
             {
                 DialogueEvent.currOptionNum = 2;
                 DialogueEvent.ProgressDialogue();

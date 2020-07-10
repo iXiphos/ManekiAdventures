@@ -7,26 +7,30 @@ public class DialogueEvent
 {
     static Dictionary<string, GameObject> characters; // string name, GameObject reference to character
     static Dictionary<string, GameObject> uiElements; // string character name, GameObject ref to its UI chat bubble
-    static DialogueText currentDialogue;
+    public static DialogueText currentDialogue;
     public static bool inDialogue;
-    static int lineNum;
+    public static int lineNum;
 
     // for branching
     public static bool inBranch;
+    public static bool isChoosing = false;
     public static int currOptionNum;
+
+    // for effects
+    static GameObject dofControl;
     
     public static void ExecuteEvent(DialogueText dialogueText)
     {
         currentDialogue = dialogueText;
         inDialogue = true;
 
-        Debug.Log("Indexing characters in dialogue...");
+        //Debug.Log("Indexing characters in dialogue...");
         characters = new Dictionary<string, GameObject>(); // string name, GameObject reference to character
         foreach (List<SpeechLine> lines in currentDialogue.lines) // find characters speaking to get references to them
         {
             foreach(SpeechLine line in lines)
             {
-                Debug.Log(line.speakerName);
+                //Debug.Log(line.speakerName);
                 if(!characters.ContainsKey(line.speakerName)) // if this character hasn't been added yet
                 {
                     // find and add the character object reference to the dictionary
@@ -47,7 +51,7 @@ public class DialogueEvent
             {
                 GameObject currTextBox = GameObject.Instantiate(DialogueEventController.dialogueBoxPrefab, DialogueEventController.dialogueCanvas.transform);
 
-                currTextBox.GetComponentInChildren<DialogueBoxFollow>().characterToFollow = entry.Value;
+                currTextBox.GetComponent<DialogueBoxFollow>().characterToFollow = entry.Value;
 
                 // set their nameplate
                 foreach (Transform elem in currTextBox.GetComponentsInChildren<Transform>())
@@ -70,6 +74,7 @@ public class DialogueEvent
 
         if(CheckIfNextHasOptions(lineNum)) // check if next dialogue has options; if it is, show it at the same time (with synopsis)
         {
+            Debug.Log("Showing options...");
             inBranch = true;
             lineNum++;
             // show options
@@ -84,32 +89,66 @@ public class DialogueEvent
             // progress dialogue if there are still lines
             lineNum++;
 
-            if (inBranch)
+            if (CheckIfNextHasOptions(lineNum)) // check if next dialogue has options; if it is, show it at the same time (with synopsis)
             {
-                if (CheckIfNextHasOptions(lineNum)) // check if next dialogue has options; if it is, show it at the same time (with synopsis)
+                // detect if next line is kiki
+                string nextSpeaker = "";
+                foreach (SpeechLine line in currentDialogue.lines[lineNum+1])
                 {
-                    // if it's branching, fetch the option route
-                    foreach(SpeechLine line in currentDialogue.lines[lineNum])
+                    if (!string.IsNullOrEmpty(line.speakerName))
                     {
-                        if(line.optionNum == currOptionNum)
-                        {
-                            // show this dialogue if it matches the option num chosen
-                            ShowLine(line);
-                        }
+                        nextSpeaker = line.speakerName;
+                        break;
                     }
                 }
-                else
+
+                // if it's branching, fetch the option route
+                if(nextSpeaker == "KIKI")
                 {
-                    inBranch = false;
-                    currOptionNum = -1;
-                    // show next dialogue
+                    inBranch = true;
+                    isChoosing = true;
                     ShowLine(currentDialogue.lines[lineNum][0]);
+                    ShowOptions(currentDialogue.lines[lineNum+1]);
                 }
+                else 
+                {
+                    foreach (SpeechLine line in currentDialogue.lines[lineNum])
+                    {
+                        if (line.optionNum == currOptionNum)
+                        {
+                            // show this dialogue if it matches the option num chosen
+                            isChoosing = false;
+                            ShowLine(line);
+                            continue;
+                        }
+                    }  
+                }
+            }
+            else if(CheckIfThisHasOptions(lineNum))
+            {
+                foreach (SpeechLine line in currentDialogue.lines[lineNum])
+                {
+                    if (line.optionNum == currOptionNum)
+                    {
+                        // show this dialogue if it matches the option num chosen
+                        isChoosing = false;
+                        ShowLine(line);
+                        continue;
+                    }
+                }
+            }
+            else
+            {
+                inBranch = false;
+                currOptionNum = -1;
+                // show next dialogue
+                ShowLine(currentDialogue.lines[lineNum][0]);
             }
         }
         else
         {
             // once you're out of lines, stop any effects
+            Debug.Log("Completing dialogue. Cleaning up...");
             RevertDialogueEffects();
 
             // clean up the UI elements
@@ -128,26 +167,66 @@ public class DialogueEvent
 
     static void ShowLine(SpeechLine line)
     {
+        // hide other ui boxes
+        foreach(GameObject obj in uiElements.Values)
+        {
+            obj.SetActive(false);
+        }
+        
         GameObject currDialogueUI = uiElements[line.speakerName];
-        currDialogueUI.SetActive(true);
-
-        DialogueBoxFollow dialogueBox = currDialogueUI.GetComponentInChildren<DialogueBoxFollow>();
+        DialogueBoxFollow dialogueBox = currDialogueUI.GetComponent<DialogueBoxFollow>();
         dialogueBox.currLine = line.lineText;
+
+        // show this ui box
+        currDialogueUI.SetActive(true);
 
         // apply effects...
     }
 
     static void ShowOptions(List<SpeechLine> options)
     {
-        // TO DO **********************8
+        Debug.Log("Showing options...");
+        string speaker = "";
+        foreach(SpeechLine line in options)
+        {
+            if(!string.IsNullOrEmpty(line.speakerName))
+            {
+                speaker = line.speakerName;
+                break;
+            }
+        }
+
+        GameObject currDialogueUI = uiElements[speaker];
+        DialogueBoxFollow dialogueBox = currDialogueUI.GetComponent<DialogueBoxFollow>();
+        
+        // put together a dialogue option line
+        string optionsLineText = "";
+        foreach(SpeechLine line in options)
+        {
+            optionsLineText += line.optionNum + ": " + line.synopsisText;
+            optionsLineText += "\n";
+        }
+
+        dialogueBox.currLine = optionsLineText;
+
+        // show this ui box
+        currDialogueUI.SetActive(true);
     }
 
     static bool CheckIfNextHasOptions(int lineNum)
     {
-        List<SpeechLine> nextLine = currentDialogue.lines[lineNum+1];
-        if(nextLine.Count > 1)
+        return CheckIfThisHasOptions(lineNum+1);
+    }
+
+    static bool CheckIfThisHasOptions(int lineNum)
+    {
+        if (lineNum < currentDialogue.lines.Count)
         {
-            return true;
+            List<SpeechLine> nextLine = currentDialogue.lines[lineNum];
+            if (nextLine.Count > 1)
+            {
+                return true;
+            }
         }
         return false;
     }
@@ -186,7 +265,8 @@ public class DialogueEvent
                     //...TODO: FREEZE CHARACTER CONTROL*******************
                     //break;
                 case "FREEZE_CHAR": // TODO: MAKE THIS MORE GENERIC (CURRENTLY HARD-CODED FOR RU)
-                    GameObject.Instantiate(DialogueEventController.dofController, characters["RU"].transform);
+                    dofControl = GameObject.Instantiate(DialogueEventController.dofController, characters["RU"].transform);
+                    dofControl.GetComponent<DOFControl>().ToggleFocusCamera();
                     break;
                 default: break;
             }
@@ -203,8 +283,9 @@ public class DialogueEvent
                 //...TODO: GIVE BACK CHARACTER CONTROL*******************
                 //break;
                 case "FREEZE_CHAR": // TODO: MAKE THIS MORE GENERIC (CURRENTLY HARD-CODED FOR RU)
-                                    
-
+                    if(dofControl != null)
+                        dofControl.GetComponent<DOFControl>().ToggleFocusCamera();
+                    
                     // delete the DOF controller...
 
                     break;

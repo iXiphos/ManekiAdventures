@@ -10,13 +10,18 @@ public class DialogueBoxFollow : MonoBehaviour
     public GameObject characterToFollow;
     public string currLine;
 
-    Vector3 displacement = new Vector3(0, 0, 0);
+    public Vector3 displacement = new Vector3(0, 0, 0);
+    float ruHeight = 4; // TO DO: implement
+    float kikiHeight = 5;
 
     // Start is called before the first frame update
     void Start()
     {
         mainCamera = GameObject.Find("DynamicCamera3D").GetComponent<Camera>();
-        textUI = gameObject.GetComponentInChildren<TMP_Text>();
+        foreach (TMP_Text obj in gameObject.GetComponentsInChildren<TMP_Text>())
+        {
+            if(obj.tag == "DialogueText") { textUI = obj; }
+        }
     }
 
     // Update is called once per frame
@@ -25,7 +30,9 @@ public class DialogueBoxFollow : MonoBehaviour
         // follow character
         if(characterToFollow != null)
         {
-            gameObject.transform.position = mainCamera.WorldToScreenPoint(characterToFollow.transform.position + displacement);
+            Vector3 uiPos = mainCamera.WorldToScreenPoint(characterToFollow.transform.position + displacement);
+            gameObject.transform.position = uiPos;
+
         }
 
         if (textUI != null)
