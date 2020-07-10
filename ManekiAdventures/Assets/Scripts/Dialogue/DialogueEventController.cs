@@ -4,14 +4,23 @@ using UnityEngine;
 
 public class DialogueEventController : MonoBehaviour
 {
-    public static GameObject worldspaceUIPrefab;
+    public GameObject dialogueCanvasRef;
+    public GameObject dialogueBoxPrefabRef;
+    public GameObject dofControllerRef;
+    public static GameObject dialogueCanvas;
+    public static GameObject dialogueBoxPrefab;
     public static GameObject dofController;
 
     // Start is called before the first frame update
     void Start()
     {
-        DialogueEvent.DebugPrintEvent();
-       // DialogueEvent.ExecuteEvent("SAMPLE_DIALOGUE");
+        dialogueCanvas = dialogueCanvasRef;
+        dialogueBoxPrefab = dialogueBoxPrefabRef;
+        dofController = dofControllerRef;
+
+        
+        // DEBUG:
+        ExecuteEvent("SAMPLE_DIALOGUE");
     }
 
     // Update is called once per frame
@@ -41,6 +50,8 @@ public class DialogueEventController : MonoBehaviour
 
     public void ExecuteEvent(string filename)
     {
+        Debug.Log("Executing dialogue event: " + filename);
+
         // fetch the dialogue information
         DialogueText dialogueText = new DialogueText();
         dialogueText.ReadRawLinesFromFile(filename);

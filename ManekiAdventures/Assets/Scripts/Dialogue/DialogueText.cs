@@ -27,6 +27,7 @@ public class DialogueText
 
     public void ReadRawLinesFromFile(string file)
     {
+        fileName = file;
         string rawTxt = Resources.Load<TextAsset>("Dialogue\\" + file).text; // attempt to retreive dialogue text
         
         rawTextArray = rawTxt.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);

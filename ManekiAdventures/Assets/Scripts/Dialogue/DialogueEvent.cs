@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class DialogueEvent
 {
@@ -18,12 +19,14 @@ public class DialogueEvent
     {
         currentDialogue = dialogueText;
         inDialogue = true;
-        
+
+        Debug.Log("Indexing characters in dialogue...");
         characters = new Dictionary<string, GameObject>(); // string name, GameObject reference to character
         foreach (List<SpeechLine> lines in currentDialogue.lines) // find characters speaking to get references to them
         {
             foreach(SpeechLine line in lines)
             {
+                Debug.Log(line.speakerName);
                 if(!characters.ContainsKey(line.speakerName)) // if this character hasn't been added yet
                 {
                     // find and add the character object reference to the dictionary
@@ -36,13 +39,29 @@ public class DialogueEvent
         ApplyDialogueEffects();
 
         // spawn text boxes above the entities for each character
-        foreach(KeyValuePair<string, GameObject> entry in characters)
+        Debug.Log("Spawning text boxes...");
+        uiElements = new Dictionary<string, GameObject>();
+        foreach (KeyValuePair<string, GameObject> entry in characters)
         {
-            GameObject currTextBox = GameObject.Instantiate(DialogueEventController.worldspaceUIPrefab, characters[entry.Key].transform);
-            uiElements.Add(entry.Key, currTextBox);
+            if(!string.IsNullOrEmpty(entry.Key))
+            {
+                GameObject currTextBox = GameObject.Instantiate(DialogueEventController.dialogueBoxPrefab, DialogueEventController.dialogueCanvas.transform);
 
-            // position text box
-            // ....
+                currTextBox.GetComponentInChildren<DialogueBoxFollow>().characterToFollow = entry.Value;
+
+                // set their nameplate
+                foreach (Transform elem in currTextBox.GetComponentsInChildren<Transform>())
+                {
+                    if (elem.gameObject.tag == "Nameplate")
+                    {
+                        Debug.Log("Setting " + entry.Key + "'s nameplate...");
+                        elem.gameObject.GetComponent<TMP_Text>().text = entry.Key;
+                    }
+                }
+
+                currTextBox.SetActive(false); // hide when not in use
+                uiElements.Add(entry.Key, currTextBox);
+            }
         }
        
         // show first text
@@ -94,7 +113,10 @@ public class DialogueEvent
             RevertDialogueEffects();
 
             // clean up the UI elements
-            //...
+            foreach(GameObject elem in uiElements.Values)
+            {
+                GameObject.Destroy(elem);
+            }
 
             // flush dialogue event vars
             inDialogue = false;
@@ -106,12 +128,18 @@ public class DialogueEvent
 
     static void ShowLine(SpeechLine line)
     {
+        GameObject currDialogueUI = uiElements[line.speakerName];
+        currDialogueUI.SetActive(true);
 
+        DialogueBoxFollow dialogueBox = currDialogueUI.GetComponentInChildren<DialogueBoxFollow>();
+        dialogueBox.currLine = line.lineText;
+
+        // apply effects...
     }
 
     static void ShowOptions(List<SpeechLine> options)
     {
-
+        // TO DO **********************8
     }
 
     static bool CheckIfNextHasOptions(int lineNum)
