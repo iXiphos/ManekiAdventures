@@ -299,7 +299,10 @@ MonoBehaviour:
     -Press Craft Button
 
     -Select potion and then select
-    where you want to toss it'
+    where you want to toss it
+
+    -Use the buttons on the side to explore the art
+    and dialogue demo'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -344,7 +347,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 225
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -365,15 +368,15 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -80.28311, y: 0, z: -619.36237, w: -208.80295}
+  m_margin: {x: -80.28311, y: 0, z: -803.7237, w: -208.80295}
   m_textInfo:
     textComponent: {fileID: 514837979}
-    characterCount: 224
+    characterCount: 290
     spriteCount: 0
-    spaceCount: 34
-    wordCount: 36
+    spaceCount: 47
+    wordCount: 49
     linkCount: 0
-    lineCount: 6
+    lineCount: 7
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
