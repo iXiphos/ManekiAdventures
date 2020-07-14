@@ -126,3 +126,7 @@ MonoBehaviour:
   pAttribute: 0
   pDiscriptor: 0
   explosionSize: 0
+  WeightIncrease: 2
+  WeightDecrease: 3
+  SizeIncrease: 2
+  SizeDecrease: 2

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+
     public bool canMove;
     Vector3 inputMovement;
     public float moveSpeed;
@@ -15,6 +16,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         canMove = true;
         pos = transform.position;
         animator = gameObject.GetComponentInChildren<Animator>();

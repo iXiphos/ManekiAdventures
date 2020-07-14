@@ -29,21 +29,15 @@ public class tossPotion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!active && potion != null)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                potion.GetComponent<Rigidbody>().AddForce(Vector3.forward * speed);
-                potion.transform.parent = null;
-            }
-        }
+
     }
 
-    IEnumerator createTarget()
+    public IEnumerator createTarget()
     {
         Ray ray;
         RaycastHit hit;
         Vector3 clickPosition = -Vector3.one;
+        active = true;
         while (active)
         {
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -56,9 +50,15 @@ public class tossPotion : MonoBehaviour
                 {
                     Vector3 dir = clickPosition - transform.position;
                     Quaternion targetRotation = Quaternion.LookRotation(dir);
-                    potion = Instantiate(potion, transform);
+
                     potion.transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * smooth);
-                    transform.Translate(transform.forward * speed);
+                    potion.transform.Translate(transform.forward * speed);
+                    yield return null;
+                    if (Vector3.Distance(dir, potion.transform.position) < 0.1)
+                    {
+                        active = false;
+                        break;
+                    }
                 }
             }
             yield return null;
