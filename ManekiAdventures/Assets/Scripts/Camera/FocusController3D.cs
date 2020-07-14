@@ -20,10 +20,9 @@ public class FocusController3D : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("TEST");
         if (collision.gameObject.tag.Contains("Player"))
         {
-            Debug.Log("Player entered trigger zone of " + gameObject.GetComponentInParent<Transform>().gameObject.name);
+            //Debug.Log("Player entered trigger zone of " + gameObject.GetComponentInParent<Transform>().gameObject.name);
 
             // sets its parent to the focus obj
             gameCamera.focusObj = gameObject.GetComponentInParent<Transform>().gameObject;
@@ -35,7 +34,7 @@ public class FocusController3D : MonoBehaviour
     {
         if (collision.gameObject.tag.Contains("Player"))
         {
-            Debug.Log("Player exited a trigger zone.");
+            //Debug.Log("Player exited a trigger zone.");
             gameCamera.focusObj = null;
         }
     }

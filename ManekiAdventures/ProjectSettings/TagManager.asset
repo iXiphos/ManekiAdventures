@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Fire
   - Interactable
+  - Respawnable
+  - Nameplate
+  - DialogueText
   layers:
   - Default
   - TransparentFX

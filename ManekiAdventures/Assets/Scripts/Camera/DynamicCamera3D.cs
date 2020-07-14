@@ -15,6 +15,8 @@ public class DynamicCamera3D : MonoBehaviour
     [SerializeField] private GameObject player; // player
     public GameObject focusObj; // obj to focus
 
+    public bool inInteraction = false; // if the player is interacting with something that requires a DOF change, this overrides normal camera focus.
+
     //keep X and Z the same for isometric
     public float cameraOffsetX = -8f;
     public float cameraOffsetY = 10f;
@@ -24,7 +26,7 @@ public class DynamicCamera3D : MonoBehaviour
     //[SerializeField] private float normalCameraSize = 5f;
     //[SerializeField] private float maxCameraSize = 8f;
 
-    [SerializeField] private float lerpSpeed = 1f;
+    public float lerpSpeed = 1f;
 
     private float distanceBetweenPlayers; //distance between player and focus
 
@@ -40,15 +42,17 @@ public class DynamicCamera3D : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (focusObj != null)
-        {
-            CalculateDistanceBetweenPlayers();
-            CameraFollow2Players();
-        }
-        else
-        {
-            // if nothing is focused, do normal camera movement
-            CameraFollowPlayer();
+        if (!inInteraction) { 
+            if (focusObj != null)
+            {
+                CalculateDistanceBetweenPlayers();
+                CameraFollow2Players();
+            }
+            else
+            {
+                // if nothing is focused, do normal camera movement
+                CameraFollowPlayer();
+            }
         }
     }
 
@@ -71,7 +75,7 @@ public class DynamicCamera3D : MonoBehaviour
         distanceBetweenPlayers = Mathf.Sqrt(Mathf.Pow(displacement.x, 2) + Mathf.Pow(displacement.z, 2)); //square root of (x^2 + y^2)
 
         // Uncomment for debug
-        Debug.Log(distanceBetweenPlayers);
+        //Debug.Log(distanceBetweenPlayers);
     }
 
     void CameraFollow2Players()
@@ -95,7 +99,7 @@ public class DynamicCamera3D : MonoBehaviour
         else if (distanceBetweenPlayers > minCameraSize /*&& distanceBetweenPlayers < maxCameraSize*/)
         {
             // 3D: "ZOOM" OUT (back up)
-            Debug.Log((distanceBetweenPlayers - minCameraSize) / (cameraOffsetX * 2) + "," + (distanceBetweenPlayers - minCameraSize) / (cameraOffsetZ * 2));
+            //Debug.Log((distanceBetweenPlayers - minCameraSize) / (cameraOffsetX * 2) + "," + (distanceBetweenPlayers - minCameraSize) / (cameraOffsetZ * 2));
             gameObject.transform.position += new Vector3((distanceBetweenPlayers - minCameraSize) / (cameraOffsetX * 2), 0, (distanceBetweenPlayers - minCameraSize) / (cameraOffsetZ * 2));
         }
         // add max camera size if needed...
