@@ -15,7 +15,17 @@ ModelImporter:
   - first:
       74: 860390990293548603
     second: Anim
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MA_Rig_MC_CatTexture
+    second: {fileID: 2100000, guid: c6e39a55135eb3546aa0c05f1e5c1a47, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: MA_Tex_BaseColor_01
+    second: {fileID: 2800000, guid: c5d688bbecd9c4b48a94f211dfa1da50, type: 3}
   materials:
     materialImportMode: 1
     materialName: 0
