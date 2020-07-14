@@ -42,7 +42,12 @@ public class Movement : MonoBehaviour
         {
             // translate
             inputMovement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            transform.Translate(inputMovement * Time.deltaTime * moveSpeed, Space.World);
+            float rad45 = -45f * (Mathf.PI / 180f);
+            Vector3 isoRotate = new Vector3(inputMovement.x * Mathf.Cos(rad45) - inputMovement.z * Mathf.Sin(rad45), inputMovement.y, inputMovement.x * Mathf.Sin(rad45) + inputMovement.z * Mathf.Cos(rad45));
+
+
+            transform.Translate(isoRotate * Time.deltaTime * moveSpeed, Space.World);
+            
 
             // rotate to look the appropriate direction
             if(inputMovement.x != 0 || inputMovement.z != 0)
