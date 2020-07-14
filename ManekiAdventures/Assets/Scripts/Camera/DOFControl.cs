@@ -12,7 +12,7 @@ public class DOFControl : MonoBehaviour
     public float defaultAperture = 5.6f;
     public float focusValue = 0.5f; // what the DOF changes to upon interaction
     public float apertureValue = 3.0f; // what the aperature changes to upon interaction
-    public float rotationSpeed = 15f;
+    public float rotationSpeed = 20f;
     public float playerHeight = 2f;
 
     public PostProcessingProfile postProcProf;
@@ -35,6 +35,7 @@ public class DOFControl : MonoBehaviour
     {
         dc = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<DynamicCamera3D>(); //find dynamic camera
         parentObj = gameObject.GetComponentInParent<Transform>().gameObject; //find reference to parent
+        dc.inInteraction = false;
 
         originalCameraRotation = dc.transform.rotation; // save the original position & rotation of the camera
         originalCameraPosition = dc.transform.position;
@@ -46,17 +47,30 @@ public class DOFControl : MonoBehaviour
         hasExecutedFocus = false;
     }
 
-    private void Update()
+    public void ToggleFocusCamera()
     {
-        // toggle, change later
-        if (Input.GetKeyDown(KeyCode.Space)) // ***** THIS SHOULD BE REPLACED WITH THE INTERACTION TRIGGER ********
-        {                                   // THE PARENT SHOULD NOTIFY ANY CHILDREN CONTROLS OF AN INTERACTION (& prevent the character from moving) ***********
+        if(dc != null)
+        {
+            // toggle, change later
             dc.inInteraction = !dc.inInteraction;
             isFocusing = !isFocusing;
             hasExecutedFocus = false;
             TurnAndZoomCamera();
         }
+        else // if it is null, wait a moment then try calling this function again
+        {
+            StartCoroutine(WaitForInitThenRetryToggle());
+        }
+    }
 
+    IEnumerator WaitForInitThenRetryToggle()
+    {
+        yield return new WaitForSeconds(0.05f);
+        ToggleFocusCamera();
+    }
+
+    private void Update()
+    {
         if(isFocusing)
         {
             TurnAndZoomCamera();
@@ -102,8 +116,12 @@ public class DOFControl : MonoBehaviour
             Vector3 side1 = (parentObj.transform.position + new Vector3(0,1,0)) - parentObj.transform.position;
             Vector3 side2 = player.transform.position - parentObj.transform.position;
 
-            // calculate which item is to the right using dot product
-            float dot = Vector3.Dot(side2, parentObj.transform.right);
+            // calculate which item is to the right (RELATIVE TO CAMERA) using dot product
+            GameObject temp = new GameObject();
+            temp.transform.position = parentObj.transform.position;
+            temp.transform.LookAt(Camera.main.transform);
+            temp.transform.Rotate(new Vector3(0, 1, 0), 180);
+            float dot = Vector3.Dot(side2, temp.transform.right);
             if(dot >= 0) { 
                 normalVector = Vector3.Cross(side1, side2); // if the player is to the right of the object, do perp (clockwise)
                 //Debug.Log("Player is to the RIGHT");
@@ -112,6 +130,7 @@ public class DOFControl : MonoBehaviour
                 normalVector = -Vector3.Cross(side1, side2); // otherwise, do negative perp (counter-clockwise [negative perp]
                 //Debug.Log("Player is to the LEFT");
             }
+            GameObject.Destroy(temp);
             normalVector /= normalVector.magnitude; //normalize for a more predictable value
 
             newCameraPosition = midpoint + (normalVector * cameraDisplacement) + new Vector3(0, (2 * newCameraPositionY.y / 3), 0);
