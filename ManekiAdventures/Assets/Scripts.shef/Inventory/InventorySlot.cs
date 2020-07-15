@@ -52,6 +52,7 @@ public class InventorySlot : MonoBehaviour
                     if (crafting.GetComponent<PotionCreation>().piece1 == null)
                     {
                         crafting.GetComponent<PotionCreation>().piece1 = item;
+                        Inventory.instance.Remove(item);
                     }
                     else
                     {
@@ -65,6 +66,7 @@ public class InventorySlot : MonoBehaviour
                     if (crafting.GetComponent<PotionCreation>().piece2 == null)
                     {
                         crafting.GetComponent<PotionCreation>().piece2 = item;
+                        Inventory.instance.Remove(item);
                     }
                     else
                     {
@@ -73,9 +75,8 @@ public class InventorySlot : MonoBehaviour
                         Inventory.instance.Remove(item);
                     }
                 }
-               
-                ClearSlot();
             }
+            //gameObject.GetComponent<InventorySlot>().ClearSlot();
         }
     }
 
