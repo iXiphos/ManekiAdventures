@@ -1345,17 +1345,17 @@ PrefabInstance:
     - target: {fileID: 6260704717597764077, guid: 011ac61e705236246ac6cf57ef8fc183,
         type: 3}
       propertyPath: cameraOffsetY
-      value: 7
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6260704717597764077, guid: 011ac61e705236246ac6cf57ef8fc183,
         type: 3}
       propertyPath: cameraOffsetX
-      value: -6
+      value: -13
       objectReference: {fileID: 0}
     - target: {fileID: 6260704717597764077, guid: 011ac61e705236246ac6cf57ef8fc183,
         type: 3}
       propertyPath: cameraOffsetZ
-      value: -6
+      value: -13
       objectReference: {fileID: 0}
     - target: {fileID: 6260704717597764077, guid: 011ac61e705236246ac6cf57ef8fc183,
         type: 3}

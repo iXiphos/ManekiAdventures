@@ -18,13 +18,15 @@ public class DynamicCamera3D : MonoBehaviour
     public bool inInteraction = false; // if the player is interacting with something that requires a DOF change, this overrides normal camera focus.
 
     //keep X and Z the same for isometric
-    public float cameraOffsetX = -8f;
-    public float cameraOffsetY = 10f;
-    public float cameraOffsetZ = -8f;
+    public float cameraOffsetX = -13f;
+    public float cameraOffsetY = 13f;
+    public float cameraOffsetZ = -13f;
+
+    float scrollSensitivity = 2f;
 
     [SerializeField] private float minCameraSize = 4f;
-    //[SerializeField] private float normalCameraSize = 5f;
-    //[SerializeField] private float maxCameraSize = 8f;
+    Vector3 minCameraOffset = new Vector3(-3f, 4f, -3f);
+    Vector3 maxCameraOffset = new Vector3(-15f, 15f, -15f);
 
     public float lerpSpeed = 1f;
 
@@ -53,6 +55,56 @@ public class DynamicCamera3D : MonoBehaviour
                 // if nothing is focused, do normal camera movement
                 CameraFollowPlayer();
             }
+        }
+
+        ScrollCameraWithWheel();
+    }
+
+    void ScrollCameraWithWheel()
+    {
+        // scroll in/out camera
+        float scrollValue = Input.GetAxis("Mouse ScrollWheel") * scrollSensitivity;
+
+        // x
+        if (cameraOffsetX <= minCameraOffset.x && cameraOffsetX >= maxCameraOffset.x)
+        {
+            cameraOffsetX += scrollValue;
+        }
+        else if(cameraOffsetX > minCameraOffset.x)
+        {
+            cameraOffsetX = minCameraOffset.x;
+        }
+        else if(cameraOffsetX < maxCameraOffset.x)
+        {
+            cameraOffsetX = maxCameraOffset.x;
+        }
+
+        // y
+        if (cameraOffsetY >= minCameraOffset.y && cameraOffsetY <= maxCameraOffset.y)
+        {
+            cameraOffsetY -= scrollValue;
+        }
+        else if (cameraOffsetY < minCameraOffset.y)
+        {
+            cameraOffsetY = minCameraOffset.y;
+        }
+        else if (cameraOffsetY > maxCameraOffset.y)
+        {
+            cameraOffsetY = maxCameraOffset.y;
+        }
+
+        // z
+        if (cameraOffsetZ <= minCameraOffset.z && cameraOffsetZ >= maxCameraOffset.z)
+        {
+            cameraOffsetZ += scrollValue;
+        }
+        else if (cameraOffsetZ > minCameraOffset.z)
+        {
+            cameraOffsetZ = minCameraOffset.z;
+        }
+        else if (cameraOffsetZ < maxCameraOffset.z)
+        {
+            cameraOffsetZ = maxCameraOffset.z;
         }
     }
 
