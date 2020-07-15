@@ -136,25 +136,9 @@ public class DynamicCamera3D : MonoBehaviour
 
         //update position to be the midpoint between the two players----------
         if (distanceBetweenPlayers > 0)   //positive = player1 on the right
-            gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, new Vector3((player.transform.position.x - distanceBetweenPlayersV3.x / 2) + cameraOffsetX, player.transform.position.y + cameraOffsetY, (player.transform.position.z - distanceBetweenPlayersV3.z / 2) + cameraOffsetZ), Time.deltaTime * lerpSpeed);
+            gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, new Vector3((player.transform.position.x - distanceBetweenPlayersV3.x / 2) + cameraOffsetX, player.transform.position.y + cameraOffsetY, (player.transform.position.z - distanceBetweenPlayersV3.z / 2) + cameraOffsetZ), Time.deltaTime * lerpSpeed / 3);
         else                                                    //negative = player2 on the right
-            gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, new Vector3((focusObj.transform.position.x - distanceBetweenPlayersV3.x / 2) + cameraOffsetX, focusObj.transform.position.y + cameraOffsetY, (focusObj.transform.position.z - distanceBetweenPlayersV3.z / 2) + cameraOffsetZ), Time.deltaTime * lerpSpeed);
-
-
-        //update scale--------------------------------------------------------
-        //min size
-        if (distanceBetweenPlayers < minCameraSize)
-        {
-            // 3D: DO NOTHING
-        }
-        //in between size
-        else if (distanceBetweenPlayers > minCameraSize /*&& distanceBetweenPlayers < maxCameraSize*/)
-        {
-            // 3D: "ZOOM" OUT (back up)
-            //Debug.Log((distanceBetweenPlayers - minCameraSize) / (cameraOffsetX * 2) + "," + (distanceBetweenPlayers - minCameraSize) / (cameraOffsetZ * 2));
-            gameObject.transform.position += new Vector3((distanceBetweenPlayers - minCameraSize) / (cameraOffsetX * 2), 0, (distanceBetweenPlayers - minCameraSize) / (cameraOffsetZ * 2));
-        }
-        // add max camera size if needed...
+            gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, new Vector3((focusObj.transform.position.x - distanceBetweenPlayersV3.x / 2) + cameraOffsetX, focusObj.transform.position.y + cameraOffsetY, (focusObj.transform.position.z - distanceBetweenPlayersV3.z / 2) + cameraOffsetZ), Time.deltaTime * lerpSpeed / 3);
     }
 
     Vector3 GetVector3DistanceBetweenPlayers()
