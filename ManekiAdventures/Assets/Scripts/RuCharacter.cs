@@ -30,7 +30,7 @@ public class RuCharacter : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.Space) && (Vector3.Distance(gameObject.transform.position, kiki.transform.position) <= interactDistance))
             {
                 Dictionary<string, string> vars = new Dictionary<string, string>();
-                vars.Add("item", "piece of moonstone");
+                vars.Add("item", "glowing purple flower");
                 dialogueEventController.ExecuteEventWithVars("SAMPLE_DIALOGUE", vars);
             }
         }
