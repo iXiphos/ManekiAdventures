@@ -27,6 +27,7 @@ public class DialogueText
 
     public void ReadRawLinesFromFile(string file)
     {
+        fileName = file;
         string rawTxt = Resources.Load<TextAsset>("Dialogue\\" + file).text; // attempt to retreive dialogue text
         
         rawTextArray = rawTxt.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
@@ -37,6 +38,7 @@ public class DialogueText
     void ProcessLines()
     {
         List<SpeechLine> currentLines = new List<SpeechLine>();
+        string speaker = "";
 
         foreach (string line in rawTextArray)
         {
@@ -46,15 +48,12 @@ public class DialogueText
             if (line.IndexOf("//") > -1) { processedLine = line.Substring(0, line.IndexOf("//")); } // remove comments
 
             bool isSpeakingLine = true;
-            string speaker = "";
 
             if (processedLine.IndexOf(':') > -1) // determine speaker OR effect
             {
                 string preText = processedLine.Substring(0, processedLine.IndexOf(':'));
                 processedLine = processedLine.Remove(0, processedLine.IndexOf(':') + 1); // remove pretext from the line
                 preText = preText.Replace(":", string.Empty);
-
-                
 
                 // process preText
                 if (!string.IsNullOrEmpty(preText))
@@ -106,7 +105,7 @@ public class DialogueText
                             // process the synopsis text (and remove it)
                             if(lineText.IndexOf('%') != -1)
                             {
-                                synopsisText = lineText.Substring(lineText.IndexOf('%'), lineText.LastIndexOf('%') - lineText.IndexOf('%'));
+                                synopsisText = lineText.Substring(lineText.IndexOf('%')+1, lineText.LastIndexOf('%') - lineText.IndexOf('%')-1);
                                 lineText = lineText.Remove(lineText.IndexOf('%'), lineText.LastIndexOf('%') - lineText.IndexOf('%') + 1);
 
                             }
@@ -136,6 +135,9 @@ public class DialogueText
                 currentLines.Add(lineToAdd);
             }
         }
+
+        // add the last line
+        if (currentLines.Count > 0) { lines.Add(currentLines); }
     }
     
     string ProcessSpeech(string lineText, ref LineEffect lineEffect)

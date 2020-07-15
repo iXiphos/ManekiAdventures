@@ -29,6 +29,7 @@ public class tossPotion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
     }
 
     public IEnumerator createTarget()
@@ -49,6 +50,7 @@ public class tossPotion : MonoBehaviour
                 {
                     Vector3 dir = clickPosition - transform.position;
                     Quaternion targetRotation = Quaternion.LookRotation(dir);
+
                     potion.transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * smooth);
                     potion.transform.Translate(transform.forward * speed);
                     yield return null;
