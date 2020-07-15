@@ -24,7 +24,6 @@ public class DynamicCamera3D : MonoBehaviour
 
     float scrollSensitivity = 2f;
 
-    [SerializeField] private float minCameraSize = 4f;
     Vector3 minCameraOffset = new Vector3(-3f, 4f, -3f);
     Vector3 maxCameraOffset = new Vector3(-15f, 15f, -15f);
 
