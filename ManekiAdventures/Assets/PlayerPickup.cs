@@ -29,7 +29,7 @@ public class PlayerPickup : MonoBehaviour
                         {
                             Debug.LogError(hitColliders[i].GetComponent<ItemPickup>().item);
                             Inventory.instance.Add(hitColliders[i].GetComponent<ItemPickup>().item);
-                            Destroy(hitColliders[i]);
+                            Destroy(hitColliders[i].gameObject);
                             break;
                         }
                 }

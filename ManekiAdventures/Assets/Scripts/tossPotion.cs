@@ -46,14 +46,16 @@ public class tossPotion : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
+                potion.transform.parent = null;
                 while (true)
                 {
                     Vector3 dir = clickPosition - transform.position;
                     Quaternion targetRotation = Quaternion.LookRotation(dir);
                     float step = speed * Time.deltaTime;
+                    
                     potion.transform.position = Vector3.MoveTowards(potion.transform.position, clickPosition, step);
                     yield return null;
-                    if (Vector3.Distance(dir, potion.transform.position) < 0.1)
+                    if (Vector3.Distance(dir, potion.transform.position) < 0.2)
                     {
                         active = false;
                         break;
