@@ -10,6 +10,7 @@ TagManager:
   - Nameplate
   - DialogueText
   - Terrain
+  - Component
   layers:
   - Default
   - TransparentFX
