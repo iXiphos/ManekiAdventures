@@ -9,4 +9,13 @@ public class SceneSwap : MonoBehaviour
     {
         SceneManager.LoadScene(name);
     }
+
+    private void Update()
+    {
+        DontDestroyOnLoad(this.gameObject);
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
 }
