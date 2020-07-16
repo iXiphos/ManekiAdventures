@@ -3556,7 +3556,7 @@ MonoBehaviour:
   clickMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  speed: 1
+  speed: 5
   smooth: 1
   hand: {fileID: 251825462}
 --- !u!195 &1104412803
@@ -3593,6 +3593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afd1bd13e9905c344ba8c3ed28ae9138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 0
   moveSpeed: 20
 --- !u!114 &1104412805
 MonoBehaviour:
@@ -5069,7 +5070,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -40.2}
+  m_AnchoredPosition: {x: 0, y: -40.200195}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1463839821
@@ -6755,6 +6756,7 @@ MonoBehaviour:
   inventoryUI: {fileID: 358626483}
   craftingUI: {fileID: 692643388}
   craftingObject: {fileID: 652964397}
+  slots: []
 --- !u!114 &2136359812
 MonoBehaviour:
   m_ObjectHideFlags: 0

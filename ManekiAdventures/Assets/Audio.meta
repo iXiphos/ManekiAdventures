@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 084a441eadb4f4845bc9bf80c966d573
+=======
+guid: cfd77fda20b66f146be483519e6eb179
+>>>>>>> SandBoxBuild
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

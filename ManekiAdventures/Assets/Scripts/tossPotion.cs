@@ -50,9 +50,8 @@ public class tossPotion : MonoBehaviour
                 {
                     Vector3 dir = clickPosition - transform.position;
                     Quaternion targetRotation = Quaternion.LookRotation(dir);
-
-                    potion.transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * smooth);
-                    potion.transform.Translate(transform.forward * speed);
+                    float step = speed * Time.deltaTime;
+                    potion.transform.position = Vector3.MoveTowards(potion.transform.position, clickPosition, step);
                     yield return null;
                     if (Vector3.Distance(dir, potion.transform.position) < 0.1)
                     {
