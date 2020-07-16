@@ -1,0 +1,7 @@
+// Kiki picks up the increase weight ingredient for the first time
+
+Ru: Oh, ginseng! This is the main ingredient in a **weight** potion!
+
+// Date:        7/15/2020
+// Author:      Jade Edwards
+// File:        Wesley Elmer
