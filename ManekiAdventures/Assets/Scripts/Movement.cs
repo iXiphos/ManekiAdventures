@@ -70,7 +70,7 @@ public class Movement : MonoBehaviour
         {
             if (hit.collider != null && hit.transform.tag == "Terrain")
             {
-                Debug.Log("hit terrain. Y is " + hit.point.y);
+                // Debug.Log("hit terrain. Y is " + hit.point.y);
                 yVal = hit.point.y;
             }
         }
