@@ -3556,7 +3556,7 @@ MonoBehaviour:
   clickMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  speed: 1
+  speed: 5
   smooth: 1
   hand: {fileID: 251825462}
 --- !u!195 &1104412803
@@ -3593,6 +3593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afd1bd13e9905c344ba8c3ed28ae9138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 0
   moveSpeed: 20
 --- !u!114 &1104412805
 MonoBehaviour:
