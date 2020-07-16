@@ -35,7 +35,7 @@ public class Movement : MonoBehaviour
     {
         MoveHorizontal();
         AnimateWalking();
-        AnimatePickup();
+        //AnimatePickup();
     }
 
     void MoveHorizontal()
@@ -85,12 +85,9 @@ public class Movement : MonoBehaviour
             animator.SetBool("isWalking", false);
     }
 
-    void AnimatePickup()
+    public void AnimatePickup()
     {
-        if (Input.GetKeyUp(KeyCode.Q)) // DEBUG: LINK THIS UP TO ACTUAL INTERACT.
-        {
-            StartCoroutine(PickupAnimation());
-        }
+        StartCoroutine(PickupAnimation());
     }
 
     IEnumerator PickupAnimation()

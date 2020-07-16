@@ -19,6 +19,10 @@ public class PlayerPickup : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
+            // play pickup animation
+            gameObject.GetComponent<Movement>().AnimatePickup();
+
+            // pickup item
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
             if (hitColliders.Length != 0)
             {
@@ -28,6 +32,7 @@ public class PlayerPickup : MonoBehaviour
                         if(hitColliders[i].tag == "Component")
                         {
                             Debug.LogError(hitColliders[i].GetComponent<ItemPickup>().item);
+                            GameObject.FindGameObjectWithTag("GameController").GetComponent<StoryEventHandler>().PickedUpEvent(hitColliders[i].GetComponent<ItemPickup>().item.name); // execute dialogue as needed
                             Inventory.instance.Add(hitColliders[i].GetComponent<ItemPickup>().item);
                             Destroy(hitColliders[i].gameObject);
                             break;

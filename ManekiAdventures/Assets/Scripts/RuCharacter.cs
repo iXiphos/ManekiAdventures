@@ -15,7 +15,7 @@ public class RuCharacter : MonoBehaviour
     void Start()
     {
         dialogueEventController = GameObject.Find("DialogueEventController").GetComponent<DialogueEventController>();
-        kiki = GameObject.Find("KIKI");
+        kiki = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
