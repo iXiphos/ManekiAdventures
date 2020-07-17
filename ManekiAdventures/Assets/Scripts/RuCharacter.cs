@@ -25,6 +25,7 @@ public class RuCharacter : MonoBehaviour
 
 
         // SAMPLE
+        /*
         if (!DialogueEvent.inDialogue)
         {
             if (Input.GetKeyUp(KeyCode.Space) && (Vector3.Distance(gameObject.transform.position, kiki.transform.position) <= interactDistance))
@@ -33,7 +34,7 @@ public class RuCharacter : MonoBehaviour
                 vars.Add("item", "glowing purple flower");
                 dialogueEventController.ExecuteEventWithVars("SAMPLE_DIALOGUE", vars);
             }
-        }
+        }*/
     }
 
     void FireflyFollow()
