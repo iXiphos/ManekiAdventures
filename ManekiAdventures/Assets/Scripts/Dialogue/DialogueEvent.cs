@@ -103,7 +103,7 @@ public class DialogueEvent
                 }
 
                 // if it's branching, fetch the option route
-                if(nextSpeaker == "KIKI")
+                if(nextSpeaker == "Kiki")
                 {
                     inBranch = true;
                     isChoosing = true;
@@ -265,13 +265,13 @@ public class DialogueEvent
                     //...TODO: FREEZE CHARACTER CONTROL*******************
                     //break;
                 case "FREEZE_CHAR": // TODO: MAKE THIS MORE GENERIC (CURRENTLY HARD-CODED FOR RU)
-                    if(characters["RU"].GetComponentInChildren<DOFControl>() == null)
+                    if(characters["Ru"].GetComponentInChildren<DOFControl>() == null)
                     {
-                        dofControl = GameObject.Instantiate(DialogueEventController.dofController, characters["RU"].transform);
+                        dofControl = GameObject.Instantiate(DialogueEventController.dofController, characters["Ru"].transform);
                     }
                     else
                     {
-                        dofControl = characters["RU"].GetComponentInChildren<DOFControl>().gameObject;
+                        dofControl = characters["Ru"].GetComponentInChildren<DOFControl>().gameObject;
                     }
                     dofControl.GetComponent<DOFControl>().ToggleFocusCamera();
 

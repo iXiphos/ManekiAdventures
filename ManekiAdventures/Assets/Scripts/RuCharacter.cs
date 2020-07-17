@@ -15,7 +15,7 @@ public class RuCharacter : MonoBehaviour
     void Start()
     {
         dialogueEventController = GameObject.Find("DialogueEventController").GetComponent<DialogueEventController>();
-        kiki = GameObject.Find("KIKI");
+        kiki = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -25,6 +25,7 @@ public class RuCharacter : MonoBehaviour
 
 
         // SAMPLE
+        /*
         if (!DialogueEvent.inDialogue)
         {
             if (Input.GetKeyUp(KeyCode.Space) && (Vector3.Distance(gameObject.transform.position, kiki.transform.position) <= interactDistance))
@@ -33,7 +34,7 @@ public class RuCharacter : MonoBehaviour
                 vars.Add("item", "glowing purple flower");
                 dialogueEventController.ExecuteEventWithVars("SAMPLE_DIALOGUE", vars);
             }
-        }
+        }*/
     }
 
     void FireflyFollow()

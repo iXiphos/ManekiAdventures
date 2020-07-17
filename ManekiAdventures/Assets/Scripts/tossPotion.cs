@@ -46,6 +46,10 @@ public class tossPotion : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
+                // I sure do hope this is the right place to put this.
+                GameObject.Find("DialogueEventController").GetComponent<DialogueEventController>().ExecuteEvent("UNIQUE_THROWPOTION");
+
+
                 potion.transform.parent = null;
                 while (true)
                 {
