@@ -358,6 +358,7 @@ GameObject:
   - component: {fileID: 2492488912610652432}
   - component: {fileID: 2492488912610652434}
   - component: {fileID: 3601153546659899265}
+  - component: {fileID: 89952041}
   m_Layer: 0
   m_Name: KIKI
   m_TagString: Player
@@ -443,7 +444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 0
-  moveSpeed: 5
+  moveSpeed: 7
   fakeGravityIntensity: 4
 --- !u!114 &3601153546659899265
 MonoBehaviour:
@@ -462,10 +463,23 @@ MonoBehaviour:
     type: 3}
   clickMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 51
   speed: 5
   smooth: 1
   hand: {fileID: 6728987230307614460}
+--- !u!114 &89952041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2492488912610652436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec323f2fc22b86941a7a4e2508ac0e57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 4
 --- !u!1 &2544277194692903309
 GameObject:
   m_ObjectHideFlags: 0

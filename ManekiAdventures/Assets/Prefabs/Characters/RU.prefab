@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 7771720748910049349}
   - component: {fileID: 7771720748910049352}
   m_Layer: 0
-  m_Name: RU
+  m_Name: Ru
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

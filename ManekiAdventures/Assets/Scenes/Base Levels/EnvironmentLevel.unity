@@ -1321,25 +1321,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 85765858}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &89952040 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2492488912610652436, guid: a103c41d4f54f0f4f8715067f9501475,
-    type: 3}
-  m_PrefabInstance: {fileID: 1907242711}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &89952041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 89952040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec323f2fc22b86941a7a4e2508ac0e57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 4
 --- !u!4 &90109008 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2817802792653913114, guid: 4581677f07e9b494f9eacf9d166a3b6f,
@@ -20332,11 +20313,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2492488912610652434, guid: a103c41d4f54f0f4f8715067f9501475,
-        type: 3}
-      propertyPath: moveSpeed
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 2492488912610652436, guid: a103c41d4f54f0f4f8715067f9501475,
         type: 3}
       propertyPath: m_Name
