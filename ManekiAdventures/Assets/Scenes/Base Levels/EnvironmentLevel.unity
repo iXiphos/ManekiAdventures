@@ -6593,7 +6593,7 @@ Transform:
   m_LocalScale: {x: 5.2139797, y: 6.7213397, z: 5.2139797}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 150, z: 0}
 --- !u!1 &697001476
 GameObject:
@@ -8701,7 +8701,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 0c847073dcab55d4e91188d2328d269b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 0c847073dcab55d4e91188d2328d269b,
         type: 3}
@@ -9253,6 +9253,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 929433668}
         m_MethodName: WindowOpener
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 23802955}
+        m_MethodName: enableCraft
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18042,7 +18053,7 @@ Transform:
   - {fileID: 1333284430}
   - {fileID: 436453306}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1739076229
 PrefabInstance:

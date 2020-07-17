@@ -121,4 +121,10 @@ public class PotionCreation : MonoBehaviour
         craftingImage3.sprite = null;
     }
 
+
+    public void enableCraft()
+    {
+        gameObject.SetActive(!gameObject.activeSelf);
+    }
+
 }
