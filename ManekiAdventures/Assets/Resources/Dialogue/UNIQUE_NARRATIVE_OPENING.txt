@@ -1,0 +1,29 @@
+// This is the game's opening dialogue to give the player context, it should be triggered as soon as the game starts
+
+Ru: [SHAKE] <<<<<MANEKI!>>>>>
+Ru: [FAST] IwasonmywaytomeetwithyouandtherewasacloakedfigureandnextthingIkneweverythinggota**LOT**bigger and whenItriedtomoveIstarted**FLYING** and IthinkI’m**GLOWING** and Idon’tknowwh-
+
+Kiki: Woooooow, a cute firefly! I think I have a jar somewhere around here…
+
+Ru: [[[[-oh, c-cute….]]]] HEY, WAIT! Are you even listening?! I’m a **cat**! You can’t just put a **cat** in a jar!
+
+Kiki: Huh, that’s a cute voice… This firefly kind of reminds me of Ru…
+
+Ru: [[[[-oh, c-cute….]]]] HEY, WAIT! I am Ru!
+Ru: ...wait, did you say firefly?
+Ru: [SHAKE] Eeek! I can’t be a firefly! I’m too… small!
+Ru: Do you know how to turn me back?
+
+Kiki: [SLOW] Uh… not really…
+
+Ru: [[[[Oh dear...]]]]
+
+Kiki: But you’re adorable like this!
+
+Ru: Aww… wait, no! I *refuse* to stay like this! // I'm interpreting *asterisks* as italics which we don't have atm, and I've been using BOLD to highlight info so someone patch this if we get italics - wes
+Ru: Wait, your teacher would know, right? Master Rabbit?
+Ru: Let’s go find her! She should be in the field at the bottom of this valley!
+
+// Date:        7/15/2020
+// Author:      Jade Edwards
+// File:        Wesley Elmer

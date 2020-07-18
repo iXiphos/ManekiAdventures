@@ -9,6 +9,8 @@ TagManager:
   - Respawnable
   - Nameplate
   - DialogueText
+  - Terrain
+  - Component
   layers:
   - Default
   - TransparentFX

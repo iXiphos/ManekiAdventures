@@ -1,0 +1,7 @@
+// Kiki picks up the size ingredient for the first time
+
+Ru: Oh, yummy! This is perfect for a **size** potion! Or a stir fry… yum…
+
+// Date:        7/15/2020
+// Author:      Jade Edwards
+// File:        Wesley Elmer

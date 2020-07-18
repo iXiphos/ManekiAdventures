@@ -10,7 +10,7 @@ public class ItemPickup : Interactable
     public override void Interact()
     {
         base.Interact();
-
+        
         PickUp();
     }
      
@@ -19,6 +19,7 @@ public class ItemPickup : Interactable
 
         Debug.Log("Picking up " + item.name); //shows when an item is picked up
         bool wasPickedUp = Inventory.instance.Add(item);
+        
 
 
        if (wasPickedUp && gameObject.tag != "Respawnable") //if the item was picked up and added to the inventory, delete object from the scene

@@ -3470,7 +3470,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100036, guid: 73be9633513854604baae3aa06041436, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: KIKI
       objectReference: {fileID: 0}
     - target: {fileID: 400036, guid: 73be9633513854604baae3aa06041436, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3556,7 +3556,7 @@ MonoBehaviour:
   clickMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  speed: 1
+  speed: 5
   smooth: 1
   hand: {fileID: 251825462}
 --- !u!195 &1104412803
@@ -3593,7 +3593,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afd1bd13e9905c344ba8c3ed28ae9138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 0
   moveSpeed: 20
+  fakeGravityIntensity: 5
 --- !u!114 &1104412805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3615,13 +3617,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1104412800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57cbebd8a1d371a47b8dc5d33b66e0a4, type: 3}
+  m_Script: {fileID: 11500000, guid: ec323f2fc22b86941a7a4e2508ac0e57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  focus: {fileID: 0}
-  movementMask:
-    serializedVersion: 2
-    m_Bits: 256
+  radius: 5
 --- !u!23 &1104412807
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5069,7 +5068,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -40.2}
+  m_AnchoredPosition: {x: 0, y: -40.200195}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1463839821
@@ -5537,7 +5536,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh23636
+  m_Name: pb_Mesh314062
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6755,6 +6754,7 @@ MonoBehaviour:
   inventoryUI: {fileID: 358626483}
   craftingUI: {fileID: 692643388}
   craftingObject: {fileID: 652964397}
+  slots: []
 --- !u!114 &2136359812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6924,6 +6924,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Size
+      objectReference: {fileID: 0}
+    - target: {fileID: 387360819566027982, guid: 3711d4d1ea7f64a4f96ceca029939608,
+        type: 3}
+      propertyPath: m_TagString
+      value: Component
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3711d4d1ea7f64a4f96ceca029939608, type: 3}
@@ -7291,6 +7296,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Increase
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888528504672595336, guid: f42fda892a4239c44ba80bec9f9b97ed,
+        type: 3}
+      propertyPath: m_TagString
+      value: Component
       objectReference: {fileID: 0}
     - target: {fileID: 6888528505044062244, guid: f42fda892a4239c44ba80bec9f9b97ed,
         type: 3}

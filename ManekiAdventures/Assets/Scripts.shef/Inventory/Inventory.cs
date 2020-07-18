@@ -50,7 +50,11 @@ public class Inventory : MonoBehaviour
 
     public void Remove(Item item) //if the "X" is hit, removes item from inventory
     {
-        items.Remove(item);
+        for(int i = 0; i < items.Count; i++)
+        {
+            if (items[i] == item)
+                items.RemoveAt(i);
+        }
 
         if (onItemChangedCallback != null)
             onItemChangedCallback.Invoke();

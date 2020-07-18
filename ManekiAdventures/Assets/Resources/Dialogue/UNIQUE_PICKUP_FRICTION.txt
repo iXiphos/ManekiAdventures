@@ -1,0 +1,7 @@
+// Kiki picks up the friction potion ingredient for the first time
+
+Ru: Oh, you showed me this once! Cordyceps makes a good **friction** potion, right?
+
+// Date:        7/15/2020
+// Author:      Jade Edwards
+// File:        Wesley Elmer

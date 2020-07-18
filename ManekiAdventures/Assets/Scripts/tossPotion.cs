@@ -29,6 +29,7 @@ public class tossPotion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
     }
 
     public IEnumerator createTarget()
@@ -45,14 +46,20 @@ public class tossPotion : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
+                // I sure do hope this is the right place to put this.
+                GameObject.Find("DialogueEventController").GetComponent<DialogueEventController>().ExecuteEvent("UNIQUE_THROWPOTION");
+
+
+                potion.transform.parent = null;
                 while (true)
                 {
                     Vector3 dir = clickPosition - transform.position;
                     Quaternion targetRotation = Quaternion.LookRotation(dir);
-                    potion.transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * smooth);
-                    potion.transform.Translate(transform.forward * speed);
+                    float step = speed * Time.deltaTime;
+                    
+                    potion.transform.position = Vector3.MoveTowards(potion.transform.position, clickPosition, step);
                     yield return null;
-                    if (Vector3.Distance(dir, potion.transform.position) < 0.1)
+                    if (Vector3.Distance(dir, potion.transform.position) < 0.2)
                     {
                         active = false;
                         break;

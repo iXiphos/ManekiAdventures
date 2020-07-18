@@ -1,0 +1,18 @@
+// Kiki throws a potion for the first time
+
+Ru: Oh, good arm Kiki!
+
+Kiki: Oh you like that? [[(Flexes muscles)]]
+
+Ru: Hehe, sure do!
+
+Kiki: I just love breaking things.
+
+Ru: I know you do, Kiki. It’s sweet.
+
+
+// I'm definitely thinking about making all of Ru's text smaller to reflect her character a bit more, but that's probably a thought for polish week - wes
+
+// Date:        7/15/2020
+// Author:      Jade Edwards
+// File:        Wesley Elmer

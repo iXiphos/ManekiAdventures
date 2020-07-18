@@ -43,7 +43,7 @@ public class DialogueEvent
         ApplyDialogueEffects();
 
         // spawn text boxes above the entities for each character
-        Debug.Log("Spawning text boxes...");
+        //Debug.Log("Spawning text boxes...");
         uiElements = new Dictionary<string, GameObject>();
         foreach (KeyValuePair<string, GameObject> entry in characters)
         {
@@ -58,7 +58,7 @@ public class DialogueEvent
                 {
                     if (elem.gameObject.tag == "Nameplate")
                     {
-                        Debug.Log("Setting " + entry.Key + "'s nameplate...");
+                        //Debug.Log("Setting " + entry.Key + "'s nameplate...");
                         elem.gameObject.GetComponent<TMP_Text>().text = entry.Key;
                     }
                 }
@@ -74,7 +74,7 @@ public class DialogueEvent
 
         if(CheckIfNextHasOptions(lineNum)) // check if next dialogue has options; if it is, show it at the same time (with synopsis)
         {
-            Debug.Log("Showing options...");
+            //Debug.Log("Showing options...");
             inBranch = true;
             lineNum++;
             // show options
@@ -103,7 +103,7 @@ public class DialogueEvent
                 }
 
                 // if it's branching, fetch the option route
-                if(nextSpeaker == "KIKI")
+                if(nextSpeaker == "Kiki")
                 {
                     inBranch = true;
                     isChoosing = true;
@@ -148,7 +148,7 @@ public class DialogueEvent
         else
         {
             // once you're out of lines, stop any effects
-            Debug.Log("Completing dialogue. Cleaning up...");
+            //Debug.Log("Completing dialogue. Cleaning up...");
             RevertDialogueEffects();
 
             // clean up the UI elements
@@ -185,7 +185,7 @@ public class DialogueEvent
 
     static void ShowOptions(List<SpeechLine> options)
     {
-        Debug.Log("Showing options...");
+        //Debug.Log("Showing options...");
         string speaker = "";
         foreach(SpeechLine line in options)
         {
@@ -242,14 +242,14 @@ public class DialogueEvent
         {
             effects += str + " ";
         }
-        Debug.Log(effects);
+        //Debug.Log(effects);
 
-        Debug.Log("Number of Lines: " + testText.lines.Count);
+        //Debug.Log("Number of Lines: " + testText.lines.Count);
         foreach(List<SpeechLine> lines in testText.lines)
         {
             foreach(SpeechLine line in lines)
             {
-                Debug.Log(line.lineText);
+                //Debug.Log(line.lineText);
             }
         }
        
@@ -265,13 +265,13 @@ public class DialogueEvent
                     //...TODO: FREEZE CHARACTER CONTROL*******************
                     //break;
                 case "FREEZE_CHAR": // TODO: MAKE THIS MORE GENERIC (CURRENTLY HARD-CODED FOR RU)
-                    if(characters["RU"].GetComponentInChildren<DOFControl>() == null)
+                    if(characters["Ru"].GetComponentInChildren<DOFControl>() == null)
                     {
-                        dofControl = GameObject.Instantiate(DialogueEventController.dofController, characters["RU"].transform);
+                        dofControl = GameObject.Instantiate(DialogueEventController.dofController, characters["Ru"].transform);
                     }
                     else
                     {
-                        dofControl = characters["RU"].GetComponentInChildren<DOFControl>().gameObject;
+                        dofControl = characters["Ru"].GetComponentInChildren<DOFControl>().gameObject;
                     }
                     dofControl.GetComponent<DOFControl>().ToggleFocusCamera();
 

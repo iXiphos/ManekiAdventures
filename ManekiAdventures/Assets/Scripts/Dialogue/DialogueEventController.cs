@@ -12,7 +12,7 @@ public class DialogueEventController : MonoBehaviour
     public static GameObject dofController;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         dialogueCanvas = dialogueCanvasRef;
         dialogueBoxPrefab = dialogueBoxPrefabRef;
