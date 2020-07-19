@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class DialogueText
 {
+    string defaultTextColor = "\"black\"";
+
+
     /* Contains all lines of text and effects associated with each line.
      *   Creates DialogueText data from a text document.
      */
@@ -143,6 +146,7 @@ public class DialogueText
     string ProcessSpeech(string lineText, ref LineEffect lineEffect)
     {
         // process and format TMP font sizes
+        // process font increases
         while (lineText.IndexOf("<<") > 0) // keep processing until there are no more increases
         {
             int indexOfLastBracket = lineText.IndexOf(">>");
@@ -160,6 +164,7 @@ public class DialogueText
             lineText = lineText.Replace(stringToReplace, stringToFormat);
         }
 
+        // process font decreases
         while (lineText.IndexOf("[[") > 0) // keep processing until there are no more decreases
         {
             int indexOfLastBracket = lineText.IndexOf("]]");
@@ -177,10 +182,59 @@ public class DialogueText
             lineText = lineText.Replace(stringToReplace, stringToFormat);
         }
 
-        // process any line effects
-        if(lineText.IndexOf('[') > -1)
+        // process bolding
+        while (lineText.IndexOf("**") > 0) // keep processing until there are no more
         {
-            string lineEffectStr = lineText.Substring(lineText.IndexOf('['), lineText.IndexOf(']') - lineText.IndexOf('['));
+            int indexOpen = lineText.IndexOf("**");
+
+            string stringToFormat = lineText.Substring(indexOpen + 2);
+            int indexClose = stringToFormat.IndexOf("**"); // get next index of **
+            stringToFormat = stringToFormat.Substring(0, indexClose + 2);
+            stringToFormat = stringToFormat.Replace("**", "</b>"); // replace the closing with </b>
+            stringToFormat = "<b>" + stringToFormat; // replace the opening with <b>
+
+            string stringToReplace = lineText.Substring(indexOpen, indexClose+4);
+
+            lineText = lineText.Replace(stringToReplace, stringToFormat);
+        }
+
+        // process italics
+        while (lineText.IndexOf("*") > 0) // keep processing until there are no more
+        {
+            int indexOpen = lineText.IndexOf("*");
+
+            string stringToFormat = lineText.Substring(indexOpen + 1);
+            int indexClose = stringToFormat.IndexOf("*"); // get next index of *
+            stringToFormat = stringToFormat.Substring(0, indexClose + 1);
+            stringToFormat = stringToFormat.Replace("*", "</i>"); // replace the closing with </i>
+            stringToFormat = "<i>" + stringToFormat; // replace the opening with <i>
+
+            string stringToReplace = lineText.Substring(indexOpen, indexClose + 2);
+
+            lineText = lineText.Replace(stringToReplace, stringToFormat);
+        }
+
+        // process any hex codes
+        while (lineText.IndexOf("|#") > 0) // keep processing until there are no more hex codes
+        {
+            int indexOpen = lineText.IndexOf("|#");
+            string hexCode = lineText.Substring(indexOpen+1, 7);
+
+            string stringToFormat = lineText.Substring(indexOpen + 2 + 6); // 2 for |# and 6 more for the hex code
+            int indexClose = stringToFormat.IndexOf("|"); // get next index of |
+            stringToFormat = stringToFormat.Substring(0, indexClose + 1);
+            stringToFormat = stringToFormat.Replace("|", "<color=" + defaultTextColor + ">"); // replace the closing with </i>
+            stringToFormat = "<color=" + hexCode + ">" + stringToFormat; // replace the opening with <i>
+
+            string stringToReplace = lineText.Substring(indexOpen, indexClose + 2 + 6 + 1);
+
+            lineText = lineText.Replace(stringToReplace, stringToFormat);
+        }
+
+        // process any line effects
+        if (lineText.IndexOf('[') > -1)
+        {
+            string lineEffectStr = lineText.Substring(lineText.IndexOf('[') + 1, lineText.IndexOf(']') - lineText.IndexOf('[') - 1);
             lineEffect = stringToLineEffect(lineEffectStr);
             lineText = lineText.Remove(lineText.IndexOf('['), lineText.IndexOf(']') - lineText.IndexOf('[') + 1);
         }
@@ -188,6 +242,7 @@ public class DialogueText
         // remove extra whitespace
         lineText = lineText.Trim(' ');
 
+        //Debug.Log(lineText);
         return lineText;
     }
 
