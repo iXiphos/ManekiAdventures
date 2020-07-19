@@ -6,6 +6,7 @@ using TMPro;
 public class DialogueBoxFollow : MonoBehaviour
 {
     Camera mainCamera;
+    public Vector3 uiDisplacement;
     TMP_Text textUI;
     public GameObject characterToFollow;
     public string currLine;
@@ -28,10 +29,10 @@ public class DialogueBoxFollow : MonoBehaviour
     void FixedUpdate()
     {
         // follow character
-        if(characterToFollow != null)
+        if (characterToFollow != null)
         {
             Vector3 uiPos = mainCamera.WorldToScreenPoint(characterToFollow.transform.position + displacement);
-            gameObject.transform.position = uiPos;
+            gameObject.transform.position = uiPos + uiDisplacement;
 
         }
 
@@ -45,8 +46,9 @@ public class DialogueBoxFollow : MonoBehaviour
     private void Update()
     {
         // NOTE THAT THIS IS HARDCODED AND SHOULD BE FIXED!!!!!!!!!!1 ********************
-        GameObject ru = GameObject.Find("Ru");
-        GameObject kiki = GameObject.Find("Kiki");
-        displacement = new Vector3(0, Vector3.Distance(ru.transform.position, kiki.transform.position), 0);
+        //GameObject ru = GameObject.Find("Ru");
+        //GameObject kiki = GameObject.Find("Kiki");
+        //displacement = new Vector3(0, Vector3.Distance(ru.transform.position, kiki.transform.position), 0);
+        displacement = new Vector3(0, 4.5f, 0);
     }
 }

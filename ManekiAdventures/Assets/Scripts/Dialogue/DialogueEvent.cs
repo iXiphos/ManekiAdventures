@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using System.Text.RegularExpressions;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class DialogueEvent
+public class DialogueEvent : MonoBehaviour
 {
     static Dictionary<string, GameObject> characters; // string name, GameObject reference to character
     static Dictionary<string, GameObject> uiElements; // string character name, GameObject ref to its UI chat bubble
@@ -175,12 +176,88 @@ public class DialogueEvent
         
         GameObject currDialogueUI = uiElements[line.speakerName];
         DialogueBoxFollow dialogueBox = currDialogueUI.GetComponent<DialogueBoxFollow>();
-        dialogueBox.currLine = line.lineText;
+        //dialogueBox.currLine = line.lineText;
 
         // show this ui box
         currDialogueUI.SetActive(true);
 
         // apply effects...
+        float typingSpeed = 0.03f; // default speed
+        switch(line.lineEffect)
+        {
+            case LineEffect.SHAKE: // ********** TO DO *******************
+                dialogueBox.StartCoroutine(ShakeUIItem(dialogueBox));
+                break;
+            case LineEffect.SLOW:
+                typingSpeed = 0.2f;
+                break;
+            case LineEffect.FAST:
+                typingSpeed = 0.0001f;
+                break;
+            default: break;
+        }
+
+        Debug.Log("Type Speed: " + typingSpeed);
+
+        // "type out" the dialogue
+        dialogueBox.StartCoroutine(TypeDialogue(dialogueBox, line.lineText, typingSpeed));
+    }
+
+    private static IEnumerator TypeDialogue(DialogueBoxFollow dialogueBox, string lineToType, float typingSpeed)
+    {
+        dialogueBox.currLine = ""; // flush text
+
+        // get raw text
+        List<string> typingText = new List<string>();
+        string phraseToAdd = "";
+        bool keepAdding = false;
+        foreach(char letter in lineToType) // collect any formatting areas (they should be injected immediately so they don't get typed out)
+        {
+            if(letter == '<')
+            {
+                phraseToAdd = "";
+                keepAdding = true;
+                phraseToAdd += letter;
+            }
+            else if(keepAdding && letter == '>')
+            {
+                keepAdding = false;
+                phraseToAdd += letter;
+                typingText.Add(phraseToAdd);
+                phraseToAdd = "";
+            }
+            else if(keepAdding)
+                phraseToAdd += letter;
+            else
+                typingText.Add(letter.ToString());
+        }
+        
+
+        // populate with string (chars) and inject formatting immediately
+        foreach (string chunk in typingText)
+        {
+            dialogueBox.currLine += chunk;
+            yield return new WaitForSecondsRealtime(typingSpeed);
+        }
+
+        dialogueBox.currLine = lineToType;
+    }
+
+    private static IEnumerator ShakeUIItem(DialogueBoxFollow ui)
+    {
+        //bool isShaking = true;
+        float duration = 0.5f;
+        float timeElapsed = 0f;
+        while (timeElapsed < duration)
+        {
+            timeElapsed += Time.deltaTime;
+            float shake = Mathf.Pow(duration/70f, duration) * Mathf.Sin(timeElapsed * 70f) * 1000f;
+            ui.uiDisplacement = Vector3.Lerp(ui.uiDisplacement, new Vector3(shake, 0, 0), Time.deltaTime*3f);
+            yield return new WaitForSecondsRealtime(Time.deltaTime);
+        }
+        
+        yield return new WaitForSecondsRealtime(duration);
+        ui.uiDisplacement = new Vector3(0, 0, 0);
     }
 
     static void ShowOptions(List<SpeechLine> options)
