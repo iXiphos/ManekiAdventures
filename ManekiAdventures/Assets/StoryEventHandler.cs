@@ -9,6 +9,12 @@ public class StoryEventHandler : MonoBehaviour
     void Start()
     {
         dialogueEventController = GameObject.Find("DialogueEventController").GetComponent<DialogueEventController>();
+
+        StartFirstDialogue();
+    }
+
+    public void StartFirstDialogue()
+    {
         // REALLY BASIC FOR NOW. JUST USED TO FIRE THE FIRST SCRIPT. ADD MORE LATER.
         StartCoroutine(FireFirstDialogue());
     }

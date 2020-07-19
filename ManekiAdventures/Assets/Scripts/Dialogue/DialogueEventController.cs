@@ -35,7 +35,10 @@ public class DialogueEventController : MonoBehaviour
             {
                 if (Input.GetKeyUp(KeyCode.Space) && DialogueEvent.inDialogue)
                 {
-                    DialogueEvent.ProgressDialogue();
+                    if (DialogueEvent.inLine)
+                        DialogueEvent.ShowFullLine();
+                    else
+                        DialogueEvent.ProgressDialogue();
                 }
             }
             else

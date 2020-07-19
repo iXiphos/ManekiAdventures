@@ -11,6 +11,8 @@ public class DialogueEvent : MonoBehaviour
     public static DialogueText currentDialogue;
     public static bool inDialogue;
     public static int lineNum;
+    static SpeechLine currLine;
+    public static bool inLine;
 
     // for branching
     public static bool inBranch;
@@ -168,8 +170,10 @@ public class DialogueEvent : MonoBehaviour
 
     static void ShowLine(SpeechLine line)
     {
+        inLine = true;
+        currLine = line;
         // hide other ui boxes
-        foreach(GameObject obj in uiElements.Values)
+        foreach (GameObject obj in uiElements.Values)
         {
             obj.SetActive(false);
         }
@@ -201,6 +205,14 @@ public class DialogueEvent : MonoBehaviour
 
         // "type out" the dialogue
         dialogueBox.StartCoroutine(TypeDialogue(dialogueBox, line.lineText, typingSpeed));
+    }
+
+    static public void ShowFullLine()
+    {
+        inLine = false;
+        GameObject currDialogueUI = uiElements[currLine.speakerName];
+        currDialogueUI.GetComponent<DialogueBoxFollow>().currLine = currLine.lineText;
+        
     }
 
     private static IEnumerator TypeDialogue(DialogueBoxFollow dialogueBox, string lineToType, float typingSpeed)
@@ -236,11 +248,15 @@ public class DialogueEvent : MonoBehaviour
         // populate with string (chars) and inject formatting immediately
         foreach (string chunk in typingText)
         {
-            dialogueBox.currLine += chunk;
-            yield return new WaitForSecondsRealtime(typingSpeed);
+            if(inLine)
+            {
+                dialogueBox.currLine += chunk;
+                yield return new WaitForSecondsRealtime(typingSpeed);
+            }
         }
 
         dialogueBox.currLine = lineToType;
+        inLine = false;
     }
 
     private static IEnumerator ShakeUIItem(DialogueBoxFollow ui)
