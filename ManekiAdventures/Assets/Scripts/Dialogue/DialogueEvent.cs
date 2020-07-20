@@ -267,14 +267,20 @@ public class DialogueEvent : MonoBehaviour
         while (timeElapsed < duration)
         {
             timeElapsed += Time.deltaTime;
-            float shakeX = Mathf.Pow(duration/70f, duration) * Mathf.Sin(timeElapsed * 70f) * 1000f;
-            float shakeY = Mathf.Pow(duration / 70f, duration) * Mathf.Sin(timeElapsed * 50f) * 1000f;
-            ui.uiDisplacement = Vector3.Lerp(ui.uiDisplacement, new Vector3(shakeX, shakeY, 0), Time.deltaTime*3f);
+            float shakeX = Mathf.Pow(duration/70f, duration) * Mathf.Sin(timeElapsed * 70f) * 500f;
+            float shakeY = Mathf.Pow(duration / 70f, duration) * Mathf.Sin(timeElapsed * 50f) * 500f;
+            ui.uiDisplacement = Vector3.Lerp(ui.uiDisplacement, new Vector3(shakeX, shakeY, 0), Time.deltaTime*5f);
             yield return new WaitForSecondsRealtime(Time.deltaTime);
         }
         
         yield return new WaitForSecondsRealtime(duration);
-        ui.uiDisplacement = new Vector3(0, 0, 0);
+        timeElapsed = 0f;
+        while (timeElapsed < duration)
+        {
+            timeElapsed += Time.deltaTime;
+            Vector3.Lerp(ui.uiDisplacement, new Vector3(0, 0, 0), Time.deltaTime * 5f);
+        }
+        
     }
 
     static void ShowOptions(List<SpeechLine> options)
