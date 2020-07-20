@@ -23,6 +23,7 @@ public class DynamicCamera3D : MonoBehaviour
     public float cameraOffsetZ = -13f;
 
     float scrollSensitivity = 2f;
+    public float scrollValue;
 
     Vector3 minCameraOffset = new Vector3(-3f, 4f, -3f);
     Vector3 maxCameraOffset = new Vector3(-15f, 15f, -15f);
@@ -56,13 +57,13 @@ public class DynamicCamera3D : MonoBehaviour
             }
         }
 
-        ScrollCameraWithWheel();
+        float combinedScrollValue = Input.GetAxis("Mouse ScrollWheel") * scrollSensitivity + scrollValue;
+        ScrollCameraWithWheel(combinedScrollValue);
     }
 
-    void ScrollCameraWithWheel()
+    void ScrollCameraWithWheel(float scrollValue)
     {
         // scroll in/out camera
-        float scrollValue = Input.GetAxis("Mouse ScrollWheel") * scrollSensitivity;
 
         // x
         if (cameraOffsetX <= minCameraOffset.x && cameraOffsetX >= maxCameraOffset.x)

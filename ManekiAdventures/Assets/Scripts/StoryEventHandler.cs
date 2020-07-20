@@ -8,13 +8,15 @@ public class StoryEventHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dialogueEventController = GameObject.Find("DialogueEventController").GetComponent<DialogueEventController>();
+        //dialogueEventController = GameObject.Find("DialogueEventController").GetComponent<DialogueEventController>();
 
-        StartFirstDialogue();
+        //StartFirstDialogue();
     }
 
     public void StartFirstDialogue()
     {
+        dialogueEventController = GameObject.Find("DialogueEventController").GetComponent<DialogueEventController>();
+
         // REALLY BASIC FOR NOW. JUST USED TO FIRE THE FIRST SCRIPT. ADD MORE LATER.
         StartCoroutine(FireFirstDialogue());
     }
@@ -27,7 +29,7 @@ public class StoryEventHandler : MonoBehaviour
 
     IEnumerator FireFirstDialogue()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
         dialogueEventController.ExecuteEvent("UNIQUE_NARRATIVE_OPENING");
     }
 
