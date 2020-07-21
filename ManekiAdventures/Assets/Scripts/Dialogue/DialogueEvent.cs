@@ -24,6 +24,8 @@ public class DialogueEvent : MonoBehaviour
     
     public static void ExecuteEvent(DialogueText dialogueText)
     {
+        ClearPreviousEvent();
+
         currentDialogue = dialogueText;
         inDialogue = true;
 
@@ -53,6 +55,7 @@ public class DialogueEvent : MonoBehaviour
             if(!string.IsNullOrEmpty(entry.Key))
             {
                 GameObject currTextBox = GameObject.Instantiate(DialogueEventController.dialogueBoxPrefab, DialogueEventController.dialogueCanvas.transform);
+                currTextBox.SetActive(false); // hide when not in use
 
                 currTextBox.GetComponent<DialogueBoxFollow>().characterToFollow = entry.Value;
 
@@ -66,7 +69,6 @@ public class DialogueEvent : MonoBehaviour
                     }
                 }
 
-                currTextBox.SetActive(false); // hide when not in use
                 uiElements.Add(entry.Key, currTextBox);
             }
         }
@@ -201,7 +203,7 @@ public class DialogueEvent : MonoBehaviour
             default: break;
         }
 
-        Debug.Log("Type Speed: " + typingSpeed);
+        //Debug.Log("Type Speed: " + typingSpeed);
 
         // "type out" the dialogue
         dialogueBox.StartCoroutine(TypeDialogue(dialogueBox, line.lineText, typingSpeed));
@@ -401,5 +403,23 @@ public class DialogueEvent : MonoBehaviour
             }
         }
     }
-    
+
+    static void ClearPreviousEvent()
+    {
+        if(currentDialogue != null)
+        {
+            RevertDialogueEffects();
+
+            isChoosing = false;
+            currOptionNum = -1;
+
+            foreach (GameObject elem in uiElements.Values)
+            {
+                //elem.SetActive(false);
+                Destroy(elem);
+            }
+        }
+    }
+
+
 }
