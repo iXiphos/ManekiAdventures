@@ -45,4 +45,9 @@ public class StoryEventHandler : MonoBehaviour
             dialogueEventController.ExecuteEvent("UNIQUE_PICKUP_SIZE");
         }
     }
+
+    public void ExitApplication()
+    {
+        Application.Quit();
+    }
 }
