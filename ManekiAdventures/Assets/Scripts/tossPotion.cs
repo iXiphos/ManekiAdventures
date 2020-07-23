@@ -44,7 +44,7 @@ public class tossPotion : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 100f, clickMask))
                 clickPosition = hit.point;
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonUp(0))
             {
                 // I sure do hope this is the right place to put this.
                 GameObject.Find("DialogueEventController").GetComponent<DialogueEventController>().ExecuteEvent("UNIQUE_THROWPOTION");
@@ -78,6 +78,7 @@ public class tossPotion : MonoBehaviour
         temp.GetComponent<Potion>().pDiscriptor = item.Discriptor;
         //temp.SetActive(false);
         potion = temp;
+        Debug.Log("Setting potion.");
     }
 
 }

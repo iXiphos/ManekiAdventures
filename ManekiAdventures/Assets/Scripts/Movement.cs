@@ -12,6 +12,7 @@ public class Movement : MonoBehaviour
     //float heightOffset = 1.8f;
     float rayDisplacement = 0.5f;
     public float fakeGravityIntensity = 5f;
+    public float steepWalkingDiff = 0.5f; // how steep until the player is not allowed to walk?
 
     Animator animator;
 
@@ -42,14 +43,19 @@ public class Movement : MonoBehaviour
     {
         if(canMove)
         {
-            // translate
+            // collect inputs
             inputMovement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            float rad45 = -45f * (Mathf.PI / 180f);
-            Vector3 isoRotate = new Vector3(inputMovement.x * Mathf.Cos(rad45) - inputMovement.z * Mathf.Sin(rad45), inputMovement.y, inputMovement.x * Mathf.Sin(rad45) + inputMovement.z * Mathf.Cos(rad45));
 
+            // calculate y difference
+            if (canWalkTerrain(steepWalkingDiff))
+            {
+                // translate
+                float rad45 = -45f * (Mathf.PI / 180f);
+                Vector3 isoRotate = new Vector3(inputMovement.x * Mathf.Cos(rad45) - inputMovement.z * Mathf.Sin(rad45), inputMovement.y, inputMovement.x * Mathf.Sin(rad45) + inputMovement.z * Mathf.Cos(rad45));
 
-            transform.Translate(isoRotate * Time.deltaTime * moveSpeed, Space.World);
-            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, CalculateYValueOfTerrain(), transform.position.z), Time.deltaTime * fakeGravityIntensity); // adjust y position
+                transform.Translate(isoRotate * Time.deltaTime * moveSpeed, Space.World);
+                transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, CalculateYValueOfTerrain(), transform.position.z), Time.deltaTime * fakeGravityIntensity); // adjust y position
+            }
 
             // rotate to look the appropriate direction
             if (inputMovement.x != 0 || inputMovement.z != 0)
@@ -65,7 +71,7 @@ public class Movement : MonoBehaviour
 
         RaycastHit hit;
         Ray ray = new Ray(gameObject.transform.position + new Vector3(0,2,0) + (gameObject.transform.forward * rayDisplacement), Vector3.down);
-       // Debug.DrawLine(gameObject.transform.position + new Vector3(0, 2, 0) + (gameObject.transform.forward * rayDisplacement), gameObject.transform.position + (gameObject.transform.forward * rayDisplacement) + new Vector3(0, -10, 0));
+        //Debug.DrawLine(gameObject.transform.position + new Vector3(0, 2, 0) + (gameObject.transform.forward * rayDisplacement), gameObject.transform.position + (gameObject.transform.forward * rayDisplacement) + new Vector3(0, -10, 0));
         if (Physics.Raycast(ray, out hit))
         {
             if (hit.collider != null && hit.transform.tag == "Terrain")
@@ -75,6 +81,29 @@ public class Movement : MonoBehaviour
             }
         }
         return yVal;
+    }
+
+    bool canWalkTerrain(float maxDiff)
+    {
+        // cast a ray slightly in front of the player
+        RaycastHit hit;
+        Ray ray = new Ray(gameObject.transform.position + new Vector3(0, 4f, 0) + (gameObject.transform.forward * rayDisplacement*2), Vector3.down);
+        //Debug.DrawLine(gameObject.transform.position + new Vector3(0, 4f, 0) + (gameObject.transform.forward * rayDisplacement*2), gameObject.transform.position + (gameObject.transform.forward * rayDisplacement) + new Vector3(0, -10, 0));
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.collider != null && hit.transform.tag == "Terrain")
+            {
+                if(Mathf.Abs(hit.point.y - transform.position.y) > maxDiff)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     void AnimateWalking()

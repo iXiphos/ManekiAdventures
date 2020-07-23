@@ -11,6 +11,8 @@ public class DialogueEvent : MonoBehaviour
     public static DialogueText currentDialogue;
     public static bool inDialogue;
     public static int lineNum;
+    static SpeechLine currLine;
+    public static bool inLine;
 
     // for branching
     public static bool inBranch;
@@ -22,6 +24,8 @@ public class DialogueEvent : MonoBehaviour
     
     public static void ExecuteEvent(DialogueText dialogueText)
     {
+        ClearPreviousEvent();
+
         currentDialogue = dialogueText;
         inDialogue = true;
 
@@ -51,6 +55,7 @@ public class DialogueEvent : MonoBehaviour
             if(!string.IsNullOrEmpty(entry.Key))
             {
                 GameObject currTextBox = GameObject.Instantiate(DialogueEventController.dialogueBoxPrefab, DialogueEventController.dialogueCanvas.transform);
+                currTextBox.SetActive(false); // hide when not in use
 
                 currTextBox.GetComponent<DialogueBoxFollow>().characterToFollow = entry.Value;
 
@@ -64,7 +69,6 @@ public class DialogueEvent : MonoBehaviour
                     }
                 }
 
-                currTextBox.SetActive(false); // hide when not in use
                 uiElements.Add(entry.Key, currTextBox);
             }
         }
@@ -168,8 +172,10 @@ public class DialogueEvent : MonoBehaviour
 
     static void ShowLine(SpeechLine line)
     {
+        inLine = true;
+        currLine = line;
         // hide other ui boxes
-        foreach(GameObject obj in uiElements.Values)
+        foreach (GameObject obj in uiElements.Values)
         {
             obj.SetActive(false);
         }
@@ -197,10 +203,18 @@ public class DialogueEvent : MonoBehaviour
             default: break;
         }
 
-        Debug.Log("Type Speed: " + typingSpeed);
+        //Debug.Log("Type Speed: " + typingSpeed);
 
         // "type out" the dialogue
         dialogueBox.StartCoroutine(TypeDialogue(dialogueBox, line.lineText, typingSpeed));
+    }
+
+    static public void ShowFullLine()
+    {
+        inLine = false;
+        GameObject currDialogueUI = uiElements[currLine.speakerName];
+        currDialogueUI.GetComponent<DialogueBoxFollow>().currLine = currLine.lineText;
+        
     }
 
     private static IEnumerator TypeDialogue(DialogueBoxFollow dialogueBox, string lineToType, float typingSpeed)
@@ -236,11 +250,15 @@ public class DialogueEvent : MonoBehaviour
         // populate with string (chars) and inject formatting immediately
         foreach (string chunk in typingText)
         {
-            dialogueBox.currLine += chunk;
-            yield return new WaitForSecondsRealtime(typingSpeed);
+            if(inLine)
+            {
+                dialogueBox.currLine += chunk;
+                yield return new WaitForSecondsRealtime(typingSpeed);
+            }
         }
 
         dialogueBox.currLine = lineToType;
+        inLine = false;
     }
 
     private static IEnumerator ShakeUIItem(DialogueBoxFollow ui)
@@ -251,14 +269,20 @@ public class DialogueEvent : MonoBehaviour
         while (timeElapsed < duration)
         {
             timeElapsed += Time.deltaTime;
-            float shakeX = Mathf.Pow(duration/70f, duration) * Mathf.Sin(timeElapsed * 70f) * 1000f;
-            float shakeY = Mathf.Pow(duration / 70f, duration) * Mathf.Sin(timeElapsed * 50f) * 1000f;
-            ui.uiDisplacement = Vector3.Lerp(ui.uiDisplacement, new Vector3(shakeX, shakeY, 0), Time.deltaTime*3f);
+            float shakeX = Mathf.Pow(duration/70f, duration) * Mathf.Sin(timeElapsed * 70f) * 500f;
+            float shakeY = Mathf.Pow(duration / 70f, duration) * Mathf.Sin(timeElapsed * 50f) * 500f;
+            ui.uiDisplacement = Vector3.Lerp(ui.uiDisplacement, new Vector3(shakeX, shakeY, 0), Time.deltaTime*5f);
             yield return new WaitForSecondsRealtime(Time.deltaTime);
         }
         
         yield return new WaitForSecondsRealtime(duration);
-        ui.uiDisplacement = new Vector3(0, 0, 0);
+        timeElapsed = 0f;
+        while (timeElapsed < duration)
+        {
+            timeElapsed += Time.deltaTime;
+            Vector3.Lerp(ui.uiDisplacement, new Vector3(0, 0, 0), Time.deltaTime * 5f);
+        }
+        
     }
 
     static void ShowOptions(List<SpeechLine> options)
@@ -379,5 +403,23 @@ public class DialogueEvent : MonoBehaviour
             }
         }
     }
-    
+
+    static void ClearPreviousEvent()
+    {
+        if(currentDialogue != null)
+        {
+            RevertDialogueEffects();
+
+            isChoosing = false;
+            currOptionNum = -1;
+
+            foreach (GameObject elem in uiElements.Values)
+            {
+                //elem.SetActive(false);
+                Destroy(elem);
+            }
+        }
+    }
+
+
 }

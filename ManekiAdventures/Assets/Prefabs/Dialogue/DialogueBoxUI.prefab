@@ -139,8 +139,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: DIALOGUE_TEXT
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 860ea819b02cef447a9e1e5fdb06931a, type: 2}
+  m_sharedMaterial: {fileID: 8109572965132326902, guid: 860ea819b02cef447a9e1e5fdb06931a,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -165,8 +166,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 23.6
-  m_fontSizeBase: 23.6
+  m_fontSize: 29.28
+  m_fontSizeBase: 29.28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -257,7 +258,7 @@ RectTransform:
   m_GameObject: {fileID: 1044516235916537901}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5.5582714, y: 2.1683042, z: 1.5468}
+  m_LocalScale: {x: 4.6440134, y: 1.8116487, z: 1.2923732}
   m_Children:
   - {fileID: 7315947750106611631}
   - {fileID: 9013790087495604221}
@@ -317,6 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74081be59e71ef84ea7462a6bae70c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiDisplacement: {x: 0, y: 0, z: 0}
   characterToFollow: {fileID: 0}
   currLine: 
   displacement: {x: 0, y: 4.5, z: 0}
@@ -385,15 +387,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: NAME
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8c7780172b93308498dcd7fae833979c, type: 2}
+  m_sharedMaterial: {fileID: 8506863279590046603, guid: 8c7780172b93308498dcd7fae833979c,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

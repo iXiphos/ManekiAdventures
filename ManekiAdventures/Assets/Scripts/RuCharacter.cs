@@ -12,7 +12,7 @@ public class RuCharacter : MonoBehaviour
     public float bobbingSpeed = 0.5f;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         dialogueEventController = GameObject.Find("DialogueEventController").GetComponent<DialogueEventController>();
         kiki = GameObject.FindGameObjectWithTag("Player");
