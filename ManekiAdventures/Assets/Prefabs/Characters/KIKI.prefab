@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 3601153546659899265}
   - component: {fileID: 89952041}
   m_Layer: 0
-  m_Name: KIKI
+  m_Name: Kiki
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -446,6 +446,7 @@ MonoBehaviour:
   canMove: 0
   moveSpeed: 7
   fakeGravityIntensity: 4
+  steepWalkingDiff: 1
 --- !u!114 &3601153546659899265
 MonoBehaviour:
   m_ObjectHideFlags: 0
