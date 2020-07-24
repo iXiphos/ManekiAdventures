@@ -11,6 +11,8 @@ TagManager:
   - DialogueText
   - Terrain
   - Component
+  - InvisWalls
+  - SoccerBall
   layers:
   - Default
   - TransparentFX
@@ -20,8 +22,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - InvisWalls
+  - DontIgnoreInvisWalls
   - 
   - 
   - 
