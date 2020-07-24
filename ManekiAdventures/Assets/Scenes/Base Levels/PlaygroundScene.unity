@@ -8920,7 +8920,7 @@ GameObject:
   - component: {fileID: 691831808}
   - component: {fileID: 691831807}
   - component: {fileID: 691831813}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: largeRock_low (3)
   m_TagString: Interactable
   m_Icon: {fileID: 0}
