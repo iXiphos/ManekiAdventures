@@ -54,7 +54,7 @@ public class tossPotion : MonoBehaviour
             {
                 // I sure do hope this is the right place to put this.
                 GameObject.Find("DialogueEventController").GetComponent<DialogueEventController>().ExecuteEvent("UNIQUE_THROWPOTION");
-
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().SetTrigger("throw");
 
                 potion.transform.parent = null;
                 while (true)

@@ -1168,7 +1168,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: OptionsView
+          m_StringArgument: ControlsView
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &6750545793691361458
@@ -2719,6 +2719,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993609185164615259, guid: 61d5c4d27d5575b4d8282210092640d7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 171
       objectReference: {fileID: 0}
     - target: {fileID: 7993609185431581309, guid: 61d5c4d27d5575b4d8282210092640d7,
         type: 3}
