@@ -31,9 +31,16 @@ public class OpenWindow : MonoBehaviour
             }
             else
             {
-                focusObj.GetComponent<DOFControl>().ToggleFocusCamera();
-                Destroy(focusObj, 1f);
+                StartCoroutine(PlayCraftingExitThenDestroy());
             }
         }
+    }
+
+    IEnumerator PlayCraftingExitThenDestroy()
+    {
+        focusObj.GetComponent<DOFControl>().additionalOffset = new Vector3(0, -1, 0);
+        yield return new WaitForSeconds(1.5f);
+        focusObj.GetComponent<DOFControl>().ToggleFocusCamera();
+        Destroy(focusObj, 1f);
     }
 }
