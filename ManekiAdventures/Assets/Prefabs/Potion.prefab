@@ -130,3 +130,5 @@ MonoBehaviour:
   WeightDecrease: 3
   SizeIncrease: 2
   SizeDecrease: 2
+  explosion: {fileID: 4689895500266415133, guid: d1e379e7136e9b64e827ce850907e3fe,
+    type: 3}
