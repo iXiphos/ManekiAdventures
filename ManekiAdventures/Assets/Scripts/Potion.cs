@@ -18,6 +18,8 @@ public class Potion : MonoBehaviour
     public float SizeIncrease;
     public float SizeDecrease;
 
+    public GameObject explosion;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +39,8 @@ public class Potion : MonoBehaviour
         if(collision.tag == "Interactable")
         {
             StartCoroutine(Explosion(collision.gameObject));
+            GameObject explosionGame = Instantiate(explosion, transform.position, transform.rotation);
+            Destroy(explosionGame, 2.0f);
         }
     }
 
