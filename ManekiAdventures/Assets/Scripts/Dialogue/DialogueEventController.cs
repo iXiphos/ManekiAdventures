@@ -59,7 +59,7 @@ public class DialogueEventController : MonoBehaviour
                     }
                 }*/
 
-                if (Input.GetKeyUp(KeyCode.Alpha1) && DialogueEvent.inDialogue)
+                if ((Input.GetKeyUp(KeyCode.Alpha1) || Input.GetKeyUp(KeyCode.Space)) && DialogueEvent.inDialogue)
                 {
                     DialogueEvent.currOptionNum = 1;
                     DialogueEvent.ProgressDialogue();
