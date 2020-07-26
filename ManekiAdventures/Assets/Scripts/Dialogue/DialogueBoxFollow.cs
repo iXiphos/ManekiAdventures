@@ -16,7 +16,7 @@ public class DialogueBoxFollow : DialogueBox
         // follow character
         if (characterToFollow != null)
         {
-            Vector3 uiPos = mainCamera.WorldToScreenPoint(characterToFollow.transform.position + displacement);
+            uiPos = mainCamera.WorldToScreenPoint(characterToFollow.transform.position + displacement);
             gameObject.transform.position = uiPos + uiDisplacement;
 
         }

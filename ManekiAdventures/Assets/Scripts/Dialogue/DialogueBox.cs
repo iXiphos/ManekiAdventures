@@ -9,10 +9,12 @@ public class DialogueBox : MonoBehaviour
     protected TMP_Text textUI;
     public string currLine;
     public Vector3 uiDisplacement;
+    protected Vector3 uiPos;
 
     // Start is called before the first frame update
     void Start()
     {
+        uiPos = gameObject.GetComponent<RectTransform>().localPosition;
         mainCamera = GameObject.Find("DynamicCamera3D").GetComponent<Camera>();
         foreach (TMP_Text obj in gameObject.GetComponentsInChildren<TMP_Text>())
         {
@@ -22,6 +24,8 @@ public class DialogueBox : MonoBehaviour
 
     void FixedUpdate()
     {
+        gameObject.GetComponent<RectTransform>().localPosition = uiPos + uiDisplacement;
+
         if (textUI != null)
         {
             // assign text
