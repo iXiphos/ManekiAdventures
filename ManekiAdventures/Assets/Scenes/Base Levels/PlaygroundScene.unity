@@ -25325,7 +25325,7 @@ PrefabInstance:
     - target: {fileID: 2492488912610652434, guid: a103c41d4f54f0f4f8715067f9501475,
         type: 3}
       propertyPath: steepWalkingDiff
-      value: 2
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 2492488912610652436, guid: a103c41d4f54f0f4f8715067f9501475,
         type: 3}
