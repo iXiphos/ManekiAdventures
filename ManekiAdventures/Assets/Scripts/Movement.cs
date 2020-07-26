@@ -123,7 +123,7 @@ public class Movement : MonoBehaviour
         {
             if (hit.collider != null && hit.transform.tag == "Terrain")
             {
-                Debug.Log(hit.point.y - transform.position.y);
+                //Debug.Log(hit.point.y - transform.position.y);
                 if(hit.point.y - transform.position.y > maxDiff || hit.point.y - transform.position.y < -maxDiff*4) //if(Mathf.Abs(hit.point.y - transform.position.y) > maxDiff)
                 {
                     return false;

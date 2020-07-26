@@ -400,7 +400,7 @@ public class DialogueEvent : MonoBehaviour
                         dofControl.GetComponent<DOFControl>().ToggleFocusCamera();
 
                     // delete the DOF controller
-                    Destroy(dofControl, 3f);
+                    //Destroy(dofControl, 3f);
 
                     goto case "FREEZE_CHAR";
                 case "FREEZE_CHAR":
