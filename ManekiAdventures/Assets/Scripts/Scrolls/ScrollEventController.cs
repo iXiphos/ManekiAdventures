@@ -128,7 +128,7 @@ public class ScrollEventController : MonoBehaviour
             scrollImage.GetComponent<Image>().sprite = img;
             scrollImage.GetComponent<Image>().SetNativeSize();
 
-            scrollImage.GetComponent<RectTransform>().localScale = new Vector3(0.25f, 0.25f, 0.25f); // scale to fit
+            scrollImage.GetComponent<RectTransform>().localScale = new Vector3(0.36f, 0.36f, 0.36f); // scale to fit
             scrollImage.GetComponent<RectTransform>().localPosition = new Vector3(Screen.width * totalNumScrollsInMulti, 0, 0); // center the image with displacement
             totalNumScrollsInMulti++;
         }
@@ -154,7 +154,7 @@ public class ScrollEventController : MonoBehaviour
         scrollImage.GetComponent<Image>().sprite = img;
         scrollImage.GetComponent<Image>().SetNativeSize();
 
-        scrollImage.GetComponent<RectTransform>().localScale = new Vector3(0.25f, 0.25f, 0.25f); // scale to fit
+        scrollImage.GetComponent<RectTransform>().localScale = new Vector3(0.36f, 0.36f, 0.36f); // scale to fit
         scrollImage.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0); // center the image
 
         // after displaying, keep track of what you've displayed

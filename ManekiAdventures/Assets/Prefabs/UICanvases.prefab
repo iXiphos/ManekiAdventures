@@ -3023,6 +3023,16 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: -268
       objectReference: {fileID: 0}
+    - target: {fileID: 6560772529621918186, guid: 50f99cc345a8d274eb8a2c5cd05b767d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6560772529621918186, guid: 50f99cc345a8d274eb8a2c5cd05b767d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 6862770178914914665, guid: 50f99cc345a8d274eb8a2c5cd05b767d,
         type: 3}
       propertyPath: m_UiScaleMode
