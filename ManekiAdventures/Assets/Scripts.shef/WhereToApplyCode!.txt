@@ -1,5 +1,0 @@
-As long as you have the AudioManager in the scene, and the WAV files in the AudioManager as well, you just have to put this line of code wherever you need to play a sound: 
-
-"FindObjectOfType<AudioManager>().Play("XXX");"
-
-The "XXX" is whatever you named your sound in the AudioManager

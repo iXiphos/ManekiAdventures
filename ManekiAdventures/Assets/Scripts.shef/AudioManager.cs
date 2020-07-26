@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public Sound[] sounds; //creates array for possible sounds
+    public Sound[] sounds;
 
     public static AudioManager instance;
 
     void Awake()
     {
 
-        if (instance == null) //these few lines looks for if an audio manager is already in the scene. if yes, do nothing, if not, create one
+        if (instance == null)
             instance = this;
         else
         {
@@ -22,7 +22,7 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
 
-        foreach (Sound s in sounds) // these make present the public voids in the sound script
+        foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
@@ -36,11 +36,10 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        Play("Theme"); //plays theme music
-        Play("Ambient");
+        Play("Theme");
     }
 
-    public void Play (string name) //play function for fiding the actual sound you input into audio manager
+    public void Play (string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)

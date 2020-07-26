@@ -5,21 +5,21 @@ using UnityEngine;
 
 public class Sound
 {
-    public string name; //name of sound you want
+    public string name;
 
-    public AudioClip clip; //actual input for wav or mp3 file
+    public AudioClip clip;
 
 
     [Range(0f, 1f)]
-    public float volume; //creates slider for volume
+    public float volume;
 
     [Range(.1f, 3f)]
-    public float pitch; //creates slider for pitch
+    public float pitch;
 
-    public bool loop; //if you want sound to loop or not
+    public bool loop;
 
     [HideInInspector]
-    public AudioSource source; //creates audio source for number of sounds you have
+    public AudioSource source;
 
 
 }
