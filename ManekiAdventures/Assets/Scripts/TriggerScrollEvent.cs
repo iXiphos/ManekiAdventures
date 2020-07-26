@@ -9,7 +9,7 @@ public class TriggerScrollEvent : MonoBehaviour
     GameObject canvasManager;
     GameObject scrollEventController;
 
-    private void Start()
+    private void Awake()
     {
         canvasManager = GameObject.Find("UICanvases");
         scrollEventController = GameObject.Find("ScrollCanvas");
@@ -17,27 +17,30 @@ public class TriggerScrollEvent : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(Input.GetKeyUp(KeyCode.E))
+        if(other.tag == "Player")
         {
-            //DEBUG, REMOVE LATER---------------------
-            if(imgFileName == "ALL")
+            if (Input.GetKeyUp(KeyCode.E))
             {
-                // multi
-                canvasManager.GetComponent<CanvasManager>().SetGamestateByCanvasName("ScrollCanvas");
-                scrollEventController.GetComponent<ScrollEventController>().DisplayMultiple(ScrollEventController.scrollsInteracted);
-            }
-            //----------------------------------------
-            else if(textFileName == "")
-            {
-                // execute image only
-                canvasManager.GetComponent<CanvasManager>().SetGamestateByCanvasName("ScrollCanvas");
-                scrollEventController.GetComponent<ScrollEventController>().DisplayScroll(imgFileName);
-            }
-            else
-            {
-                //execute text and image if text is provided
-                canvasManager.GetComponent<CanvasManager>().SetGamestateByCanvasName("ScrollCanvas");
-                scrollEventController.GetComponent<ScrollEventController>().DisplayScroll(imgFileName, textFileName);
+                //DEBUG, REMOVE LATER---------------------
+                if (imgFileName == "ALL")
+                {
+                    // multi
+                    canvasManager.GetComponent<CanvasManager>().SetGamestateByCanvasName("ScrollCanvas");
+                    scrollEventController.GetComponent<ScrollEventController>().DisplayMultiple(ScrollEventController.scrollsInteracted);
+                }
+                //----------------------------------------
+                else if (textFileName == "")
+                {
+                    // execute image only
+                    canvasManager.GetComponent<CanvasManager>().SetGamestateByCanvasName("ScrollCanvas");
+                    scrollEventController.GetComponent<ScrollEventController>().DisplayScroll(imgFileName);
+                }
+                else
+                {
+                    //execute text and image if text is provided
+                    canvasManager.GetComponent<CanvasManager>().SetGamestateByCanvasName("ScrollCanvas");
+                    scrollEventController.GetComponent<ScrollEventController>().DisplayScroll(imgFileName, textFileName);
+                }
             }
         }
     }
