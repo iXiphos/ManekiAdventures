@@ -140,10 +140,7 @@ public class Movement : MonoBehaviour
     void AnimateWalking()
     {
         if (canMove && (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0))
-        {
             animator.SetBool("isWalking", true);
-            Debug.Log("true");
-        }
         else
             animator.SetBool("isWalking", false);
     }
