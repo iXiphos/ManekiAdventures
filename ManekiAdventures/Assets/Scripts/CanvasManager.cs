@@ -40,8 +40,12 @@ public class CanvasManager : MonoBehaviour
         switch (canvas.name)
         {
             case "MainMenuCanvas":
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                Vector3 dc = GameObject.Find("DynamicCamera3D").transform.position;
+                player.GetComponent<Movement>().canMove = false;
+                player.transform.LookAt(new Vector3(dc.x, player.transform.position.y, dc.z));
                 //hide all other canvases except this one
-                foreach(Canvas cv in canvases.Values)
+                foreach (Canvas cv in canvases.Values)
                 {
                     SetCanvasActive(cv, false);
                 }
@@ -53,12 +57,13 @@ public class CanvasManager : MonoBehaviour
 
                 break;
             case "PauseMenuCanvas":
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>().canMove = false;
                 // disable interacting with all canvases except this one
                 // ******************************************************
                 break;
             case "DialogueCanvas":
             case "HotbarCanvas": // this is inventory and crafting
-
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>().canMove = true;
                 StartCoroutine(ZoomCameraOut());
 
                 // do default canvas things...

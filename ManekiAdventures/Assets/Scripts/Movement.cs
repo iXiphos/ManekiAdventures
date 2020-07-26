@@ -53,7 +53,30 @@ public class Movement : MonoBehaviour
                 float rad45 = -45f * (Mathf.PI / 180f);
                 Vector3 isoRotate = new Vector3(inputMovement.x * Mathf.Cos(rad45) - inputMovement.z * Mathf.Sin(rad45), inputMovement.y, inputMovement.x * Mathf.Sin(rad45) + inputMovement.z * Mathf.Cos(rad45));
 
-                transform.Translate(isoRotate * Time.deltaTime * moveSpeed, Space.World);
+                if(Input.GetKey(KeyCode.LeftShift))
+                {
+                    // running
+                    animator.SetBool("isSprinting", true); // do running anim if shift is down
+                    transform.Translate(isoRotate * Time.deltaTime * moveSpeed * 3/2, Space.World);
+                }
+                else
+                {
+                    // walking
+                    animator.SetBool("isSprinting", false); // turn off running is shift is not down
+                    
+
+                    // play alternate walking (pushing) if left ctrl is down
+                    if (Input.GetKey(KeyCode.LeftControl))
+                    {
+                        animator.SetBool("isPushing", true);
+                        transform.Translate(isoRotate * Time.deltaTime * moveSpeed/4, Space.World);
+                    }
+                    else
+                    {
+                        animator.SetBool("isPushing", false);
+                        transform.Translate(isoRotate * Time.deltaTime * moveSpeed, Space.World);
+                    }
+                }
                 transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, CalculateYValueOfTerrain(), transform.position.z), Time.deltaTime * fakeGravityIntensity); // adjust y position
             }
 

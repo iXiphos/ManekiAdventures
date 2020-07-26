@@ -42,13 +42,19 @@ public class tossPotion : MonoBehaviour
         {
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100f, clickMask))
+            {
                 clickPosition = hit.point;
+                if(hit.collider.gameObject.tag == "Interactable")
+                {
 
-            if (Input.GetMouseButtonUp(0))
+                }
+            }
+
+            if (Input.GetMouseButtonDown(0) && hit.collider.tag == "Interactable")
             {
                 // I sure do hope this is the right place to put this.
                 GameObject.Find("DialogueEventController").GetComponent<DialogueEventController>().ExecuteEvent("UNIQUE_THROWPOTION");
-
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().SetTrigger("throw");
 
                 potion.transform.parent = null;
                 while (true)
