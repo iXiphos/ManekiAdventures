@@ -108,7 +108,7 @@ public class DialogueEvent : MonoBehaviour
                 }
 
                 // if it's branching, fetch the option route
-                if(nextSpeaker == "Kiki")
+                if(nextSpeaker == "KIKI")
                 {
                     inBranch = true;
                     isChoosing = true;
@@ -365,13 +365,13 @@ public class DialogueEvent : MonoBehaviour
             {
                 case "FREEZE_CHAR_ZOOM":
                     //zoom char
-                    if (characters["Ru"].GetComponentInChildren<DOFControl>() == null)
+                    if (characters["RU"].GetComponentInChildren<DOFControl>() == null)
                     {
-                        dofControl = GameObject.Instantiate(DialogueEventController.dofController, characters["Ru"].transform);
+                        dofControl = GameObject.Instantiate(DialogueEventController.dofController, characters["RU"].transform);
                     }
                     else
                     {
-                        dofControl = characters["Ru"].GetComponentInChildren<DOFControl>().gameObject;
+                        dofControl = characters["RU"].GetComponentInChildren<DOFControl>().gameObject;
                     }
                     dofControl.GetComponent<DOFControl>().ToggleFocusCamera();
 
@@ -381,7 +381,7 @@ public class DialogueEvent : MonoBehaviour
                     GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>().canMove = false;
 
                     // turn player to look at what we're focusing on
-                    characters["Kiki"].transform.LookAt(new Vector3(characters["Ru"].transform.position.x, characters["Kiki"].transform.position.y, characters["Ru"].transform.position.z));
+                    characters["KIKI"].transform.LookAt(new Vector3(characters["RU"].transform.position.x, characters["KIKI"].transform.position.y, characters["RU"].transform.position.z));
 
                     break;
                 default: break;

@@ -14060,7 +14060,7 @@ PrefabInstance:
     - target: {fileID: 7771720748910049351, guid: 9243cb26e5167724d80d557892aa0aba,
         type: 3}
       propertyPath: m_Name
-      value: Ru
+      value: RU
       objectReference: {fileID: 0}
     - target: {fileID: 7771720748910049355, guid: 9243cb26e5167724d80d557892aa0aba,
         type: 3}
@@ -17429,7 +17429,7 @@ PrefabInstance:
     - target: {fileID: 2492488912610652436, guid: a103c41d4f54f0f4f8715067f9501475,
         type: 3}
       propertyPath: m_Name
-      value: Kiki
+      value: KIKI
       objectReference: {fileID: 0}
     - target: {fileID: 2492488912610652437, guid: a103c41d4f54f0f4f8715067f9501475,
         type: 3}

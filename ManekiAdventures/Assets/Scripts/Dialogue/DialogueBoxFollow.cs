@@ -46,8 +46,8 @@ public class DialogueBoxFollow : MonoBehaviour
     private void Update()
     {
         // NOTE THAT THIS IS HARDCODED AND SHOULD BE FIXED!!!!!!!!!!1 ********************
-        //GameObject ru = GameObject.Find("Ru");
-        //GameObject kiki = GameObject.Find("Kiki");
+        //GameObject ru = GameObject.Find("RU");
+        //GameObject kiki = GameObject.Find("KIKI");
         //displacement = new Vector3(0, Vector3.Distance(ru.transform.position, kiki.transform.position), 0);
         displacement = new Vector3(0, 4.5f, 0);
     }

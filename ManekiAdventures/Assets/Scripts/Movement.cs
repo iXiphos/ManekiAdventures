@@ -77,20 +77,19 @@ public class Movement : MonoBehaviour
                     }
                 }
                 transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, CalculateYValueOfTerrain(), transform.position.z), Time.deltaTime * fakeGravityIntensity); // adjust y position
+            }
 
-                // rotate to look the appropriate direction
-                if (inputMovement.x != 0 || inputMovement.z != 0)
-                    transform.eulerAngles = Vector3.up * ((Mathf.Atan2(inputMovement.x, inputMovement.z) * Mathf.Rad2Deg) + 45f);
-            }
-            else
-            {
-                inputMovement = Vector3.zero;
-                //disable animations
-                animator.SetBool("isWalking", false);
-                animator.SetBool("isSprinting", false);
-                animator.SetBool("isPushing", false);
-            }
-            
+            // rotate to look the appropriate direction
+            if (inputMovement.x != 0 || inputMovement.z != 0)
+                transform.eulerAngles = Vector3.up * ((Mathf.Atan2(inputMovement.x, inputMovement.z) * Mathf.Rad2Deg) + 45f);
+        }
+        else
+        {
+            inputMovement = Vector3.zero;
+            //disable animations
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isSprinting", false);
+            animator.SetBool("isPushing", false);
         }
     }
 
@@ -124,7 +123,8 @@ public class Movement : MonoBehaviour
         {
             if (hit.collider != null && hit.transform.tag == "Terrain")
             {
-                if(Mathf.Abs(hit.point.y - transform.position.y) > maxDiff)
+                Debug.Log(hit.point.y - transform.position.y);
+                if(hit.point.y - transform.position.y > maxDiff || hit.point.y - transform.position.y < -maxDiff*4) //if(Mathf.Abs(hit.point.y - transform.position.y) > maxDiff)
                 {
                     return false;
                 }

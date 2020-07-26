@@ -1,7 +1,8 @@
-// Kiki picks up the friction potion ingredient for the first time
+//Trigger is first time picking up a friction potion ingredient
 
-Ru: Oh, you showed me this once! Cordyceps makes a good **friction** potion, right?
+RU: Oh, you showed me this once! Cordyceps makes a good |#FC8814 friction potion|, right?
 
-// Date:        7/15/2020
+
+// Date:        7/25/2020
 // Author:      Jade Edwards
-// File:        Wesley Elmer
+// File:        Jade Edwards

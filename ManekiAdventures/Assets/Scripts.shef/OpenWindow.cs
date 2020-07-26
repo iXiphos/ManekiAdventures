@@ -23,7 +23,7 @@ public class OpenWindow : MonoBehaviour
 
             if (!isActive)
             {
-                focusObj = Instantiate(DialogueEventController.dofController, GameObject.Find("Ru").transform);
+                focusObj = Instantiate(DialogueEventController.dofController, GameObject.Find("RU").transform);
                 focusObj.GetComponent<DOFControl>().additionalOffset = new Vector3(5, -1, -1);
                 focusObj.GetComponent<DOFControl>().ToggleFocusCamera();
                 Vector3 dc = GameObject.Find("DynamicCamera3D").transform.position;
