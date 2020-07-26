@@ -364,10 +364,8 @@ public class DialogueEvent : MonoBehaviour
             switch(str)
             {
                 case "FREEZE_CHAR_ZOOM":
-                    //...TODO: FREEZE CHARACTER CONTROL*******************
-                    //break;
-                case "FREEZE_CHAR": // TODO: MAKE THIS MORE GENERIC (CURRENTLY HARD-CODED FOR RU)
-                    if(characters["Ru"].GetComponentInChildren<DOFControl>() == null)
+                    //zoom char
+                    if (characters["Ru"].GetComponentInChildren<DOFControl>() == null)
                     {
                         dofControl = GameObject.Instantiate(DialogueEventController.dofController, characters["Ru"].transform);
                     }
@@ -376,6 +374,14 @@ public class DialogueEvent : MonoBehaviour
                         dofControl = characters["Ru"].GetComponentInChildren<DOFControl>().gameObject;
                     }
                     dofControl.GetComponent<DOFControl>().ToggleFocusCamera();
+
+                    goto case "FREEZE_CHAR";
+                case "FREEZE_CHAR": // TODO: MAKE THIS MORE GENERIC (CURRENTLY HARD-CODED FOR RU)
+                    // freeze char
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>().canMove = false;
+
+                    // turn player to look at what we're focusing on
+                    characters["Kiki"].transform.LookAt(new Vector3(characters["Ru"].transform.position.x, characters["Kiki"].transform.position.y, characters["Ru"].transform.position.z));
 
                     break;
                 default: break;
@@ -389,15 +395,16 @@ public class DialogueEvent : MonoBehaviour
         {
             switch (str)
             {
-                case "FREEZE_CHAR_ZOOM":
-                //...TODO: GIVE BACK CHARACTER CONTROL*******************
-                //break;
-                case "FREEZE_CHAR": // TODO: MAKE THIS MORE GENERIC (CURRENTLY HARD-CODED FOR RU)
+                case "FREEZE_CHAR_ZOOM": 
                     if(dofControl != null)
                         dofControl.GetComponent<DOFControl>().ToggleFocusCamera();
-                    
-                    // delete the DOF controller...
 
+                    // delete the DOF controller
+                    Destroy(dofControl, 3f);
+
+                    goto case "FREEZE_CHAR";
+                case "FREEZE_CHAR":
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>().canMove = true; // TODO: MAKE THIS MORE GENERIC (CURRENTLY HARD-CODED FOR RU)
                     break;
                 default: break;
             }
