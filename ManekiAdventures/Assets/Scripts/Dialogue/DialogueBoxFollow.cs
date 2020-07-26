@@ -3,27 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class DialogueBoxFollow : MonoBehaviour
+public class DialogueBoxFollow : DialogueBox
 {
-    Camera mainCamera;
-    public Vector3 uiDisplacement;
-    TMP_Text textUI;
     public GameObject characterToFollow;
-    public string currLine;
-
     public Vector3 displacement = new Vector3(0, 0, 0);
     //float ruHeight = 4; // TO DO: implement if needed
     //float kikiHeight = 5;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        mainCamera = GameObject.Find("DynamicCamera3D").GetComponent<Camera>();
-        foreach (TMP_Text obj in gameObject.GetComponentsInChildren<TMP_Text>())
-        {
-            if(obj.tag == "DialogueText") { textUI = obj; }
-        }
-    }
 
     // Update is called once per frame
     void FixedUpdate()
