@@ -61,6 +61,19 @@ public class CanvasManager : MonoBehaviour
                 // disable interacting with all canvases except this one
                 // ******************************************************
                 break;
+            case "ScrollCanvas":
+
+                // set this canvas overlaying dialogue/hotbar
+                SetCanvasActive(canvases[canvas.name], true);
+
+                // play anims...
+                // *************
+
+                // disable interacting with all canvases except this one
+                // ******************************************************
+                
+                break;
+            default:
             case "DialogueCanvas":
             case "HotbarCanvas": // this is inventory and crafting
                 GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>().canMove = true;
@@ -73,7 +86,7 @@ public class CanvasManager : MonoBehaviour
                     {
                         StartCoroutine(PlayMenuExitAnimThenDestroy(1.5f));
                     }
-                    else
+                    else if(cv.name != "HotbarCanvas" && cv.name != "DialogueCanvas")
                     {
                         SetCanvasActive(cv, false);
                     }
