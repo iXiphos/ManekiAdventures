@@ -334,7 +334,7 @@ public class DialogueEvent : MonoBehaviour
                 foreach (SpeechLine line in options)
                 {
                     //optionsLineText += "<color=\"black\">" + line.optionNum + ": " + "<color=#7D7D7D>" + line.synopsisText;
-                    optionsLineText += line.optionNum + ": " + line.synopsisText;
+                    optionsLineText += "> " + line.optionNum + ": " + line.synopsisText;
                     optionsLineText += "\n";
                 }
                 optionsLineText = "<color=#7D7D7D> " + optionsLineText;
