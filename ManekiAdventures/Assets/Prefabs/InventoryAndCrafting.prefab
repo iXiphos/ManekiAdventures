@@ -1464,6 +1464,7 @@ GameObject:
   - component: {fileID: 7993609185431581304}
   - component: {fileID: 7993609185431581307}
   - component: {fileID: 7993609185431581306}
+  - component: {fileID: 2275785584806022441}
   m_Layer: 5
   m_Name: CraftButton
   m_TagString: Untagged
@@ -1592,6 +1593,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2275785584806022441}
+        m_MethodName: toggleAltState
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7993609185431581306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1605,6 +1617,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Window: {fileID: 7993609185524014504}
+--- !u!114 &2275785584806022441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7993609185431581308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 356ec55d40dec834396a6ed8f24f3f7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  altColor: {r: 0.8018868, g: 0.36690104, b: 0.36690104, a: 1}
+  altText: Exit
 --- !u!1 &7993609185524014504
 GameObject:
   m_ObjectHideFlags: 0
@@ -3645,6 +3671,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb1a0e7c991c73c4f8b9542eace3033a, type: 3}
+--- !u!224 &5428904411496603206 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2718018031747187523, guid: eb1a0e7c991c73c4f8b9542eace3033a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7993609185343020293}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7993609185355844930 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 63230023, guid: eb1a0e7c991c73c4f8b9542eace3033a,
@@ -3657,12 +3689,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5ffc7df2636934d8766bd9e63500bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &5428904411496603206 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2718018031747187523, guid: eb1a0e7c991c73c4f8b9542eace3033a,
-    type: 3}
-  m_PrefabInstance: {fileID: 7993609185343020293}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7993609186133021354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3816,12 +3842,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb1a0e7c991c73c4f8b9542eace3033a, type: 3}
---- !u!224 &5428904410168676841 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2718018031747187523, guid: eb1a0e7c991c73c4f8b9542eace3033a,
-    type: 3}
-  m_PrefabInstance: {fileID: 7993609186133021354}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7993609186171077357 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 63230023, guid: eb1a0e7c991c73c4f8b9542eace3033a,
@@ -3834,6 +3854,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5ffc7df2636934d8766bd9e63500bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &5428904410168676841 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2718018031747187523, guid: eb1a0e7c991c73c4f8b9542eace3033a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7993609186133021354}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7993609186355132298
 PrefabInstance:
   m_ObjectHideFlags: 0
