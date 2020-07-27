@@ -36,7 +36,6 @@ public class Movement : MonoBehaviour
     {
         MoveHorizontal();
         AnimateWalking();
-        //AnimatePickup();
     }
 
     void MoveHorizontal()
@@ -53,13 +52,44 @@ public class Movement : MonoBehaviour
                 float rad45 = -45f * (Mathf.PI / 180f);
                 Vector3 isoRotate = new Vector3(inputMovement.x * Mathf.Cos(rad45) - inputMovement.z * Mathf.Sin(rad45), inputMovement.y, inputMovement.x * Mathf.Sin(rad45) + inputMovement.z * Mathf.Cos(rad45));
 
-                transform.Translate(isoRotate * Time.deltaTime * moveSpeed, Space.World);
+                if(Input.GetKey(KeyCode.LeftShift))
+                {
+                    // running
+                    animator.SetBool("isSprinting", true); // do running anim if shift is down
+                    transform.Translate(isoRotate * Time.deltaTime * moveSpeed * 3/2, Space.World);
+                }
+                else
+                {
+                    // walking
+                    animator.SetBool("isSprinting", false); // turn off running is shift is not down
+                    
+
+                    // play alternate walking (pushing) if left ctrl is down
+                    if (Input.GetKey(KeyCode.LeftControl))
+                    {
+                        animator.SetBool("isPushing", true);
+                        transform.Translate(isoRotate * Time.deltaTime * moveSpeed/4, Space.World);
+                    }
+                    else
+                    {
+                        animator.SetBool("isPushing", false);
+                        transform.Translate(isoRotate * Time.deltaTime * moveSpeed, Space.World);
+                    }
+                }
                 transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, CalculateYValueOfTerrain(), transform.position.z), Time.deltaTime * fakeGravityIntensity); // adjust y position
             }
 
             // rotate to look the appropriate direction
             if (inputMovement.x != 0 || inputMovement.z != 0)
                 transform.eulerAngles = Vector3.up * ((Mathf.Atan2(inputMovement.x, inputMovement.z) * Mathf.Rad2Deg) + 45f);
+        }
+        else
+        {
+            inputMovement = Vector3.zero;
+            //disable animations
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isSprinting", false);
+            animator.SetBool("isPushing", false);
         }
     }
 
@@ -93,7 +123,8 @@ public class Movement : MonoBehaviour
         {
             if (hit.collider != null && hit.transform.tag == "Terrain")
             {
-                if(Mathf.Abs(hit.point.y - transform.position.y) > maxDiff)
+                //Debug.Log(hit.point.y - transform.position.y);
+                if(hit.point.y - transform.position.y > maxDiff || hit.point.y - transform.position.y < -maxDiff*4) //if(Mathf.Abs(hit.point.y - transform.position.y) > maxDiff)
                 {
                     return false;
                 }
@@ -108,7 +139,7 @@ public class Movement : MonoBehaviour
 
     void AnimateWalking()
     {
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        if (canMove && (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0))
             animator.SetBool("isWalking", true);
         else
             animator.SetBool("isWalking", false);

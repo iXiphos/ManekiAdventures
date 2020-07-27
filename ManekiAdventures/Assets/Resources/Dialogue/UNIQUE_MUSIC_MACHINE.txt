@@ -1,0 +1,10 @@
+//Trigger is approaching the music machine
+
+RU: Wow, I think this makes music!
+
+RU: I wonder... what if you used your potions to change the pitch?
+
+
+// Date:        7/25/2020
+// Author:      Jade Edwards
+// File:        Jade Edwards

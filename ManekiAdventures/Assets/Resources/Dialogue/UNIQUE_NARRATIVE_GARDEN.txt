@@ -1,0 +1,10 @@
+//Trigger is reaching the garden
+EFFECTS: FREEZE_CHAR_ZOOM
+
+RU: Huh, I don’t see |#4D8755 Master Jade Rabbit|...
+RU: Oh, another letter!
+
+
+// Date:        7/25/2020
+// Author:      Jade Edwards
+// File:        Jade Edwards
