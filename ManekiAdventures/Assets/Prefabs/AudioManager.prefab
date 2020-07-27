@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1727723679464463387
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1727723679464463385}
+  - component: {fileID: 1727723679464463384}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1727723679464463385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727723679464463387}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 317.3162, y: 263.89136, z: -339.92877}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1727723679464463384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727723679464463387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f8a091d0f7711d4bb2722d886ca1061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Theme
+    clip: {fileID: 8300000, guid: 2ce9d8c6c3391884b988cf417ea36c20, type: 3}
+    volume: 0.05
+    pitch: 0.88
+    loop: 1
+    source: {fileID: 0}
+  - name: PickUp
+    clip: {fileID: 8300000, guid: a48854a4dd4546c4ca52472fe84ca961, type: 3}
+    volume: 1
+    pitch: 0.85
+    loop: 0
+    source: {fileID: 0}
+  - name: Footsteps
+    clip: {fileID: 8300000, guid: 1a2f23a627578524485d49d2350e5e0f, type: 3}
+    volume: 0.08
+    pitch: 0.85
+    loop: 1
+    source: {fileID: 0}
+  - name: Ambient
+    clip: {fileID: 8300000, guid: 0e3ac8e029f078746a3d21feb27951a2, type: 3}
+    volume: 0.4
+    pitch: 0.46
+    loop: 1
+    source: {fileID: 0}
+  - name: Throw
+    clip: {fileID: 8300000, guid: 7a8df834b80186f4a877ad3bbf0a9698, type: 3}
+    volume: 0
+    pitch: 0.74
+    loop: 0
+    source: {fileID: 0}
+  - name: PotionBreak
+    clip: {fileID: 8300000, guid: 901da0f09c22d7d41b8361b31b031e39, type: 3}
+    volume: 0
+    pitch: 0.46
+    loop: 0
+    source: {fileID: 0}
+  - name: Bamboo
+    clip: {fileID: 8300000, guid: 5f69197b02038a5488cddaf114a81d31, type: 3}
+    volume: 0.16
+    pitch: 1.33
+    loop: 0
+    source: {fileID: 0}
+  - name: Menu
+    clip: {fileID: 8300000, guid: 555a8798f69a7c74d88cd34deb6cf029, type: 3}
+    volume: 0.16
+    pitch: 1.33
+    loop: 0
+    source: {fileID: 0}
+  - name: Kick
+    clip: {fileID: 8300000, guid: f97afa2cef463f348a931806a655bfcb, type: 3}
+    volume: 0.16
+    pitch: 1.33
+    loop: 0
+    source: {fileID: 0}
+  - name: Plates
+    clip: {fileID: 8300000, guid: 5c89fe854906e7e44943ab6e6db7e2c5, type: 3}
+    volume: 0.16
+    pitch: 1.33
+    loop: 0
+    source: {fileID: 0}
