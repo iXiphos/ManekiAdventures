@@ -40,67 +40,55 @@ MonoBehaviour:
   m_GameObject: {fileID: 1727723679464463387}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f8a091d0f7711d4bb2722d886ca1061, type: 3}
+  m_Script: {fileID: 11500000, guid: 41b7b21f8de5ca041b1bca7db465e24b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
+  - name: whoosh
+    clip: {fileID: 8300000, guid: 9d3a4deddbb6afb469892f15647e0853, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: breaking-glass-bottle
+    clip: {fileID: 8300000, guid: 1255e7af8d0ae634aa391134962d6593, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ball-kick
+    clip: {fileID: 8300000, guid: f689f6594bab34d439d301637fe31c10, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: pressure-plate
+    clip: {fileID: 8300000, guid: d4729ecc3ffb6984388470a70ff93b8c, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   - name: Theme
-    clip: {fileID: 8300000, guid: 2ce9d8c6c3391884b988cf417ea36c20, type: 3}
-    volume: 0.05
-    pitch: 0.88
-    loop: 1
-    source: {fileID: 0}
-  - name: PickUp
-    clip: {fileID: 8300000, guid: a48854a4dd4546c4ca52472fe84ca961, type: 3}
-    volume: 1
-    pitch: 0.85
+    clip: {fileID: 8300000, guid: b29560fd3b459134396a9be28cfe7ef5, type: 3}
+    volume: 0.3
+    pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: Footsteps
-    clip: {fileID: 8300000, guid: 1a2f23a627578524485d49d2350e5e0f, type: 3}
-    volume: 0.08
-    pitch: 0.85
-    loop: 1
-    source: {fileID: 0}
-  - name: Ambient
-    clip: {fileID: 8300000, guid: 0e3ac8e029f078746a3d21feb27951a2, type: 3}
-    volume: 0.4
-    pitch: 0.46
-    loop: 1
-    source: {fileID: 0}
-  - name: Throw
-    clip: {fileID: 8300000, guid: 7a8df834b80186f4a877ad3bbf0a9698, type: 3}
-    volume: 0
-    pitch: 0.74
+  - name: fun-mushroom
+    clip: {fileID: 8300000, guid: cd4461204520f4546bb424568102365f, type: 3}
+    volume: 0.3
+    pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: PotionBreak
-    clip: {fileID: 8300000, guid: 901da0f09c22d7d41b8361b31b031e39, type: 3}
-    volume: 0
-    pitch: 0.46
+  - name: flute-slap
+    clip: {fileID: 8300000, guid: a2d9656056d534842984c6b4deddc861, type: 3}
+    volume: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: Bamboo
-    clip: {fileID: 8300000, guid: 5f69197b02038a5488cddaf114a81d31, type: 3}
-    volume: 0.16
-    pitch: 1.33
-    loop: 0
-    source: {fileID: 0}
-  - name: Menu
-    clip: {fileID: 8300000, guid: 555a8798f69a7c74d88cd34deb6cf029, type: 3}
-    volume: 0.16
-    pitch: 1.33
-    loop: 0
-    source: {fileID: 0}
-  - name: Kick
-    clip: {fileID: 8300000, guid: f97afa2cef463f348a931806a655bfcb, type: 3}
-    volume: 0.16
-    pitch: 1.33
-    loop: 0
-    source: {fileID: 0}
-  - name: Plates
-    clip: {fileID: 8300000, guid: 5c89fe854906e7e44943ab6e6db7e2c5, type: 3}
-    volume: 0.16
-    pitch: 1.33
+  - name: pan-flute-d
+    clip: {fileID: 8300000, guid: 3e5c6e46f0162764f88d8a56833998f9, type: 3}
+    volume: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}

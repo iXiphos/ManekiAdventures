@@ -300,6 +300,7 @@ public class DialogueEvent : MonoBehaviour
 
     static void ShowOptions(List<SpeechLine> options)
     {
+        isChoosing = true;
         GameObject currDialogueUI = uiElements[currLine.speakerName];
         DialogueBox dialogueBox = currDialogueUI.GetComponent<DialogueBox>();
         dialogueBox.StartCoroutine(TryShowOptions(options));

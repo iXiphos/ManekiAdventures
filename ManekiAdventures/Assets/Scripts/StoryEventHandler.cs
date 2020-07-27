@@ -8,7 +8,7 @@ public class StoryEventHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //dialogueEventController = GameObject.Find("DialogueEventController").GetComponent<DialogueEventController>();
+        dialogueEventController = GameObject.Find("DialogueEventController").GetComponent<DialogueEventController>();
 
         //StartFirstDialogue();
     }
@@ -35,8 +35,9 @@ public class StoryEventHandler : MonoBehaviour
 
     public void PickedUpEvent(string itemName)
     {
-        Debug.Log("PICKED UP ITEM NAME: "  + itemName);
-        if(itemName == "Decrease")
+        dialogueEventController = GameObject.Find("DialogueEventController").GetComponent<DialogueEventController>();
+
+        if (itemName == "Decrease" || itemName == "Increases")
         {
             dialogueEventController.ExecuteEvent("UNIQUE_PICKUP_INCREASEDECREASE");
         }

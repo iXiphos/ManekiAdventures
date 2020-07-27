@@ -61,7 +61,6 @@ public class DialogueEventController : MonoBehaviour
                         }
                     }
                 }*/
-
                 if ((Input.GetKeyUp(KeyCode.Alpha1) || Input.GetKeyUp(KeyCode.Space)) && DialogueEvent.inDialogue)
                 {
                     if (DialogueEvent.inLine)
