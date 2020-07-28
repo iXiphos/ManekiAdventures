@@ -73,9 +73,9 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       focusDistance: 7.5
-      aperture: 2.8
-      focalLength: 44
-      useCameraFov: 0
+      aperture: 0.35
+      focalLength: 126
+      useCameraFov: 1
       kernelSize: 1
   motionBlur:
     m_Enabled: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
         mode: 1
         log:
           slope: {r: 0.9491687, g: 0.9843822, b: 1, a: 0.30018762}
-          power: {r: 1, g: 0.88268554, b: 0.96135753, a: 0}
+          power: {r: 1, g: 0.82547736, b: 0.92745495, a: 0}
           offset: {r: 1, g: 1, b: 1, a: 0}
         linear:
           lift: {r: 0, g: 0, b: 0, a: 0}
@@ -309,21 +309,21 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       spectralTexture: {fileID: 0}
-      intensity: 0.1
+      intensity: 0.15
   grain:
     m_Enabled: 0
     m_Settings:
-      colored: 1
-      intensity: 0.5
-      size: 1
-      luminanceContribution: 0.8
+      colored: 0
+      intensity: 1
+      size: 3
+      luminanceContribution: 1
   vignette:
     m_Enabled: 1
     m_Settings:
       mode: 0
       color: {r: 0, g: 0, b: 0, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.25
+      intensity: 0.3
       smoothness: 0.3
       roundness: 1
       mask: {fileID: 0}
