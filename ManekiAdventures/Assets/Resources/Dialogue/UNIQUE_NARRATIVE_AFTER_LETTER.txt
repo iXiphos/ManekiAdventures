@@ -1,0 +1,31 @@
+//Trigger is after first letter
+EFFECTS: FREEZE_CHAR_ZOOM
+
+RU: [SLOW]
+...It's fine, this is fine...
+
+KIKI:
+~1 %Ugh, quiz.% Ugh, not another quiz!
+~2 %Heheh% Heheh, whoops...
+
+RU: [SHAKE]
+~1 I can't believe she...
+~2 I can't believe she...
+
+RU: [SHAKE]
+Wait, you missed <<<FIVE LESSONS?>>>
+
+KIKI:
+~1 %Guilty.% Guilty as charged.
+~2 %Your fault!% I was on dates with *you*!
+
+RU:
+~1 Don't look so proud of yourself! That's bad!
+~2 Aww, hehe. But you never told me!
+
+RU: Well, only one thing to do! Let's head to |#4D8755 Master Jade's| garden!
+
+// Date:        7/25/2020
+// Author:      Jade Edwards
+// File:        Jade Edwards
+

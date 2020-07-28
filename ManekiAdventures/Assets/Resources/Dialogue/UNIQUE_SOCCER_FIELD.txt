@@ -1,0 +1,17 @@
+// Trigger should be arriving at the Soccer Field
+
+RU: Aww, I wish I could kick around the ball!
+
+KIKI:
+~1 %Bad idea.% You're a little too... *little*.
+~2 %You, soccer?% I thought you hated soccer.
+
+RU:
+~1 It's not fair! I used to be taller than you! Well, barely...
+~2 I do! I just miss my feet.
+
+
+// Date:        7/25/2020
+// Author:      Jade Edwards
+// File:        Jade Edwards
+

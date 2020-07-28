@@ -5,17 +5,20 @@ using UnityEngine;
 public class DialogueEventController : MonoBehaviour
 {
     public GameObject dialogueCanvasRef;
+    public GameObject dialogueBoxFollowPrefabRef;
     public GameObject dialogueBoxPrefabRef;
     public GameObject dofControllerRef;
     public static GameObject dialogueCanvas;
+    public static GameObject dialogueBoxFollowPrefab;
     public static GameObject dialogueBoxPrefab;
     public static GameObject dofController;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         dialogueCanvas = dialogueCanvasRef;
         dialogueBoxPrefab = dialogueBoxPrefabRef;
+        dialogueBoxFollowPrefab = dialogueBoxFollowPrefabRef;
         dofController = dofControllerRef;
 
 
@@ -35,7 +38,10 @@ public class DialogueEventController : MonoBehaviour
             {
                 if (Input.GetKeyUp(KeyCode.Space) && DialogueEvent.inDialogue)
                 {
-                    DialogueEvent.ProgressDialogue();
+                    if (DialogueEvent.inLine)
+                        DialogueEvent.ShowFullLine();
+                    else
+                        DialogueEvent.ProgressDialogue();
                 }
             }
             else
@@ -55,16 +61,25 @@ public class DialogueEventController : MonoBehaviour
                         }
                     }
                 }*/
-
-                if (Input.GetKeyUp(KeyCode.Alpha1) && DialogueEvent.inDialogue)
+                if ((Input.GetKeyUp(KeyCode.Alpha1) || Input.GetKeyUp(KeyCode.Space)) && DialogueEvent.inDialogue)
                 {
-                    DialogueEvent.currOptionNum = 1;
-                    DialogueEvent.ProgressDialogue();
+                    if (DialogueEvent.inLine)
+                        DialogueEvent.ShowFullLine();
+                    else
+                    {
+                        DialogueEvent.currOptionNum = 1;
+                        DialogueEvent.ProgressDialogue();
+                    } 
                 }
                 else if (Input.GetKeyUp(KeyCode.Alpha2) && DialogueEvent.inDialogue)
                 {
-                    DialogueEvent.currOptionNum = 2;
-                    DialogueEvent.ProgressDialogue();
+                    if (DialogueEvent.inLine)
+                        DialogueEvent.ShowFullLine();
+                    else
+                    {
+                        DialogueEvent.currOptionNum = 2;
+                        DialogueEvent.ProgressDialogue();
+                    }
                 }
             }
         }

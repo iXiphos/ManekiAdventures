@@ -40,10 +40,9 @@ public class InventorySlot : MonoBehaviour
 
             if (item.Attribute != attribute.empty && item.Discriptor != discriptor.empty)
             {
-                GameObject.Find("Player").GetComponent<tossPotion>().createPotion(item);
-                StartCoroutine(GameObject.Find("Player").GetComponent<tossPotion>().createTarget());
+                GameObject.Find("KIKI").GetComponent<tossPotion>().createPotion(item);
+                StartCoroutine(GameObject.Find("KIKI").GetComponent<tossPotion>().createTarget());
                 Inventory.instance.Remove(item);
-                ClearSlot();
             }
             else if(craftingSystem.activeSelf)
             {
@@ -52,6 +51,7 @@ public class InventorySlot : MonoBehaviour
                     if (crafting.GetComponent<PotionCreation>().piece1 == null)
                     {
                         crafting.GetComponent<PotionCreation>().piece1 = item;
+                        Inventory.instance.Remove(item);
                     }
                     else
                     {
@@ -65,6 +65,7 @@ public class InventorySlot : MonoBehaviour
                     if (crafting.GetComponent<PotionCreation>().piece2 == null)
                     {
                         crafting.GetComponent<PotionCreation>().piece2 = item;
+                        Inventory.instance.Remove(item);
                     }
                     else
                     {
@@ -73,9 +74,8 @@ public class InventorySlot : MonoBehaviour
                         Inventory.instance.Remove(item);
                     }
                 }
-               
-                ClearSlot();
             }
+            //gameObject.GetComponent<InventorySlot>().ClearSlot();
         }
     }
 

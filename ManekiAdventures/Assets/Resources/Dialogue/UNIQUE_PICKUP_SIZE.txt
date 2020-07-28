@@ -1,0 +1,8 @@
+//Trigger is first time picking up a size potion ingredient
+
+RU: Oh, yummy! This is perfect for a |#E63274 size potion!| Or a stir fry...
+
+
+// Date:        7/25/2020
+// Author:      Jade Edwards
+// File:        Jade Edwards

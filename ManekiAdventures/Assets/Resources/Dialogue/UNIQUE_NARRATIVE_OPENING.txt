@@ -1,0 +1,35 @@
+// This is the game's opening dialogue to give the player context, it should be triggered as soon as the game starts
+EFFECTS: FREEZE_CHAR_ZOOM //STATIC
+
+RU: [SHAKE] |#A742CF **MANEKI!**|
+RU: [SHAKE] *Idon’tknowwhathappenedI’msosmallsuddenlyandI’mflyingand-*
+
+KIKI:
+~1 %Cute!% Cute firefly! I think I have a jar on me...
+~2 %Weird...% Weird, this firefly sounds like my girlfriend.
+
+RU:
+~1 -Oh, c-cute... <<HEY, WAIT!>> I’m a *cat*! You can’t just put a *cat* in a *jar*!
+~2 |#A742CF Kiki|, it's *me!* Your *girlfriend!* |#D9AB36 Rushi!|
+
+RU: ...wait, did you say firefly?
+RU: [SHAKE] <<Eeek!>> I can’t be a firefly! I’m too... <<small!>>
+RU: I was walking here to meet you for our date, and then there was a cloaked figure...
+RU: And they threw something at me! And then... This!
+RU: Wait, you know alchemy! Do you know how to turn me back?
+
+KIKI:
+~1 %No...% Uh... not really...
+~2 %Heheh!% But this is so funny!
+
+RU:
+~1 Oh dear...
+~2 |#A742CF Kiki!| I *refuse* to stay like this!
+
+RU: Please help me! I miss my pointy ears and fluffy tail and-
+RU: Hey, what's that on that tree? A letter?
+
+// Date:        7/25/2020
+// Author:      Jade Edwards
+// File:        Jade Edwards
+

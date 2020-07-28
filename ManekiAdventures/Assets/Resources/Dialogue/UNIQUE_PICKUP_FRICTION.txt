@@ -1,0 +1,8 @@
+//Trigger is first time picking up a friction potion ingredient
+
+RU: Oh, you showed me this once! Cordyceps makes a good |#FC8814 friction potion|, right?
+
+
+// Date:        7/25/2020
+// Author:      Jade Edwards
+// File:        Jade Edwards

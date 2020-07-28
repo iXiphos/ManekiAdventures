@@ -10,7 +10,7 @@ public class InventoryUI : MonoBehaviour
 
     Inventory inventory;
 
-    InventorySlot[] slots; //creates array of possible items
+    public InventorySlot[] slots; //creates array of possible items
 
     InventorySlot[] crafting;
 
@@ -33,7 +33,8 @@ public class InventoryUI : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
-            craftingUI.SetActive(!craftingUI.activeSelf);
+            //craftingUI.SetActive(!craftingUI.activeSelf);
+            GameObject.Find("CraftButton").GetComponent<OpenWindow>().WindowOpener();
             if (craftingObject.activeSelf == true)
             {
                 craftingObject.GetComponent<PotionCreation>().returnObjectsToInventory();

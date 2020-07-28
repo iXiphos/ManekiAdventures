@@ -42,19 +42,30 @@ public class tossPotion : MonoBehaviour
         {
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100f, clickMask))
-                clickPosition = hit.point;
-
-            if (Input.GetMouseButtonDown(0))
             {
+                clickPosition = hit.point;
+                if(hit.collider.gameObject.tag == "Interactable")
+                {
+
+                }
+            }
+
+            if (Input.GetMouseButtonDown(0) && (hit.collider.tag == "Interactable" || hit.collider.tag == "AltInteractable"))
+            {
+                // I sure do hope this is the right place to put this.
+                GameObject.Find("DialogueEventController").GetComponent<DialogueEventController>().ExecuteEvent("UNIQUE_THROWPOTION");
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().SetTrigger("throw");
+
+                potion.transform.parent = null;
                 while (true)
                 {
                     Vector3 dir = clickPosition - transform.position;
                     Quaternion targetRotation = Quaternion.LookRotation(dir);
-
-                    potion.transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * smooth);
-                    potion.transform.Translate(transform.forward * speed);
+                    float step = speed * Time.deltaTime;
+                    
+                    potion.transform.position = Vector3.MoveTowards(potion.transform.position, clickPosition, step);
                     yield return null;
-                    if (Vector3.Distance(dir, potion.transform.position) < 0.1)
+                    if (Vector3.Distance(dir, potion.transform.position) < 0.2)
                     {
                         active = false;
                         break;
@@ -73,6 +84,7 @@ public class tossPotion : MonoBehaviour
         temp.GetComponent<Potion>().pDiscriptor = item.Discriptor;
         //temp.SetActive(false);
         potion = temp;
+        Debug.Log("Setting potion.");
     }
 
 }

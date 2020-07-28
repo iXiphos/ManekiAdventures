@@ -1,0 +1,15 @@
+// Trigger is throwing a potion for the first time
+
+RU: Oh, good arm |#974BDI Kiki!|
+
+KIKI:
+~1 %Flex% Heh, you like when I flex my muscles?
+~2 %Yay, destruction!% I just love breaking things.
+
+RU:
+~1 *Ooo!* I'm *swooning.*
+~2 I know you do, |#974BDI Kiki|. It's sweet.
+
+// Date:        7/25/2020
+// Author:      Jade Edwards
+// File:        Jade Edwards

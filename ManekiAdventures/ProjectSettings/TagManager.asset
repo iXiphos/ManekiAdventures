@@ -7,8 +7,15 @@ TagManager:
   - Fire
   - Interactable
   - Respawnable
+  - Target
   - Nameplate
   - DialogueText
+  - Terrain
+  - Potion
+  - Component
+  - AltInteractable
+  - InvisWalls
+  - SoccerBall
   layers:
   - Default
   - TransparentFX
@@ -18,8 +25,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - InvisWalls
+  - DoNotIgnoreInvisWalls
   - 
   - 
   - 

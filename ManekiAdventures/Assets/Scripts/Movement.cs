@@ -9,7 +9,10 @@ public class Movement : MonoBehaviour
     Vector3 inputMovement;
     public float moveSpeed;
     Vector3 pos, velocity;
-    //public float animspeed = 1.2f;
+    //float heightOffset = 1.8f;
+    float rayDisplacement = 0.5f;
+    public float fakeGravityIntensity = 5f;
+    public float steepWalkingDiff = 0.5f; // how steep until the player is not allowed to walk?
 
     Animator animator;
 
@@ -33,42 +36,118 @@ public class Movement : MonoBehaviour
     {
         MoveHorizontal();
         AnimateWalking();
-        AnimatePickup();
     }
 
     void MoveHorizontal()
     {
         if(canMove)
         {
-            // translate
+            // collect inputs
             inputMovement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            float rad45 = -45f * (Mathf.PI / 180f);
-            Vector3 isoRotate = new Vector3(inputMovement.x * Mathf.Cos(rad45) - inputMovement.z * Mathf.Sin(rad45), inputMovement.y, inputMovement.x * Mathf.Sin(rad45) + inputMovement.z * Mathf.Cos(rad45));
 
+            // calculate y difference
+            if (canWalkTerrain(steepWalkingDiff))
+            {
+                // translate
+                float rad45 = -45f * (Mathf.PI / 180f);
+                Vector3 isoRotate = new Vector3(inputMovement.x * Mathf.Cos(rad45) - inputMovement.z * Mathf.Sin(rad45), inputMovement.y, inputMovement.x * Mathf.Sin(rad45) + inputMovement.z * Mathf.Cos(rad45));
 
-            transform.Translate(isoRotate * Time.deltaTime * moveSpeed, Space.World);
-            
+                if(Input.GetKey(KeyCode.LeftShift))
+                {
+                    // running
+                    animator.SetBool("isSprinting", true); // do running anim if shift is down
+                    transform.Translate(isoRotate * Time.deltaTime * moveSpeed * 3/2, Space.World);
+                }
+                else
+                {
+                    // walking
+                    animator.SetBool("isSprinting", false); // turn off running is shift is not down
+                    
+
+                    // play alternate walking (pushing) if left ctrl is down
+                    if (Input.GetKey(KeyCode.LeftControl))
+                    {
+                        animator.SetBool("isPushing", true);
+                        transform.Translate(isoRotate * Time.deltaTime * moveSpeed/4, Space.World);
+                    }
+                    else
+                    {
+                        animator.SetBool("isPushing", false);
+                        transform.Translate(isoRotate * Time.deltaTime * moveSpeed, Space.World);
+                    }
+                }
+                transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, CalculateYValueOfTerrain(), transform.position.z), Time.deltaTime * fakeGravityIntensity); // adjust y position
+            }
 
             // rotate to look the appropriate direction
-            if(inputMovement.x != 0 || inputMovement.z != 0)
+            if (inputMovement.x != 0 || inputMovement.z != 0)
                 transform.eulerAngles = Vector3.up * ((Mathf.Atan2(inputMovement.x, inputMovement.z) * Mathf.Rad2Deg) + 45f);
         }
+        else
+        {
+            inputMovement = Vector3.zero;
+            //disable animations
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isSprinting", false);
+            animator.SetBool("isPushing", false);
+        }
+    }
+
+    float CalculateYValueOfTerrain()
+    {
+        // cast a ray slightly in front of the player
+        
+        float yVal = 0f;
+
+        RaycastHit hit;
+        Ray ray = new Ray(gameObject.transform.position + new Vector3(0,2,0) + (gameObject.transform.forward * rayDisplacement), Vector3.down);
+        //Debug.DrawLine(gameObject.transform.position + new Vector3(0, 2, 0) + (gameObject.transform.forward * rayDisplacement), gameObject.transform.position + (gameObject.transform.forward * rayDisplacement) + new Vector3(0, -10, 0));
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.collider != null && hit.transform.tag == "Terrain")
+            {
+                // Debug.Log("hit terrain. Y is " + hit.point.y);
+                yVal = hit.point.y;
+            }
+        }
+        return yVal;
+    }
+
+    bool canWalkTerrain(float maxDiff)
+    {
+        // cast a ray slightly in front of the player
+        RaycastHit hit;
+        Ray ray = new Ray(gameObject.transform.position + new Vector3(0, 4f, 0) + (gameObject.transform.forward * rayDisplacement*2), Vector3.down);
+        //Debug.DrawLine(gameObject.transform.position + new Vector3(0, 4f, 0) + (gameObject.transform.forward * rayDisplacement*2), gameObject.transform.position + (gameObject.transform.forward * rayDisplacement) + new Vector3(0, -10, 0));
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.collider != null && hit.transform.tag == "Terrain")
+            {
+                //Debug.Log(hit.point.y - transform.position.y);
+                if(hit.point.y - transform.position.y > maxDiff || hit.point.y - transform.position.y < -maxDiff*4) //if(Mathf.Abs(hit.point.y - transform.position.y) > maxDiff)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     void AnimateWalking()
     {
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        if (canMove && (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0))
             animator.SetBool("isWalking", true);
         else
             animator.SetBool("isWalking", false);
     }
 
-    void AnimatePickup()
+    public void AnimatePickup()
     {
-        if (Input.GetKeyUp(KeyCode.Q)) // DEBUG: LINK THIS UP TO ACTUAL INTERACT.
-        {
-            StartCoroutine(PickupAnimation());
-        }
+        StartCoroutine(PickupAnimation());
     }
 
     IEnumerator PickupAnimation()

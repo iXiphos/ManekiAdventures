@@ -12,8 +12,10 @@ public class DOFControl : MonoBehaviour
     public float defaultAperture = 5.6f;
     public float focusValue = 0.5f; // what the DOF changes to upon interaction
     public float apertureValue = 3.0f; // what the aperature changes to upon interaction
-    public float rotationSpeed = 20f;
+    public float rotationSpeed = 15f;
     public float playerHeight = 2f;
+
+    public Vector3 additionalOffset = new Vector3(0, 0, 0);
 
     public PostProcessingProfile postProcProf;
     private DepthOfFieldModel.Settings defaultDOFVal;
@@ -89,6 +91,8 @@ public class DOFControl : MonoBehaviour
     void TurnAndZoomCamera() // needs optimization so this isn't calculated every frame lol ***************
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<Movement>().canMove = false;
+        //player.GetComponent<Animator>().SetBool("isWaiting", true); // give it a waiting anim, idk
 
         if (!hasExecutedFocus)
         {
@@ -108,10 +112,12 @@ public class DOFControl : MonoBehaviour
             float distanceBetweenCameraAndMidpoint = Vector3.Distance(originalCameraPosition, midpoint);
 
             //"zoom in" the camera (rotate & position)
-        
-            Vector3 newCameraPositionY = Vector3.MoveTowards(originalCameraPosition, midpoint, distanceBetweenCameraAndMidpoint - distanceBetweenPlayerAndObj); // move forward (same distance away from midpoint as the distance between the two
-            float cameraDisplacement = (distanceBetweenCameraAndMidpoint - distanceBetweenPlayerAndObj) / 2f;
-            newCameraPositionY += new Vector3(0, cameraDisplacement, 0); //calculating the Y
+
+            //Vector3 newCameraPositionY = Vector3.MoveTowards(originalCameraPosition, midpoint, distanceBetweenCameraAndMidpoint - distanceBetweenPlayerAndObj); // move forward (same distance away from midpoint as the distance between the two
+            //float cameraDisplacement = (distanceBetweenCameraAndMidpoint - distanceBetweenPlayerAndObj) / 2f;
+            float cameraDisplacement = distanceBetweenPlayerAndObj * 3;
+            //newCameraPositionY += new Vector3(0, cameraDisplacement, 0); //calculating the Y
+
 
             Vector3 side1 = (parentObj.transform.position + new Vector3(0,1,0)) - parentObj.transform.position;
             Vector3 side2 = player.transform.position - parentObj.transform.position;
@@ -133,19 +139,23 @@ public class DOFControl : MonoBehaviour
             GameObject.Destroy(temp);
             normalVector /= normalVector.magnitude; //normalize for a more predictable value
 
-            newCameraPosition = midpoint + (normalVector * cameraDisplacement) + new Vector3(0, (2 * newCameraPositionY.y / 3), 0);
-                
+            //newCameraPosition = midpoint + (normalVector * cameraDisplacement) + new Vector3(0, (2 * newCameraPositionY.y / 3), 0);
+            newCameraPosition = midpoint + (normalVector * cameraDisplacement) + new Vector3(0, 2, 0) + additionalOffset;
+
         }
 
         // lerp camera to calculated position & rotation
-        dc.transform.position = Vector3.Lerp(dc.transform.position, newCameraPosition, Time.deltaTime * dc.lerpSpeed);
-        dc.transform.rotation = Quaternion.RotateTowards(dc.transform.rotation, Quaternion.LookRotation((midpoint+new Vector3(0, playerHeight / 2, 0)) - dc.transform.position), Time.deltaTime * dc.lerpSpeed * rotationSpeed);
-        
+        dc.transform.position = Vector3.Lerp(dc.transform.position, newCameraPosition, Time.deltaTime * dc.lerpSpeed/2);
+        dc.transform.rotation = Quaternion.RotateTowards(dc.transform.rotation, Quaternion.LookRotation((midpoint+new Vector3(0, playerHeight / 2, 0)) - dc.transform.position + additionalOffset), Time.deltaTime * dc.lerpSpeed * rotationSpeed);
+
         hasExecutedFocus = true; // don't repeat the calculations if they're already done
     }
 
     void ReturnToDefaultState()
     {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>().canMove = true;
+        //GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().SetBool("isWaiting", false); // waiting anim
+
         /*
         if (!hasExecutedFocus)
         {
