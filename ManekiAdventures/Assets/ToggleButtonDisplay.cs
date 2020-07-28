@@ -6,6 +6,11 @@ using UnityEngine.UI;
 // Author:  Wesley Elmer
 // Date:    7/27/2020
 
+//
+// Known Issue! Using the hotkey to open the crafting menu will not trigger this script, leading to the button to appear
+// desynced from the crafting menu. Functionality of the button is not affected. - wes
+//
+
 // This script allows the color and text that a button displays to be changed to an alternate version
 public class ToggleButtonDisplay : MonoBehaviour
 {
@@ -49,12 +54,6 @@ public class ToggleButtonDisplay : MonoBehaviour
             buttonText.text = defaultText;
             isAltState = false;
         }
-    }
-
-    // update the buttons state to match that of the crafting menu
-    public void updateButtonAltState()
-    {
-        setButtonAltState(GameObject.Find(potionCraftingWindowName).activeSelf);
     }
 
     // Toggle the button to it's alternate state
