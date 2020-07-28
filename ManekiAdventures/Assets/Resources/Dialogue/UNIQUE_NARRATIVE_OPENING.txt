@@ -1,5 +1,5 @@
 // This is the game's opening dialogue to give the player context, it should be triggered as soon as the game starts
-EFFECTS: FREEZE_CHAR_ZOOM STATIC
+EFFECTS: FREEZE_CHAR_ZOOM //STATIC
 
 RU: [SHAKE] |#A742CF **MANEKI!**|
 RU: [SHAKE] *Idon’tknowwhathappenedI’msosmallsuddenlyandI’mflyingand-*
