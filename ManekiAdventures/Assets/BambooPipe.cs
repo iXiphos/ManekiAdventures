@@ -58,17 +58,23 @@ public class BambooPipe : MonoBehaviour
                 //Change the Size of the Object
                 if (potion.pDiscriptor == discriptor.Increases)
                 {
-                    gameObject.transform.localScale *= pipeSizeIncrease;
-                    Debug.Log("Grow");
-                    Destroy(potion.gameObject);
-                    currSize *= pipeSizeIncrease;
+                    if (currSize < currSize*Mathf.Pow(pipeSizeIncrease,3f))
+                    {
+                        gameObject.transform.localScale *= pipeSizeIncrease;
+                        Debug.Log("Grow");
+                        Destroy(potion.gameObject);
+                        currSize *= pipeSizeIncrease;
+                    }
                 }
                 else if (potion.pDiscriptor == discriptor.Decreases)
                 {
-                    gameObject.transform.localScale /= pipeSizeDecrease;
-                    Debug.Log("Shrink");
-                    Destroy(potion.gameObject);
-                    currSize /= pipeSizeIncrease;
+                    if (currSize > baseSize)
+                    {
+                        gameObject.transform.localScale /= pipeSizeDecrease;
+                        Debug.Log("Shrink");
+                        Destroy(potion.gameObject);
+                        currSize /= pipeSizeIncrease;
+                    }
                 }
                 break;
         }
