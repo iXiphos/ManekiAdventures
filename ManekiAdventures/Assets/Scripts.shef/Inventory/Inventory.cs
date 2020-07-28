@@ -53,7 +53,12 @@ public class Inventory : MonoBehaviour
         for(int i = 0; i < items.Count; i++)
         {
             if (items[i] == item)
+            {
                 items.RemoveAt(i);
+                if (onItemChangedCallback != null)
+                    onItemChangedCallback.Invoke();
+                break;
+            }
         }
 
         if (onItemChangedCallback != null)
