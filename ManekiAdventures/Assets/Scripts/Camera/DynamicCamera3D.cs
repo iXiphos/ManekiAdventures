@@ -18,15 +18,15 @@ public class DynamicCamera3D : MonoBehaviour
     public bool inInteraction = false; // if the player is interacting with something that requires a DOF change, this overrides normal camera focus.
 
     //keep X and Z the same for isometric
-    public float cameraOffsetX = -13f;
-    public float cameraOffsetY = 13f;
-    public float cameraOffsetZ = -13f;
+    public float cameraOffsetX = -10f;
+    public float cameraOffsetY = 10f;
+    public float cameraOffsetZ = -10f;
 
     float scrollSensitivity = 2f;
     public float scrollValue;
 
     Vector3 minCameraOffset = new Vector3(-3f, 4f, -3f);
-    Vector3 maxCameraOffset = new Vector3(-15f, 15f, -15f);
+    Vector3 maxCameraOffset = new Vector3(-10f, 10f, -10f);
 
     public float lerpSpeed = 1f;
 

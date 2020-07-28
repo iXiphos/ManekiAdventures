@@ -445,8 +445,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canMove: 0
   moveSpeed: 7
-  fakeGravityIntensity: 4
-  steepWalkingDiff: 1
+  fakeGravityIntensity: 20
+  steepWalkingDiff: 0.3
 --- !u!114 &3601153546659899265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,7 +464,7 @@ MonoBehaviour:
     type: 3}
   clickMask:
     serializedVersion: 2
-    m_Bits: 307
+    m_Bits: 563
   speed: 5
   smooth: 1
   hand: {fileID: 6728987230307614460}

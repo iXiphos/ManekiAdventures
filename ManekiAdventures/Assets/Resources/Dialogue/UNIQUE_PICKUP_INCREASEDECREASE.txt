@@ -1,24 +1,25 @@
-// Kiki picks up the increase or the decrease ingredient for the first time
+// KIKI picks up the increase or the decrease ingredient for the first time
 
-Ru: Oh, it’s that flower! Good idea!
+RU: Oh, it’s that flower! Good idea!
 
-Kiki: What idea?
+KIKI:
+~1 %What idea?% What idea?
+~2 %For you!% I picked this flower for my flower!
+RU:
+~1 That’s a potion ingredient, silly! 
+~2 Aww, that’s so sweet! But, er, you picked me a potion ingredient?
 
-Ru: That’s a potion ingredient silly! The pink ones like this make an increasing potion, and the yellow ones make a decreasing potion.
+RU:  The |#D45BD2 pink flowers *increase*| an attribute, and the |#A1A130 yellow ones *decrease*|.
+RU: Wait, you don’t know this? |#944BDI Maneki|, have you been studying *at all?*
 
-Kiki: I picked this for you!
+KIKI:
+~1 %Well...% Well...
+~2 %Have faith!% C'mon, have some faith in me!
+RU:
+~1 [SLOW] ...It's fine, it's fine. You got this. I'm not worried at all...
+~2 [SHAKE] I-I do! Absolutely! I'm not worried at all...
 
-Ru: Aww, that’s so sweet. But, er, you picked me a potion ingredient. The pink ones like this make an **increasing potion**, and the yellow ones make a **decreasing** potion.
-Ru: Wait, you don’t know this? Maneki, have you been studying at all?
 
-Kiki: Well…
-
-Ru: ...It’s fine, it’s fine. You got this. I’m not worried at all...
-
-Kiki: C’mon, have some faith in me!
-
-Ru: I-I do! Absolutely! I’m not worried at all...
-
-// Date:        7/15/2020
-// Author:      Jade
-// File:        Wesley
+// Date:        7/25/2020
+// Author:      Jade Edwards
+// File:        Jade Edwards

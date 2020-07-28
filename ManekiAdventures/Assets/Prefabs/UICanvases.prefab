@@ -2950,7 +2950,7 @@ PrefabInstance:
     - target: {fileID: 6012534572683887844, guid: 45ce5dfc99d9c0a42a5339f0a0744a8d,
         type: 3}
       propertyPath: m_UiScaleMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6012534572683887846, guid: 45ce5dfc99d9c0a42a5339f0a0744a8d,
         type: 3}
@@ -2962,6 +2962,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6012534574360559694, guid: 45ce5dfc99d9c0a42a5339f0a0744a8d,
+        type: 3}
+      propertyPath: dialogueBoxPrefabRef
+      value: 
+      objectReference: {fileID: 7258847219435450505, guid: 980df89a477d5db4ebf4839b91e47e83,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45ce5dfc99d9c0a42a5339f0a0744a8d, type: 3}
 --- !u!224 &1071313505294947648 stripped

@@ -75,6 +75,20 @@ public class CanvasManager : MonoBehaviour
                 break;
             default:
             case "DialogueCanvas":
+                if(DialogueEvent.inStaticDialogue)
+                {
+                    //hide all other canvases except this one
+                    foreach (Canvas cv in canvases.Values)
+                    {
+                        SetCanvasActive(cv, false);
+                    }
+                    SetCanvasActive(canvases[canvas.name], true);
+                }
+                else
+                {
+                    goto case "HotbarCanvas";
+                }
+                break;
             case "HotbarCanvas": // this is inventory and crafting
                 GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>().canMove = true;
                 StartCoroutine(ZoomCameraOut());

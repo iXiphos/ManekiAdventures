@@ -1,14 +1,14 @@
-// Kiki steps on a pressure plate for the first time
+// KIKI steps on a pressure plate for the first time
 
-Ru: Oh, look! This pressure plate opens the gate.
+RU: Oh, look! This pressure plate opens the gate.
 
-Kiki: How about you stand on it for me?
+KIKI: How about you stand on it for me?
 
-Ru: Oh sure sweetie--[[[Oh.]]] Haha, sooo funny Kiki.
+RU: Oh sure sweetie--[[[Oh.]]] Haha, sooo funny Kiki.
 
-Kiki: What’s a pressure plate doing in the forest?
+KIKI: What’s a pressure plate doing in the forest?
 
-Ru: Who knows? Oooh, maybe it’s a booby trap! [[[Probably not.]]]
+RU: Who knows? Oooh, maybe it’s a booby trap! [[[Probably not.]]]
 
 // Date:        7/15/2020
 // Author:      Jade Edwards

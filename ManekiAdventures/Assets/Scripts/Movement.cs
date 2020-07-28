@@ -36,7 +36,6 @@ public class Movement : MonoBehaviour
     {
         MoveHorizontal();
         AnimateWalking();
-        //AnimatePickup();
     }
 
     void MoveHorizontal()
@@ -84,6 +83,14 @@ public class Movement : MonoBehaviour
             if (inputMovement.x != 0 || inputMovement.z != 0)
                 transform.eulerAngles = Vector3.up * ((Mathf.Atan2(inputMovement.x, inputMovement.z) * Mathf.Rad2Deg) + 45f);
         }
+        else
+        {
+            inputMovement = Vector3.zero;
+            //disable animations
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isSprinting", false);
+            animator.SetBool("isPushing", false);
+        }
     }
 
     float CalculateYValueOfTerrain()
@@ -116,7 +123,8 @@ public class Movement : MonoBehaviour
         {
             if (hit.collider != null && hit.transform.tag == "Terrain")
             {
-                if(Mathf.Abs(hit.point.y - transform.position.y) > maxDiff)
+                //Debug.Log(hit.point.y - transform.position.y);
+                if(hit.point.y - transform.position.y > maxDiff || hit.point.y - transform.position.y < -maxDiff*4) //if(Mathf.Abs(hit.point.y - transform.position.y) > maxDiff)
                 {
                     return false;
                 }
@@ -131,7 +139,7 @@ public class Movement : MonoBehaviour
 
     void AnimateWalking()
     {
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        if (canMove && (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0))
             animator.SetBool("isWalking", true);
         else
             animator.SetBool("isWalking", false);

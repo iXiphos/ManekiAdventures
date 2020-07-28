@@ -1,0 +1,20 @@
+//After bridge puzzle finished
+
+RU: Wow |#974BDI Kiki|, you're actually really good at making potions!
+
+KIKI:
+~1 %Surprised?% Geez, don't sound so surprised!
+~2 %Thanks!% Thanks!
+
+RU:
+~1 It's not like that! Just...
+~2 Hehe, of course!
+
+RU: I was a little worried you've missed so many lessons...
+RU: But I know you'll always take care of me!
+
+
+// Date:        7/25/2020
+// Author:      Jade Edwards
+// File:        Jade Edwards
+

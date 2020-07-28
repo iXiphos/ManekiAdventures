@@ -1,0 +1,25 @@
+//Trigger is after second letter
+EFFECTS: FREEZE_CHAR_ZOOM
+
+RU: Oh...it's fine, it's fine...
+
+KIKI:
+~1 %Let's wait!% Don't worry |#D9AB36 Ru|, we'll wait!
+~2 %Date time!% I mean, it's still our date...
+
+//Very skeptical this is proper formatting. Make special note of this part in playtesting
+RU:
+~1 It's all we can do anyway...
+~1 Hey! While we wait, maybe you should practice your potions some more!
+~1 So you can impress |#4D8755 Master Jade|... and I think it's fun, too!
+~2 Hehe, that's true!
+~2 But... I've kinda enjoyed watching you use your magic.
+~2 What if we hang out here and play? *"Study"* for that quiz!
+
+KIKI: That's the spirit!
+KIKI: Don't worry |#D9AB36 Ru|, we'll change you back!
+RU: Hehe, thanks |#974BDI Kiki|.
+
+// Date:        7/25/2020
+// Author:      Jade Edwards
+// File:        Jade Edwards

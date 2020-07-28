@@ -1,30 +1,35 @@
 // This is the game's opening dialogue to give the player context, it should be triggered as soon as the game starts
+EFFECTS: FREEZE_CHAR_ZOOM //STATIC
 
-Ru: [SHAKE] <<<<<MANEKI!>>>>>
-Ru: [FAST] IwasonmywaytomeetwithyouandtherewasacloakedfigureandnextthingIkneweverythinggota**LOT**bigger and whenItriedtomoveIstarted**FLYING** and IthinkI’m**GLOWING** and Idon’tknowwh-
+RU: [SHAKE] |#A742CF **MANEKI!**|
+RU: [SHAKE] *Idon’tknowwhathappenedI’msosmallsuddenlyandI’mflyingand-*
 
-// Editing the branching options. - Michelle 7/19
-Kiki:
-~1 %A firefly!% Woooooow, a cute firefly! I think I have a jar somewhere around here...
-~2 %Familiar voice...% Huh, that’s a cute voice... This firefly kind of reminds me of Ru...
-Ru:
-~1 [[[[-oh, c-cute....]]]] HEY, WAIT! Are you even listening?! I’m a **cat**! You can’t just put a **cat** in a jar!
-~2 [[[[-oh, c-cute....]]]] HEY, WAIT! I am Ru!
+KIKI:
+~1 %Cute!% Cute firefly! I think I have a jar on me...
+~2 %Weird...% Weird, this firefly sounds like my girlfriend.
 
-Ru: ...wait, did you say firefly?
-Ru: [SHAKE] Eeek! I can’t be a firefly! I’m too... small!
-Ru: Do you know how to turn me back?
+RU:
+~1 -Oh, c-cute... <<HEY, WAIT!>> I’m a *cat*! You can’t just put a *cat* in a *jar*!
+~2 |#A742CF Kiki|, it's *me!* Your *girlfriend!* |#D9AB36 Rushi!|
 
-Kiki: [SLOW] Uh... not really...
+RU: ...wait, did you say firefly?
+RU: [SHAKE] <<Eeek!>> I can’t be a firefly! I’m too... <<small!>>
+RU: I was walking here to meet you for our date, and then there was a cloaked figure...
+RU: And they threw something at me! And then... This!
+RU: Wait, you know alchemy! Do you know how to turn me back?
 
-Ru: [[[[Oh dear...]]]]
+KIKI:
+~1 %No...% Uh... not really...
+~2 %Heheh!% But this is so funny!
 
-Kiki: But you’re adorable like this!
+RU:
+~1 Oh dear...
+~2 |#A742CF Kiki!| I *refuse* to stay like this!
 
-Ru: Aww... wait, no! I *refuse* to stay like this! // I'm interpreting *asterisks* as italics which we don't have atm, and I've been using BOLD to highlight info so someone patch this if we get italics - wes
-Ru: Wait, your teacher would know, right? Master Rabbit?
-Ru: Let’s go find her! She should be in the field at the bottom of this valley!
+RU: Please help me! I miss my pointy ears and fluffy tail and-
+RU: Hey, what's that on that tree? A letter?
 
-// Date:        7/15/2020
+// Date:        7/25/2020
 // Author:      Jade Edwards
-// File:        Wesley Elmer
+// File:        Jade Edwards
+

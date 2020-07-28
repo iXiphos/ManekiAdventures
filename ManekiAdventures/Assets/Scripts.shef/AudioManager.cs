@@ -51,6 +51,24 @@ public class AudioManager : MonoBehaviour
         s.source.Play();
     }
 
+    public void Play(string name, float volume, float pitch, bool loop)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        s.volume = volume;
+        s.pitch = pitch;
+        s.loop = loop;
 
+        s.source.volume = s.volume;
+        s.source.pitch = s.pitch;
+        s.source.loop = s.loop;
+
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + "not found!");
+            return;
+        }
+
+        s.source.Play();
+    }
 
 }

@@ -10,6 +10,7 @@ public class DialogueEvent : MonoBehaviour
     static Dictionary<string, GameObject> uiElements; // string character name, GameObject ref to its UI chat bubble
     public static DialogueText currentDialogue;
     public static bool inDialogue;
+    public static bool inStaticDialogue;
     public static int lineNum;
     static SpeechLine currLine;
     public static bool inLine;
@@ -54,10 +55,22 @@ public class DialogueEvent : MonoBehaviour
         {
             if(!string.IsNullOrEmpty(entry.Key))
             {
-                GameObject currTextBox = GameObject.Instantiate(DialogueEventController.dialogueBoxPrefab, DialogueEventController.dialogueCanvas.transform);
-                currTextBox.SetActive(false); // hide when not in use
+                GameObject currTextBox;
 
-                currTextBox.GetComponent<DialogueBoxFollow>().characterToFollow = entry.Value;
+                if (dialogueText.interactionEffects.Contains("STATIC"))
+                {
+                    inStaticDialogue = true;
+                    GameObject.Find("UICanvases").GetComponent<CanvasManager>().SetGamestateByCanvasName("DialogueCanvas");
+                    currTextBox = GameObject.Instantiate(DialogueEventController.dialogueBoxPrefab, DialogueEventController.dialogueCanvas.transform);
+                }
+                else // default to moving box
+                {
+                    inStaticDialogue = false;
+                    currTextBox = GameObject.Instantiate(DialogueEventController.dialogueBoxFollowPrefab, DialogueEventController.dialogueCanvas.transform);
+                    currTextBox.GetComponent<DialogueBoxFollow>().characterToFollow = entry.Value;
+                }
+                
+                currTextBox.SetActive(false); // hide when not in use
 
                 // set their nameplate
                 foreach (Transform elem in currTextBox.GetComponentsInChildren<Transform>())
@@ -108,7 +121,7 @@ public class DialogueEvent : MonoBehaviour
                 }
 
                 // if it's branching, fetch the option route
-                if(nextSpeaker == "Kiki")
+                if(nextSpeaker == "KIKI")
                 {
                     inBranch = true;
                     isChoosing = true;
@@ -181,7 +194,7 @@ public class DialogueEvent : MonoBehaviour
         }
         
         GameObject currDialogueUI = uiElements[line.speakerName];
-        DialogueBoxFollow dialogueBox = currDialogueUI.GetComponent<DialogueBoxFollow>();
+        DialogueBox dialogueBox = currDialogueUI.GetComponent<DialogueBox>();
         //dialogueBox.currLine = line.lineText;
 
         // show this ui box
@@ -213,11 +226,11 @@ public class DialogueEvent : MonoBehaviour
     {
         inLine = false;
         GameObject currDialogueUI = uiElements[currLine.speakerName];
-        currDialogueUI.GetComponent<DialogueBoxFollow>().currLine = currLine.lineText;
+        currDialogueUI.GetComponent<DialogueBox>().currLine = currLine.lineText;
         
     }
 
-    private static IEnumerator TypeDialogue(DialogueBoxFollow dialogueBox, string lineToType, float typingSpeed)
+    private static IEnumerator TypeDialogue(DialogueBox dialogueBox, string lineToType, float typingSpeed)
     {
         dialogueBox.currLine = ""; // flush text
 
@@ -261,7 +274,7 @@ public class DialogueEvent : MonoBehaviour
         inLine = false;
     }
 
-    private static IEnumerator ShakeUIItem(DialogueBoxFollow ui)
+    private static IEnumerator ShakeUIItem(DialogueBox ui)
     {
         //bool isShaking = true;
         float duration = 0.5f;
@@ -287,32 +300,62 @@ public class DialogueEvent : MonoBehaviour
 
     static void ShowOptions(List<SpeechLine> options)
     {
-        //Debug.Log("Showing options...");
-        string speaker = "";
-        foreach(SpeechLine line in options)
+        isChoosing = true;
+        GameObject currDialogueUI = uiElements[currLine.speakerName];
+        DialogueBox dialogueBox = currDialogueUI.GetComponent<DialogueBox>();
+        dialogueBox.StartCoroutine(TryShowOptions(options));
+    }
+
+    static IEnumerator TryShowOptions(List<SpeechLine> options)
+    {
+        bool hasShownOptions = false;
+
+        while (!hasShownOptions)
         {
-            if(!string.IsNullOrEmpty(line.speakerName))
+            yield return new WaitForSeconds(0.1f);
+            //Debug.Log("hasShownOptions:" + hasShownOptions + "   inLine:" + inLine);
+            if (!inLine)
             {
-                speaker = line.speakerName;
-                break;
+                //Debug.Log("Showing options...");
+                string speaker = "";
+                foreach (SpeechLine line in options)
+                {
+                    if (!string.IsNullOrEmpty(line.speakerName))
+                    {
+                        speaker = line.speakerName;
+                        break;
+                    }
+                }
+
+                GameObject currDialogueUI = uiElements[speaker];
+                DialogueBox dialogueBox = currDialogueUI.GetComponent<DialogueBox>();
+
+                // put together a dialogue option line
+                string optionsLineText = "";
+                foreach (SpeechLine line in options)
+                {
+                    //optionsLineText += "<color=\"black\">" + line.optionNum + ": " + "<color=#7D7D7D>" + line.synopsisText;
+                    optionsLineText += "> " + line.optionNum + ": " + line.synopsisText;
+                    optionsLineText += "\n";
+                }
+                optionsLineText = "<color=#7D7D7D> " + optionsLineText;
+
+                dialogueBox.currLine = optionsLineText;
+
+                if (!currentDialogue.interactionEffects.Contains("STATIC"))
+                {
+                    // show this ui box (if following)
+                    currDialogueUI.SetActive(true);
+                }
+                else
+                {
+                    // if static, inject it into the other character's box
+                    uiElements[currentDialogue.lines[lineNum - 1][0].speakerName].GetComponent<DialogueBox>().currLine += "\n" + optionsLineText;
+                }
+
+                hasShownOptions = true;
             }
         }
-
-        GameObject currDialogueUI = uiElements[speaker];
-        DialogueBoxFollow dialogueBox = currDialogueUI.GetComponent<DialogueBoxFollow>();
-        
-        // put together a dialogue option line
-        string optionsLineText = "";
-        foreach(SpeechLine line in options)
-        {
-            optionsLineText += line.optionNum + ": " + line.synopsisText;
-            optionsLineText += "\n";
-        }
-
-        dialogueBox.currLine = optionsLineText;
-
-        // show this ui box
-        currDialogueUI.SetActive(true);
     }
 
     static bool CheckIfNextHasOptions(int lineNum)
@@ -333,30 +376,6 @@ public class DialogueEvent : MonoBehaviour
         return false;
     }
 
-    public static void DebugPrintEvent()
-    {
-        // DEBUG TESTING:
-        DialogueText testText = new DialogueText();
-        testText.ReadRawLinesFromFile("SAMPLE_DIALOGUE");
-
-        string effects = "";
-        foreach (string str in testText.interactionEffects)
-        {
-            effects += str + " ";
-        }
-        //Debug.Log(effects);
-
-        //Debug.Log("Number of Lines: " + testText.lines.Count);
-        foreach(List<SpeechLine> lines in testText.lines)
-        {
-            foreach(SpeechLine line in lines)
-            {
-                //Debug.Log(line.lineText);
-            }
-        }
-       
-    }
-
     public static void ApplyDialogueEffects()
     {
         foreach (string str in currentDialogue.interactionEffects)
@@ -364,18 +383,24 @@ public class DialogueEvent : MonoBehaviour
             switch(str)
             {
                 case "FREEZE_CHAR_ZOOM":
-                    //...TODO: FREEZE CHARACTER CONTROL*******************
-                    //break;
-                case "FREEZE_CHAR": // TODO: MAKE THIS MORE GENERIC (CURRENTLY HARD-CODED FOR RU)
-                    if(characters["Ru"].GetComponentInChildren<DOFControl>() == null)
+                    //zoom char
+                    if (characters["RU"].GetComponentInChildren<DOFControl>() == null)
                     {
-                        dofControl = GameObject.Instantiate(DialogueEventController.dofController, characters["Ru"].transform);
+                        dofControl = GameObject.Instantiate(DialogueEventController.dofController, characters["RU"].transform);
                     }
                     else
                     {
-                        dofControl = characters["Ru"].GetComponentInChildren<DOFControl>().gameObject;
+                        dofControl = characters["RU"].GetComponentInChildren<DOFControl>().gameObject;
                     }
                     dofControl.GetComponent<DOFControl>().ToggleFocusCamera();
+
+                    goto case "FREEZE_CHAR";
+                case "FREEZE_CHAR": // TODO: MAKE THIS MORE GENERIC (CURRENTLY HARD-CODED FOR RU)
+                    // freeze char
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>().canMove = false;
+
+                    // turn player to look at what we're focusing on
+                    characters["KIKI"].transform.LookAt(new Vector3(characters["RU"].transform.position.x, characters["KIKI"].transform.position.y, characters["RU"].transform.position.z));
 
                     break;
                 default: break;
@@ -385,19 +410,25 @@ public class DialogueEvent : MonoBehaviour
 
     public static void RevertDialogueEffects()
     {
+        if(inStaticDialogue)
+        {
+            inStaticDialogue = false;
+            GameObject.Find("UICanvases").GetComponent<CanvasManager>().SetGamestateByCanvasName("DialogueCanvas");
+        }
         foreach (string str in currentDialogue.interactionEffects)
         {
             switch (str)
             {
-                case "FREEZE_CHAR_ZOOM":
-                //...TODO: GIVE BACK CHARACTER CONTROL*******************
-                //break;
-                case "FREEZE_CHAR": // TODO: MAKE THIS MORE GENERIC (CURRENTLY HARD-CODED FOR RU)
+                case "FREEZE_CHAR_ZOOM": 
                     if(dofControl != null)
                         dofControl.GetComponent<DOFControl>().ToggleFocusCamera();
-                    
-                    // delete the DOF controller...
 
+                    // delete the DOF controller
+                    //Destroy(dofControl, 3f);
+
+                    goto case "FREEZE_CHAR";
+                case "FREEZE_CHAR":
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>().canMove = true; // TODO: MAKE THIS MORE GENERIC (CURRENTLY HARD-CODED FOR RU)
                     break;
                 default: break;
             }

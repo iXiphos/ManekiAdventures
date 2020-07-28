@@ -5,10 +5,13 @@ using UnityEngine;
 public class StoryEventHandler : MonoBehaviour
 {
     DialogueEventController dialogueEventController;
+    public Dictionary<string, bool> uniqueEventTracker; //string name of event, bool hasInteracted? (true if yes)
+
     // Start is called before the first frame update
     void Start()
     {
-        //dialogueEventController = GameObject.Find("DialogueEventController").GetComponent<DialogueEventController>();
+        uniqueEventTracker = new Dictionary<string, bool>();
+        dialogueEventController = GameObject.Find("DialogueEventController").GetComponent<DialogueEventController>();
 
         //StartFirstDialogue();
     }
@@ -35,15 +38,32 @@ public class StoryEventHandler : MonoBehaviour
 
     public void PickedUpEvent(string itemName)
     {
-        Debug.Log("PICKED UP ITEM NAME: "  + itemName);
-        if(itemName == "Decrease")
+        string eventName = "";
+        switch(itemName)
         {
-            dialogueEventController.ExecuteEvent("UNIQUE_PICKUP_INCREASEDECREASE");
+            case "Decrease":
+            case "Increase":
+                eventName = "UNIQUE_PICKUP_INCREASEDECREASE";
+                break;
+            case "Size":
+                eventName = "UNIQUE_PICKUP_SIZE";
+                break;
+            case "Weight":
+                eventName = "UNIQUE_PICKUP_WEIGHT";
+                break;
+            case "Friction":
+                eventName = "UNIQUE_PICKUP_FRICTION";
+                break;
         }
-        if (itemName == "Size")
-        {
-            dialogueEventController.ExecuteEvent("UNIQUE_PICKUP_SIZE");
-        }
+
+        if (uniqueEventTracker.ContainsKey(eventName)) // if the player has seen this dialogue, do not execute
+            return;
+        else
+            uniqueEventTracker[eventName] = true; // keep track of what you've seen
+
+
+        dialogueEventController = GameObject.Find("DialogueEventController").GetComponent<DialogueEventController>();
+        dialogueEventController.ExecuteEvent(eventName);
     }
 
     public void ExitApplication()

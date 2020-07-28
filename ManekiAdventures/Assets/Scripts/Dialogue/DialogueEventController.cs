@@ -5,9 +5,11 @@ using UnityEngine;
 public class DialogueEventController : MonoBehaviour
 {
     public GameObject dialogueCanvasRef;
+    public GameObject dialogueBoxFollowPrefabRef;
     public GameObject dialogueBoxPrefabRef;
     public GameObject dofControllerRef;
     public static GameObject dialogueCanvas;
+    public static GameObject dialogueBoxFollowPrefab;
     public static GameObject dialogueBoxPrefab;
     public static GameObject dofController;
 
@@ -16,6 +18,7 @@ public class DialogueEventController : MonoBehaviour
     {
         dialogueCanvas = dialogueCanvasRef;
         dialogueBoxPrefab = dialogueBoxPrefabRef;
+        dialogueBoxFollowPrefab = dialogueBoxFollowPrefabRef;
         dofController = dofControllerRef;
 
 
@@ -58,16 +61,25 @@ public class DialogueEventController : MonoBehaviour
                         }
                     }
                 }*/
-
                 if ((Input.GetKeyUp(KeyCode.Alpha1) || Input.GetKeyUp(KeyCode.Space)) && DialogueEvent.inDialogue)
                 {
-                    DialogueEvent.currOptionNum = 1;
-                    DialogueEvent.ProgressDialogue();
+                    if (DialogueEvent.inLine)
+                        DialogueEvent.ShowFullLine();
+                    else
+                    {
+                        DialogueEvent.currOptionNum = 1;
+                        DialogueEvent.ProgressDialogue();
+                    } 
                 }
                 else if (Input.GetKeyUp(KeyCode.Alpha2) && DialogueEvent.inDialogue)
                 {
-                    DialogueEvent.currOptionNum = 2;
-                    DialogueEvent.ProgressDialogue();
+                    if (DialogueEvent.inLine)
+                        DialogueEvent.ShowFullLine();
+                    else
+                    {
+                        DialogueEvent.currOptionNum = 2;
+                        DialogueEvent.ProgressDialogue();
+                    }
                 }
             }
         }
