@@ -8,28 +8,27 @@ public class BambooPipe : MonoBehaviour
     // if the player tries to change the size past these bounds, the pipes will not change size.
     float pipeSizeIncrease = 1.3f;
     float pipeSizeDecrease = 1.3f;
-    float baseSize;
-    float currSize;
-
-    private void Start()
-    {
-        baseSize = gameObject.transform.lossyScale.x;
-        currSize = baseSize;
-    }
+    static float baseSize = 3f;
+    public float currSize = 3f;
 
     public void PlaySoundBasedOnSize()
     {
         float expSize = currSize / baseSize;
         for(int i = 0; i < 4; i++)
         {
-            Debug.Log(expSize +" " + Mathf.Pow(pipeSizeIncrease, i) + " " + (expSize == Mathf.Pow(pipeSizeIncrease, i)));
-            if (expSize == Mathf.Pow(pipeSizeIncrease, i))
+            // this rounds to 2 decimal places
+            expSize = Mathf.Ceil(expSize * 100) / 100;
+            float calculatedSize = Mathf.Ceil(Mathf.Pow(pipeSizeIncrease, i) * 100) / 100;
+            if (expSize == calculatedSize)
             {
                 AudioManager am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
                 // set pitch depending on what size it is
-                Debug.Log(i + ": " + (1f / Mathf.Pow(2f, 4f - (i+1)))+1);
+                //Debug.Log(i + ": " + (1f / Mathf.Pow(2f, 4f - (i+1)))+1);
                 //am.Play("pan-flute-d", 0.5f, 1f/((1f/Mathf.Pow(2f, 4f-i))+1f), false);
-                am.Play("pan-flute-d", 0.5f, (1f / Mathf.Pow(2f, 4f - (i+1))+1), false);
+                if(i == 0)
+                    am.Play("pan-flute-d", 0.5f, 1f, false);
+                else
+                    am.Play("pan-flute-d", 0.5f, (1f / Mathf.Pow(2f, 4f - (i+1))+1), false);
                 break;
             }
         }
@@ -62,14 +61,14 @@ public class BambooPipe : MonoBehaviour
                     gameObject.transform.localScale *= pipeSizeIncrease;
                     Debug.Log("Grow");
                     Destroy(potion.gameObject);
-                    currSize = gameObject.transform.lossyScale.x;
+                    currSize *= pipeSizeIncrease;
                 }
                 else if (potion.pDiscriptor == discriptor.Decreases)
                 {
                     gameObject.transform.localScale /= pipeSizeDecrease;
                     Debug.Log("Shrink");
                     Destroy(potion.gameObject);
-                    currSize = gameObject.transform.lossyScale.x;
+                    currSize /= pipeSizeIncrease;
                 }
                 break;
         }
