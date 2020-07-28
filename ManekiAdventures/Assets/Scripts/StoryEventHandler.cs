@@ -56,7 +56,7 @@ public class StoryEventHandler : MonoBehaviour
                 break;
         }
 
-        if (uniqueEventTracker[eventName]) // if the player has seen this dialogue, do not execute
+        if (uniqueEventTracker.ContainsKey(eventName)) // if the player has seen this dialogue, do not execute
             return;
         else
             uniqueEventTracker[eventName] = true; // keep track of what you've seen
