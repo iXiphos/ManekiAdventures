@@ -464,7 +464,7 @@ MonoBehaviour:
     type: 3}
   clickMask:
     serializedVersion: 2
-    m_Bits: 307
+    m_Bits: 563
   speed: 5
   smooth: 1
   hand: {fileID: 6728987230307614460}

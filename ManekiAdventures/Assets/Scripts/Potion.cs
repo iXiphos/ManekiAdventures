@@ -79,6 +79,7 @@ public class Potion : MonoBehaviour
                 else if (pDiscriptor == discriptor.Decreases)
                 {
                     coll.gameObject.transform.localScale /= SizeDecrease;
+                    Debug.Log("Shrink");
                     Destroy(gameObject);
                 }
                 else
