@@ -10,6 +10,7 @@ public class RuCharacter : MonoBehaviour
     public Vector3 followDistance = new Vector3(-2f, 2f, 2f);
     public float bobbingHeight = 0.5f;
     public float bobbingSpeed = 0.5f;
+    public float flySpeed = 1f;
 
     // Start is called before the first frame update
     void Awake()
@@ -41,7 +42,7 @@ public class RuCharacter : MonoBehaviour
     {
         // movement (random soft movement to simulate a firefly)
         Vector3 fireflyMovement = new Vector3(0, bobbingHeight * Mathf.Cos(Time.time * bobbingSpeed), 0) + new Vector3((bobbingHeight / 2) * Mathf.Sin(Time.time * bobbingSpeed * 2), 0, (bobbingHeight / 2) * Mathf.Sin(Time.time * bobbingSpeed));
-        gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, fireflyMovement + kiki.transform.position + followDistance, Time.deltaTime);
+        gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, fireflyMovement + kiki.transform.position + followDistance, Time.deltaTime * flySpeed);
 
         // rotation (look at kiki)
         gameObject.transform.LookAt(kiki.transform);
