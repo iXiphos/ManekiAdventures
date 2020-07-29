@@ -15,7 +15,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.8857181, g: 0.82961017, b: 0.9716981, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.006
@@ -131638,61 +131638,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueTriggers
       objectReference: {fileID: 0}
-    - target: {fileID: 3622339764120648035, guid: 10e167edebb2cc94284b58c87c30bd62,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 62.63
-      objectReference: {fileID: 0}
-    - target: {fileID: 3622339764120648035, guid: 10e167edebb2cc94284b58c87c30bd62,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 70.49
-      objectReference: {fileID: 0}
-    - target: {fileID: 3622339764120648035, guid: 10e167edebb2cc94284b58c87c30bd62,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3622339764120648035, guid: 10e167edebb2cc94284b58c87c30bd62,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.38766232
-      objectReference: {fileID: 0}
-    - target: {fileID: 3622339764120648035, guid: 10e167edebb2cc94284b58c87c30bd62,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3622339764120648035, guid: 10e167edebb2cc94284b58c87c30bd62,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.92180145
-      objectReference: {fileID: 0}
-    - target: {fileID: 3622339764120648035, guid: 10e167edebb2cc94284b58c87c30bd62,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 45.618004
-      objectReference: {fileID: 0}
     - target: {fileID: 3622339764120648046, guid: 10e167edebb2cc94284b58c87c30bd62,
         type: 3}
       propertyPath: scrollEventController
       value: 
       objectReference: {fileID: 1211546242}
-    - target: {fileID: 4326683389172341267, guid: 10e167edebb2cc94284b58c87c30bd62,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 221.28
-      objectReference: {fileID: 0}
-    - target: {fileID: 4326683389172341267, guid: 10e167edebb2cc94284b58c87c30bd62,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3.49
-      objectReference: {fileID: 0}
-    - target: {fileID: 4326683389172341267, guid: 10e167edebb2cc94284b58c87c30bd62,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 14.15
-      objectReference: {fileID: 0}
     - target: {fileID: 4326683389172341278, guid: 10e167edebb2cc94284b58c87c30bd62,
         type: 3}
       propertyPath: scrollEventController
