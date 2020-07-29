@@ -79,4 +79,17 @@ public class InventorySlot : MonoBehaviour
         }
     }
 
+    // Get the name of the item contained in this slot, returns an empty string if there is no item
+    public string getItemName()
+    {
+        if(item != null)
+        {
+            return item.name;
+        }
+        else
+        {
+            return "";
+        }
+    }
+
 }

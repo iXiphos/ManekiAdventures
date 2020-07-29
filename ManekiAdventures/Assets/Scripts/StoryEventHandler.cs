@@ -5,15 +5,21 @@ using UnityEngine;
 public class StoryEventHandler : MonoBehaviour
 {
     DialogueEventController dialogueEventController;
-    public Dictionary<string, bool> uniqueEventTracker; //string name of event, bool hasInteracted? (true if yes)
+    public static Dictionary<string, bool> uniqueEventTracker; //string name of event, bool hasInteracted? (true if yes)
 
     // Start is called before the first frame update
     void Start()
     {
         uniqueEventTracker = new Dictionary<string, bool>();
-        dialogueEventController = GameObject.Find("DialogueEventController").GetComponent<DialogueEventController>();
+        
 
         //StartFirstDialogue();
+    }
+
+    IEnumerator FindDialogueControllerAfterDelay()
+    {
+        yield return new WaitForSeconds(0.2f);
+        dialogueEventController = GameObject.Find("DialogueEventController").GetComponent<DialogueEventController>();
     }
 
     public void StartFirstDialogue()
@@ -32,7 +38,7 @@ public class StoryEventHandler : MonoBehaviour
 
     IEnumerator FireFirstDialogue()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
         dialogueEventController.ExecuteEvent("UNIQUE_NARRATIVE_OPENING");
     }
 

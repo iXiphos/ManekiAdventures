@@ -2270,6 +2270,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1790014909}
+    - target: {fileID: 6750545794663662084, guid: f15139a30d0ca4e498d2ea6437cdd73d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6750545794714749250, guid: f15139a30d0ca4e498d2ea6437cdd73d,
         type: 3}
       propertyPath: m_Name
@@ -5954,7 +5959,7 @@ GameObject:
   - component: {fileID: 691831808}
   - component: {fileID: 691831807}
   - component: {fileID: 691831813}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: largeRock_low (3)
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -9703,11 +9708,11 @@ HingeJoint:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081278561}
-  m_ConnectedBody: {fileID: 0}
+  m_ConnectedBody: {fileID: 1748532434}
   m_Anchor: {x: 2.15, y: 0, z: 0}
   m_Axis: {x: 0, y: -6.18, z: 86.21}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 167.55504, y: 10.034666, z: 16.328365}
+  m_ConnectedAnchor: {x: -0.0033056536, y: -0.06641995, z: -0.13441385}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -9759,7 +9764,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!4 &1081278567 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 2eb0ae26e7f4c0b4c829c02a2623df98,
@@ -15976,6 +15981,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1748002676}
   m_Mesh: {fileID: 7200813882020725636, guid: 084b451f6a7e2234593747525f104699, type: 3}
+--- !u!54 &1748532434 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 1748532434, guid: 82b6be21f43929a4085957886a00d1f5,
+    type: 3}
+  m_PrefabInstance: {fileID: 6810873359105568584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1763849960 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2817802792653913114, guid: 4581677f07e9b494f9eacf9d166a3b6f,
@@ -17429,7 +17440,7 @@ PrefabInstance:
     - target: {fileID: 2492488912610652437, guid: a103c41d4f54f0f4f8715067f9501475,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 32.8
+      value: 130.9
       objectReference: {fileID: 0}
     - target: {fileID: 2492488912610652437, guid: a103c41d4f54f0f4f8715067f9501475,
         type: 3}
@@ -17439,7 +17450,7 @@ PrefabInstance:
     - target: {fileID: 2492488912610652437, guid: a103c41d4f54f0f4f8715067f9501475,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 42.2
+      value: 71.2
       objectReference: {fileID: 0}
     - target: {fileID: 2492488912610652437, guid: a103c41d4f54f0f4f8715067f9501475,
         type: 3}
