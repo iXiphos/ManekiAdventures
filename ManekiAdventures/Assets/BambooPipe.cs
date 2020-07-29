@@ -10,29 +10,36 @@ public class BambooPipe : MonoBehaviour
     float pipeSizeDecrease = 1.3f;
     static float baseSize = 3f;
     public float currSize = 3f;
+    float baseVol = 0.1f;
+    float playDistance = 50f;
 
     public void PlaySoundBasedOnSize()
     {
-        float expSize = currSize / baseSize;
-        for(int i = 0; i < 4; i++)
+        float distance = Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, gameObject.transform.position);
+        Debug.Log("DISTANCE: " + distance);
+        if (distance <= playDistance)
         {
-            // this rounds to 2 decimal places
-            expSize = Mathf.Ceil(expSize * 100) / 100;
-            float calculatedSize = Mathf.Ceil(Mathf.Pow(pipeSizeIncrease, i) * 100) / 100;
-            if (expSize == calculatedSize)
+            float expSize = currSize / baseSize;
+            for (int i = 0; i < 4; i++)
             {
-                AudioManager am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
-                // set pitch depending on what size it is
-                //Debug.Log(i + ": " + (1f / Mathf.Pow(2f, 4f - (i+1)))+1);
-                //am.Play("pan-flute-d", 0.5f, 1f/((1f/Mathf.Pow(2f, 4f-i))+1f), false);
-                if(i == 0)
-                    am.Play("pan-flute-d", 0.5f, 1f, false);
-                else
-                    am.Play("pan-flute-d", 0.5f, (1f / Mathf.Pow(2f, 4f - (i+1))+1), false);
-                break;
+                // this rounds to 2 decimal places
+                expSize = Mathf.Ceil(expSize * 100) / 100;
+                float calculatedSize = Mathf.Ceil(Mathf.Pow(pipeSizeIncrease, i) * 100) / 100;
+                if (expSize == calculatedSize)
+                {
+                    AudioManager am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+                    // set pitch depending on what size it is
+                    //Debug.Log(i + ": " + (1f / Mathf.Pow(2f, 4f - (i+1)))+1);
+                    //am.Play("pan-flute-d", 0.5f, 1f/((1f/Mathf.Pow(2f, 4f-i))+1f), false);
+                    Debug.Log(baseVol * (playDistance / distance));
+                    if (i == 0)
+                        am.Play("pan-flute-d", baseVol * (playDistance / distance), 1f, false);
+                    else
+                        am.Play("pan-flute-d", baseVol * (playDistance / distance), (1f / Mathf.Pow(2f, 4f - (i + 1)) + 1), false);
+                    break;
+                }
             }
         }
-        
     }
 
     // THIS IS A MODIFIED VERSION OF POTION.CS'S ONTRIGGERENTER

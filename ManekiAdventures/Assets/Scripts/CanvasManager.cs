@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CanvasManager : MonoBehaviour
 {
-    public string canvasState;
+    static public string canvasState;
     Dictionary<string, Canvas> canvases;
     // Start is called before the first frame update
     void Start()

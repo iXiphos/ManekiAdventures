@@ -446,7 +446,7 @@ MonoBehaviour:
   canMove: 0
   moveSpeed: 7
   fakeGravityIntensity: 20
-  steepWalkingDiff: 0.3
+  steepWalkingDiff: 0.35
 --- !u!114 &3601153546659899265
 MonoBehaviour:
   m_ObjectHideFlags: 0
