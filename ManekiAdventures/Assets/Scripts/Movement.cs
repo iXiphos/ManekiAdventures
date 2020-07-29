@@ -76,7 +76,7 @@ public class Movement : MonoBehaviour
                         transform.Translate(isoRotate * Time.deltaTime * moveSpeed, Space.World);
                     }
                 }
-                transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, CalculateYValueOfTerrain(), transform.position.z), Time.deltaTime * fakeGravityIntensity); // adjust y position
+                
             }
 
             // rotate to look the appropriate direction
@@ -91,6 +91,8 @@ public class Movement : MonoBehaviour
             animator.SetBool("isSprinting", false);
             animator.SetBool("isPushing", false);
         }
+
+        transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, CalculateYValueOfTerrain(), transform.position.z), Time.deltaTime * fakeGravityIntensity); // adjust y position
     }
 
     float CalculateYValueOfTerrain()

@@ -30805,6 +30805,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82b6be21f43929a4085957886a00d1f5, type: 3}
+--- !u!54 &291573243 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 1748532434, guid: 82b6be21f43929a4085957886a00d1f5,
+    type: 3}
+  m_PrefabInstance: {fileID: 291573242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &298298047
 GameObject:
   m_ObjectHideFlags: 0
@@ -87186,11 +87192,11 @@ HingeJoint:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081278561}
-  m_ConnectedBody: {fileID: 0}
+  m_ConnectedBody: {fileID: 291573243}
   m_Anchor: {x: 2.15, y: 0, z: 0}
   m_Axis: {x: 0, y: -6.18, z: 86.21}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 167.56972, y: 10.048708, z: 16.305294}
+  m_ConnectedAnchor: {x: -0.085146986, y: -0.11398851, z: -0.16991746}
   m_UseSpring: 0
   m_Spring:
     spring: 0

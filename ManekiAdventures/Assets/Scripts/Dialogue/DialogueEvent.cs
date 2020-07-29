@@ -7,7 +7,7 @@ using TMPro;
 public class DialogueEvent : MonoBehaviour
 {
     static Dictionary<string, GameObject> characters; // string name, GameObject reference to character
-    static Dictionary<string, GameObject> uiElements; // string character name, GameObject ref to its UI chat bubble
+    public static Dictionary<string, GameObject> uiElements; // string character name, GameObject ref to its UI chat bubble
     public static DialogueText currentDialogue;
     public static bool inDialogue;
     public static bool inStaticDialogue;
