@@ -11,7 +11,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Base Levels/EnvironmentLevel.unity
     guid: dd0fe2467233cba4c867773caba0f4cd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Base Levels/PlaygroundSceneCopy.unity
     guid: 43ae94cdfa0365944a443677df371435
+  - enabled: 1
+    path: Assets/Scenes/Base Levels/PlaygroundSceneCopy2.unity
+    guid: b98de84194374384db1c27dd44a02552
   m_configObjects: {}
