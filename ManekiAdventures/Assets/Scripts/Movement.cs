@@ -29,7 +29,6 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(isPushing);
         velocity = (transform.position - pos) / Time.deltaTime;
         pos = transform.position;
     }
