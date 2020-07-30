@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8463511148589025318}
   - component: {fileID: 2191376798970308093}
   - component: {fileID: 2191376798970308094}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BRockInteractablePrefab
   m_TagString: Interactable
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
