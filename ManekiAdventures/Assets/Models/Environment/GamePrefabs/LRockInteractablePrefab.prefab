@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4038241467081013705}
   - component: {fileID: 4038241467081013706}
   - component: {fileID: 4038241467081013707}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LRockInteractablePrefab
   m_TagString: Interactable
   m_Icon: {fileID: 0}
