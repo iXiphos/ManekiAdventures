@@ -14,19 +14,22 @@ public class Movement : MonoBehaviour
     public float fakeGravityIntensity = 5f;
     public float steepWalkingDiff = 0.5f; // how steep until the player is not allowed to walk?
 
+    public bool isPushing;
+
     Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-
         canMove = true;
+        isPushing = false;
         pos = transform.position;
         animator = gameObject.GetComponentInChildren<Animator>();
     }
 
     void Update()
     {
+        Debug.Log(isPushing);
         velocity = (transform.position - pos) / Time.deltaTime;
         pos = transform.position;
     }
@@ -62,19 +65,20 @@ public class Movement : MonoBehaviour
                 {
                     // walking
                     animator.SetBool("isSprinting", false); // turn off running is shift is not down
-                    
 
-                    // play alternate walking (pushing) if left ctrl is down
-                    if (Input.GetKey(KeyCode.LeftControl))
-                    {
-                        animator.SetBool("isPushing", true);
-                        transform.Translate(isoRotate * Time.deltaTime * moveSpeed/4, Space.World);
-                    }
-                    else
-                    {
-                        animator.SetBool("isPushing", false);
-                        transform.Translate(isoRotate * Time.deltaTime * moveSpeed, Space.World);
-                    }
+                    //animator.SetBool("isPushing", isPushing);
+                    // play alternate walking (pushing) as needed
+                    /* if (isPushing)
+                     {
+                         animator.SetBool("isPushing", isPushing);
+                         transform.Translate(isoRotate * Time.deltaTime * moveSpeed/4, Space.World);
+                     }
+                     else
+                     {
+                         animator.SetBool("isPushing", false);
+                         transform.Translate(isoRotate * Time.deltaTime * moveSpeed, Space.World);
+                     }*/
+                    transform.Translate(isoRotate * Time.deltaTime * moveSpeed, Space.World);
                 }
                 
             }
@@ -145,6 +149,8 @@ public class Movement : MonoBehaviour
             animator.SetBool("isWalking", true);
         else
             animator.SetBool("isWalking", false);
+
+        animator.SetBool("isPushing", isPushing);
     }
 
     public void AnimatePickup()
