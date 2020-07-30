@@ -8,12 +8,17 @@ KIKI:
 ~2 %Date time!% I mean, it's still our date...
 
 //Very skeptical this is proper formatting. Make special note of this part in playtesting
+// Modifying this 7/28 - Michelle
 RU:
 ~1 It's all we can do anyway...
-~1 Hey! While we wait, maybe you should practice your potions some more!
-~1 So you can impress |#4D8755 Master Jade|... and I think it's fun, too!
 ~2 Hehe, that's true!
+
+RU:
+~1 Hey! While we wait, maybe you should practice your potions some more!
 ~2 But... I've kinda enjoyed watching you use your magic.
+
+RU:
+~1 So you can impress |#4D8755 Master Jade|... and I think it's fun, too!
 ~2 What if we hang out here and play? *"Study"* for that quiz!
 
 KIKI: That's the spirit!

@@ -24,6 +24,30 @@ public class PlayRockAnim : MonoBehaviour
         }
     }
 
+    static int frameCount = 0;
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            frameCount++;
+            if(frameCount > 60)
+            {
+                bridge.GetComponent<Rigidbody>().WakeUp();
+                frameCount = 0;
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player" && hasFired)
+        {
+            bridge.GetComponent<Rigidbody>().Sleep();
+        }
+    }
+
+
+
     IEnumerator AnimateAfterDelay(float seconds)
     {
         yield return new WaitForSeconds(seconds);

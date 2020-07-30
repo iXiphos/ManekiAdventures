@@ -7,7 +7,7 @@ using TMPro;
 public class DialogueEvent : MonoBehaviour
 {
     static Dictionary<string, GameObject> characters; // string name, GameObject reference to character
-    static Dictionary<string, GameObject> uiElements; // string character name, GameObject ref to its UI chat bubble
+    public static Dictionary<string, GameObject> uiElements; // string character name, GameObject ref to its UI chat bubble
     public static DialogueText currentDialogue;
     public static bool inDialogue;
     public static bool inStaticDialogue;
@@ -338,7 +338,7 @@ public class DialogueEvent : MonoBehaviour
                     optionsLineText += "> " + line.optionNum + ": " + line.synopsisText;
                     optionsLineText += "\n";
                 }
-                optionsLineText = "<color=#7D7D7D> " + optionsLineText;
+                optionsLineText = "<color=#7D7D7D>" + optionsLineText;
 
                 dialogueBox.currLine = optionsLineText;
 
@@ -392,6 +392,10 @@ public class DialogueEvent : MonoBehaviour
                     {
                         dofControl = characters["RU"].GetComponentInChildren<DOFControl>().gameObject;
                     }
+                    if (currentDialogue.interactionEffects.Contains("STATIC")) // zoom in a ton if it's static
+                        dofControl.GetComponent<DOFControl>().additionalOffset = new Vector3(4f, -1.5f, 4f);
+                    else
+                        dofControl.GetComponent<DOFControl>().additionalOffset = Vector3.zero;
                     dofControl.GetComponent<DOFControl>().ToggleFocusCamera();
 
                     goto case "FREEZE_CHAR";
@@ -400,7 +404,7 @@ public class DialogueEvent : MonoBehaviour
                     GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>().canMove = false;
 
                     // turn player to look at what we're focusing on
-                    characters["KIKI"].transform.LookAt(new Vector3(characters["RU"].transform.position.x, characters["KIKI"].transform.position.y, characters["RU"].transform.position.z));
+                    GameObject.FindGameObjectWithTag("Player").transform.LookAt(new Vector3(characters["RU"].transform.position.x, GameObject.FindGameObjectWithTag("Player").transform.position.y, characters["RU"].transform.position.z));
 
                     break;
                 default: break;
