@@ -43,6 +43,9 @@ public class Potion : MonoBehaviour
             {
                 collision.gameObject.GetComponent<UniquePotionInteraction>().ExecuteUniqueInteraction();
             }
+            // play sound
+            GameObject.Find("AudioManager").GetComponent<AudioManager>().Play("breaking-glass-bottle");
+            // play anim
             GameObject explosionGame = Instantiate(explosion, transform.position, transform.rotation);
             Destroy(explosionGame, 2.0f);
         }

@@ -57,6 +57,9 @@ public class tossPotion : MonoBehaviour
                 player.GetComponent<Animator>().SetTrigger("throw");
                 player.transform.LookAt(new Vector3(hit.point.x, player.transform.position.y, hit.point.z));
 
+                // play throw sound
+                GameObject.Find("AudioManager").GetComponent<AudioManager>().Play("whoosh");
+
                 potion.transform.parent = null;
                 while (true)
                 {
