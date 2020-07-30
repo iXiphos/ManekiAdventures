@@ -65,19 +65,6 @@ public class Movement : MonoBehaviour
                 {
                     // walking
                     animator.SetBool("isSprinting", false); // turn off running is shift is not down
-
-                    //animator.SetBool("isPushing", isPushing);
-                    // play alternate walking (pushing) as needed
-                    /* if (isPushing)
-                     {
-                         animator.SetBool("isPushing", isPushing);
-                         transform.Translate(isoRotate * Time.deltaTime * moveSpeed/4, Space.World);
-                     }
-                     else
-                     {
-                         animator.SetBool("isPushing", false);
-                         transform.Translate(isoRotate * Time.deltaTime * moveSpeed, Space.World);
-                     }*/
                     transform.Translate(isoRotate * Time.deltaTime * moveSpeed, Space.World);
                 }
                 
