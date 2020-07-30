@@ -137,8 +137,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 22
-  m_fontSizeBase: 22
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -292,7 +292,8 @@ MonoBehaviour:
   currLine: 
   uiDisplacement: {x: 0, y: 0, z: 0}
   characterToFollow: {fileID: 0}
-  displacement: {x: 0, y: 4.5, z: 0}
+  worldDisplacement: {x: 0, y: 5, z: 0}
+  isTouchingOtherBox: 0
 --- !u!1 &2682691685809230211
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,17 +29,23 @@ public class PlayRockAnim : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-
             frameCount++;
             if(frameCount > 60)
             {
                 bridge.GetComponent<Rigidbody>().WakeUp();
-                //bridge.GetComponent<Rigidbody>().AddForce(new Vector3(-100f, 0, 100f));
-                //bridge.GetComponent<HingeJoint>().axis += new Vector3(0, 1f, 0);
                 frameCount = 0;
             }
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player" && hasFired)
+        {
+            bridge.GetComponent<Rigidbody>().Sleep();
+        }
+    }
+
 
 
     IEnumerator AnimateAfterDelay(float seconds)
