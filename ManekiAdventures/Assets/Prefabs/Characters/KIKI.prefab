@@ -446,7 +446,7 @@ MonoBehaviour:
   canMove: 0
   moveSpeed: 7
   fakeGravityIntensity: 20
-  steepWalkingDiff: 0.35
+  steepWalkingDiff: 0.5
 --- !u!114 &3601153546659899265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,7 +465,7 @@ MonoBehaviour:
   clickMask:
     serializedVersion: 2
     m_Bits: 563
-  speed: 5
+  speed: 10
   smooth: 1
   hand: {fileID: 6728987230307614460}
 --- !u!114 &89952041

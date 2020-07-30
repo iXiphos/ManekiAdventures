@@ -29659,6 +29659,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1858139459}
     m_Modifications:
+    - target: {fileID: 2474107894089818639, guid: 82b6be21f43929a4085957886a00d1f5,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 14.472361
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474107894089818639, guid: 82b6be21f43929a4085957886a00d1f5,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 5.0000033
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474107894089818639, guid: 82b6be21f43929a4085957886a00d1f5,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -11.570273
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474107894089818639, guid: 82b6be21f43929a4085957886a00d1f5,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.060456794
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474107894089818639, guid: 82b6be21f43929a4085957886a00d1f5,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -1.761694
+      objectReference: {fileID: 0}
     - target: {fileID: 6810873359735357398, guid: 82b6be21f43929a4085957886a00d1f5,
         type: 3}
       propertyPath: rock
@@ -113695,31 +113720,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2126047904296282480, guid: a103c41d4f54f0f4f8715067f9501475,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2126047904296282480, guid: a103c41d4f54f0f4f8715067f9501475,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2126047904296282480, guid: a103c41d4f54f0f4f8715067f9501475,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2492488912610652434, guid: a103c41d4f54f0f4f8715067f9501475,
-        type: 3}
-      propertyPath: steepWalkingDiff
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2492488912610652434, guid: a103c41d4f54f0f4f8715067f9501475,
-        type: 3}
-      propertyPath: canMove
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2492488912610652436, guid: a103c41d4f54f0f4f8715067f9501475,
         type: 3}
       propertyPath: m_Name
@@ -113779,11 +113779,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3601153546659899265, guid: a103c41d4f54f0f4f8715067f9501475,
-        type: 3}
-      propertyPath: speed
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a103c41d4f54f0f4f8715067f9501475, type: 3}
