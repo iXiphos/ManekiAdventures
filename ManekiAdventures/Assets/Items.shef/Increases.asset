@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Increases
   m_EditorClassIdentifier: 
   name: Increase
-  icon: {fileID: 21300000, guid: a994cadf90e7243488878eeb53d15f5e, type: 3}
+  icon: {fileID: 3439538020458564785, guid: 295b13d589be5ce45aaf14609174c0c3, type: 3}
   isDefaultItem: 1
   Discriptor: 0
   Attribute: 4
