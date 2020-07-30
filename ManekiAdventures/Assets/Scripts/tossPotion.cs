@@ -52,9 +52,10 @@ public class tossPotion : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0) && (hit.collider.tag == "Interactable" || hit.collider.tag == "AltInteractable"))
             {
-                // I sure do hope this is the right place to put this.
-                //GameObject.Find("DialogueEventController").GetComponent<DialogueEventController>().ExecuteEvent("UNIQUE_THROWPOTION");
-                GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().SetTrigger("throw");
+                // Throw animation & turn player
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                player.GetComponent<Animator>().SetTrigger("throw");
+                player.transform.LookAt(new Vector3(hit.point.x, player.transform.position.y, hit.point.z));
 
                 potion.transform.parent = null;
                 while (true)
