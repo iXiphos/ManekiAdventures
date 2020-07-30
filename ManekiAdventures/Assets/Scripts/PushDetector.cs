@@ -17,7 +17,6 @@ public class PushDetector : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (!other.isTrigger)
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>().isPushing = false;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>().isPushing = false;
     }
 }
