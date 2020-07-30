@@ -36,7 +36,7 @@ public class DialogueEventController : MonoBehaviour
         {
             if (!DialogueEvent.isChoosing)
             {
-                if (Input.GetKeyUp(KeyCode.Space) && DialogueEvent.inDialogue)
+                if ((Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0)) && DialogueEvent.inDialogue)
                 {
                     if (DialogueEvent.inLine)
                         DialogueEvent.ShowFullLine();
@@ -61,8 +61,7 @@ public class DialogueEventController : MonoBehaviour
                         }
                     }
                 }*/
-
-                if ((Input.GetKeyUp(KeyCode.Alpha1) || Input.GetKeyUp(KeyCode.Space)) && DialogueEvent.inDialogue)
+                if ((Input.GetKeyUp(KeyCode.Alpha1) || Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0)) && DialogueEvent.inDialogue)
                 {
                     if (DialogueEvent.inLine)
                         DialogueEvent.ShowFullLine();

@@ -39,6 +39,10 @@ public class Potion : MonoBehaviour
         if(collision.tag == "Interactable")
         {
             StartCoroutine(Explosion(collision.gameObject));
+            if(collision.gameObject.GetComponent<UniquePotionInteraction>() != null)
+            {
+                collision.gameObject.GetComponent<UniquePotionInteraction>().ExecuteUniqueInteraction();
+            }
             GameObject explosionGame = Instantiate(explosion, transform.position, transform.rotation);
             Destroy(explosionGame, 2.0f);
         }
@@ -79,6 +83,7 @@ public class Potion : MonoBehaviour
                 else if (pDiscriptor == discriptor.Decreases)
                 {
                     coll.gameObject.transform.localScale /= SizeDecrease;
+                    Debug.Log("Shrink");
                     Destroy(gameObject);
                 }
                 else

@@ -26,7 +26,7 @@ public class DynamicCamera3D : MonoBehaviour
     public float scrollValue;
 
     Vector3 minCameraOffset = new Vector3(-3f, 4f, -3f);
-    Vector3 maxCameraOffset = new Vector3(-10f, 10f, -10f);
+    Vector3 maxCameraOffset = new Vector3(-11f, 11f, -11f);
 
     public float lerpSpeed = 1f;
 

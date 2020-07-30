@@ -3,7 +3,7 @@
 RU: Oh, it’s that flower! Good idea!
 
 KIKI:
-~1 What idea?
+~1 %What idea?% What idea?
 ~2 %For you!% I picked this flower for my flower!
 RU:
 ~1 That’s a potion ingredient, silly! 
@@ -13,7 +13,7 @@ RU:  The |#D45BD2 pink flowers *increase*| an attribute, and the |#A1A130 yellow
 RU: Wait, you don’t know this? |#944BDI Maneki|, have you been studying *at all?*
 
 KIKI:
-~1 Well...
+~1 %Well...% Well...
 ~2 %Have faith!% C'mon, have some faith in me!
 RU:
 ~1 [SLOW] ...It's fine, it's fine. You got this. I'm not worried at all...

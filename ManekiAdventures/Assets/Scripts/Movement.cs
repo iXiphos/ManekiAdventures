@@ -14,19 +14,22 @@ public class Movement : MonoBehaviour
     public float fakeGravityIntensity = 5f;
     public float steepWalkingDiff = 0.5f; // how steep until the player is not allowed to walk?
 
+    public bool isPushing;
+
     Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-
         canMove = true;
+        isPushing = false;
         pos = transform.position;
         animator = gameObject.GetComponentInChildren<Animator>();
     }
 
     void Update()
     {
+        Debug.Log(isPushing);
         velocity = (transform.position - pos) / Time.deltaTime;
         pos = transform.position;
     }
@@ -62,21 +65,9 @@ public class Movement : MonoBehaviour
                 {
                     // walking
                     animator.SetBool("isSprinting", false); // turn off running is shift is not down
-                    
-
-                    // play alternate walking (pushing) if left ctrl is down
-                    if (Input.GetKey(KeyCode.LeftControl))
-                    {
-                        animator.SetBool("isPushing", true);
-                        transform.Translate(isoRotate * Time.deltaTime * moveSpeed/4, Space.World);
-                    }
-                    else
-                    {
-                        animator.SetBool("isPushing", false);
-                        transform.Translate(isoRotate * Time.deltaTime * moveSpeed, Space.World);
-                    }
+                    transform.Translate(isoRotate * Time.deltaTime * moveSpeed, Space.World);
                 }
-                transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, CalculateYValueOfTerrain(), transform.position.z), Time.deltaTime * fakeGravityIntensity); // adjust y position
+                
             }
 
             // rotate to look the appropriate direction
@@ -91,6 +82,8 @@ public class Movement : MonoBehaviour
             animator.SetBool("isSprinting", false);
             animator.SetBool("isPushing", false);
         }
+
+        transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, CalculateYValueOfTerrain(), transform.position.z), Time.deltaTime * fakeGravityIntensity); // adjust y position
     }
 
     float CalculateYValueOfTerrain()
@@ -124,7 +117,7 @@ public class Movement : MonoBehaviour
             if (hit.collider != null && hit.transform.tag == "Terrain")
             {
                 //Debug.Log(hit.point.y - transform.position.y);
-                if(hit.point.y - transform.position.y > maxDiff || hit.point.y - transform.position.y < -maxDiff*4) //if(Mathf.Abs(hit.point.y - transform.position.y) > maxDiff)
+                if(hit.point.y - transform.position.y > maxDiff || hit.point.y - transform.position.y < -maxDiff) //if(Mathf.Abs(hit.point.y - transform.position.y) > maxDiff)
                 {
                     return false;
                 }
@@ -143,6 +136,8 @@ public class Movement : MonoBehaviour
             animator.SetBool("isWalking", true);
         else
             animator.SetBool("isWalking", false);
+
+        animator.SetBool("isPushing", isPushing);
     }
 
     public void AnimatePickup()

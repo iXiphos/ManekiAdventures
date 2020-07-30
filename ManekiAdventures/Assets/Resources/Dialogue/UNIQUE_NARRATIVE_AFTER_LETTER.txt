@@ -1,19 +1,17 @@
 //Trigger is after first letter
 EFFECTS: FREEZE_CHAR_ZOOM
 
-RU: [SLOW]
-...It's fine, this is fine...
+RU: [SLOW] ...It's fine, this is fine...
 
 KIKI:
 ~1 %Ugh, quiz.% Ugh, not another quiz!
 ~2 %Heheh% Heheh, whoops...
 
-RU: [SHAKE]
-~1 I can't believe she...
-~2 I can't believe she...
+RU: 
+~1 [SHAKE] I can't believe she...
+~2 [SHAKE] I can't believe she...
 
-RU: [SHAKE]
-Wait, you missed <<<FIVE LESSONS?>>>
+RU: [SHAKE] Wait, you missed <<<FIVE LESSONS?>>>
 
 KIKI:
 ~1 %Guilty.% Guilty as charged.
