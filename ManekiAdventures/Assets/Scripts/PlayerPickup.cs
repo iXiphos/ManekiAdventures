@@ -29,7 +29,7 @@ public class PlayerPickup : MonoBehaviour
                 for(int i = 0; i < hitColliders.Length; i++)
                 {
                     if(hitColliders[i] != null)
-                        if(hitColliders[i].tag == "Component")
+                        if(hitColliders[i].tag == "Component" || hitColliders[i].tag == "Respawnable")
                         {
                             Debug.LogError(hitColliders[i].GetComponent<ItemPickup>().item);
                             GameObject.FindGameObjectWithTag("GameController").GetComponent<StoryEventHandler>().PickedUpEvent(hitColliders[i].GetComponent<ItemPickup>().item.name); // execute dialogue as needed
