@@ -204,11 +204,12 @@ public class DialogueEvent : MonoBehaviour
         float typingSpeed = 0.03f; // default speed
         switch(line.lineEffect)
         {
-            case LineEffect.SHAKE: // ********** TO DO *******************
-                dialogueBox.StartCoroutine(ShakeUIItem(dialogueBox));
+            case LineEffect.SHAKE:
+                dialogueBox.gameObject.GetComponent<Animator>().SetTrigger("shake");
+                //dialogueBox.StartCoroutine(ShakeUIItem(dialogueBox));
                 break;
             case LineEffect.SLOW:
-                typingSpeed = 0.2f;
+                typingSpeed = 0.15f;
                 break;
             case LineEffect.FAST:
                 typingSpeed = 0.0001f;
@@ -274,23 +275,27 @@ public class DialogueEvent : MonoBehaviour
         inLine = false;
     }
 
+    // DEPRECATED
     private static IEnumerator ShakeUIItem(DialogueBox ui)
     {
+        
         //bool isShaking = true;
+        
         float duration = 0.5f;
         float timeElapsed = 0f;
         while (timeElapsed < duration)
         {
             timeElapsed += Time.deltaTime;
-            float shakeX = Mathf.Pow(duration/70f, duration) * Mathf.Sin(timeElapsed * 70f) * 500f;
+            float shakeX = Mathf.Pow(duration/70f, duration) * Mathf.Sin(timeElapsed * 10f) * 500f;
             float shakeY = Mathf.Pow(duration / 70f, duration) * Mathf.Sin(timeElapsed * 50f) * 500f;
-            ui.uiDisplacement = Vector3.Lerp(ui.uiDisplacement, new Vector3(shakeX, shakeY, 0), Time.deltaTime*5f);
+            //ui.uiDisplacement = Vector3.Lerp(ui.uiDisplacement, new Vector3(shakeX, shakeY, 0), Time.deltaTime*5f);
+            ui.uiDisplacement = new Vector3(shakeX, 0, 0);
             yield return new WaitForSecondsRealtime(Time.deltaTime);
         }
         
         yield return new WaitForSecondsRealtime(duration);
         timeElapsed = 0f;
-        while (timeElapsed < duration)
+        while (timeElapsed < duration*2)
         {
             timeElapsed += Time.deltaTime;
             Vector3.Lerp(ui.uiDisplacement, new Vector3(0, 0, 0), Time.deltaTime * 5f);

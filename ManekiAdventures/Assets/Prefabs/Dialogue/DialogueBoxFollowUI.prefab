@@ -213,6 +213,7 @@ GameObject:
   - component: {fileID: 7793171676723483240}
   - component: {fileID: 4491255480404251242}
   - component: {fileID: 7785781871833003151}
+  - component: {fileID: 4048362826349627110}
   m_Layer: 5
   m_Name: DialogueBoxFollowUI
   m_TagString: Untagged
@@ -294,6 +295,25 @@ MonoBehaviour:
   characterToFollow: {fileID: 0}
   worldDisplacement: {x: 0, y: 5, z: 0}
   isTouchingOtherBox: 0
+--- !u!95 &4048362826349627110
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044516235916537901}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 92863fdad7dc76d47a156c2b4f4e410f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2682691685809230211
 GameObject:
   m_ObjectHideFlags: 0

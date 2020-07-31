@@ -24,19 +24,22 @@ public class NoteTrigger : MonoBehaviour
                 inEvent = true;
                 GameObject.Find("UICanvases").GetComponent<CanvasManager>().SetGamestateByCanvasName("ScrollCanvas");
                 scrollEventController.GetComponent<ScrollEventController>().DisplayScroll(imgFileName);
-                if(eventAfterFileName.Contains("UNIQUE"))
+                if(eventAfterFileName != "")
                 {
-                    if (StoryEventHandler.uniqueEventTracker.ContainsKey(eventAfterFileName))
-                        return;
+                    if (eventAfterFileName.Contains("UNIQUE"))
+                    {
+                        if (StoryEventHandler.uniqueEventTracker.ContainsKey(eventAfterFileName))
+                            return;
+                        else
+                        {
+                            StoryEventHandler.uniqueEventTracker[eventAfterFileName] = true;
+                            StartCoroutine(FireDialogueAfterExit());
+                        }
+                    }
                     else
                     {
-                        StoryEventHandler.uniqueEventTracker[eventAfterFileName] = true;
                         StartCoroutine(FireDialogueAfterExit());
                     }
-                }
-                else
-                {
-                    StartCoroutine(FireDialogueAfterExit());
                 }
             }
         }

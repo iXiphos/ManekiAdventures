@@ -147,8 +147,12 @@ public class ScrollEventController : MonoBehaviour
 
             scrollImage.GetComponent<Image>().sprite = img;
             scrollImage.GetComponent<Image>().SetNativeSize();
+           
+            if(scroll.imgFile.Contains("Tutorial"))
+                scrollImage.GetComponent<RectTransform>().localScale = new Vector3(0.2f, 0.2f, 0.2f); // scale to fit
+            else
+                scrollImage.GetComponent<RectTransform>().localScale = new Vector3(0.37f, 0.37f, 0.37f); // scale to fit
 
-            scrollImage.GetComponent<RectTransform>().localScale = new Vector3(0.37f, 0.37f, 0.37f); // scale to fit
             scrollImage.GetComponent<RectTransform>().localPosition = new Vector3(Screen.width * totalNumScrollsInMulti, 0, 0); // center the image with displacement
             totalNumScrollsInMulti++;
         }
@@ -179,7 +183,10 @@ public class ScrollEventController : MonoBehaviour
         scrollImage.GetComponent<Image>().sprite = img;
         scrollImage.GetComponent<Image>().SetNativeSize();
 
-        scrollImage.GetComponent<RectTransform>().localScale = new Vector3(0.37f, 0.37f, 0.37f); // scale to fit
+        if (imgFile.Contains("Tutorial"))
+            scrollImage.GetComponent<RectTransform>().localScale = new Vector3(0.2f, 0.2f, 0.2f); // scale to fit
+        else
+            scrollImage.GetComponent<RectTransform>().localScale = new Vector3(0.37f, 0.37f, 0.37f); // scale to fit
         scrollImage.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0); // center the image
 
         // after displaying, keep track of what you've displayed
@@ -207,6 +214,7 @@ public class ScrollEventController : MonoBehaviour
             scrollsInteracted.Add(scrollToAdd);
     }
 
+    //DEPRECATED--------------------------
     public void DisplayScroll(string imgFile, string textFile)
     {
         inScrollEvent = true;
@@ -226,6 +234,7 @@ public class ScrollEventController : MonoBehaviour
             formattedText = text,
         });
     }
+    //------------------------------------
 
     public static void NextScroll()
     {

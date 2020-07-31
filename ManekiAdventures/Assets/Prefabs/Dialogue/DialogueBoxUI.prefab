@@ -213,6 +213,7 @@ GameObject:
   - component: {fileID: 496713948412498636}
   - component: {fileID: 6095169086581592782}
   - component: {fileID: 7258847219435450506}
+  - component: {fileID: 3214390889971593167}
   m_Layer: 5
   m_Name: DialogueBoxUI
   m_TagString: Untagged
@@ -291,6 +292,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currLine: 
   uiDisplacement: {x: 0, y: 0, z: 0}
+--- !u!95 &3214390889971593167
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7258847219435450505}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a8e86974305dbc940942171ca29a91d1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7456642715782404020
 GameObject:
   m_ObjectHideFlags: 0
