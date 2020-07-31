@@ -12,6 +12,7 @@ public class ScrollEventController : MonoBehaviour
     public GameObject imagePrefab;
     //public GameObject textPrefab;
     public GameObject scrollsParent;
+    public GameObject warnText;
 
     bool inScrollEvent = false;
 
@@ -55,6 +56,24 @@ public class ScrollEventController : MonoBehaviour
         }
     }
 
+    public void ExecuteScrollEventByString(string imgFileName)
+    {
+        GameObject canvasManager = GameObject.Find("UICanvases");
+        if (imgFileName == "ALL")
+        {
+            // multi
+            canvasManager.GetComponent<CanvasManager>().SetGamestateByCanvasName("ScrollCanvas");
+            gameObject.GetComponent<ScrollEventController>().DisplayMultiple(ScrollEventController.scrollsInteracted);
+        }
+        //----------------------------------------
+        else
+        {
+            // execute image only
+            canvasManager.GetComponent<CanvasManager>().SetGamestateByCanvasName("ScrollCanvas");
+            gameObject.GetComponent<ScrollEventController>().DisplayScroll(imgFileName);
+        }
+    }
+
     public void ExitScrollUI()
     {
         // hide any scroll UI --> Handled by canvas manager
@@ -70,6 +89,7 @@ public class ScrollEventController : MonoBehaviour
 
         inMultiScrollEvent = false;
         inScrollEvent = false;
+        warnText.SetActive(false);
     }
 
     public void DisplayMultiple(List<ScrollData> scrolls) // displays multiple scrollData with arrows to switch between
@@ -131,6 +151,11 @@ public class ScrollEventController : MonoBehaviour
             scrollImage.GetComponent<RectTransform>().localScale = new Vector3(0.37f, 0.37f, 0.37f); // scale to fit
             scrollImage.GetComponent<RectTransform>().localPosition = new Vector3(Screen.width * totalNumScrollsInMulti, 0, 0); // center the image with displacement
             totalNumScrollsInMulti++;
+        }
+
+        if (totalNumScrollsInMulti == 0)
+        {
+            warnText.SetActive(true);
         }
 
         // keep track of scroll numbers

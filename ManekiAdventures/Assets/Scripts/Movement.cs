@@ -42,7 +42,7 @@ public class Movement : MonoBehaviour
 
     void MoveHorizontal()
     {
-        if(canMove)
+        if(canMove && !CanvasManager.isPaused)
         {
             // collect inputs
             inputMovement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
@@ -76,12 +76,14 @@ public class Movement : MonoBehaviour
         else
         {
             inputMovement = Vector3.zero;
+
             //disable animations
             animator.SetBool("isWalking", false);
             animator.SetBool("isSprinting", false);
             animator.SetBool("isPushing", false);
         }
-
+        if(inputMovement.magnitude <= 0.01f)
+            gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, CalculateYValueOfTerrain(), transform.position.z), Time.deltaTime * fakeGravityIntensity); // adjust y position
     }
 

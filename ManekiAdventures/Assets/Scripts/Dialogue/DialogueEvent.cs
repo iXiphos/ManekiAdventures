@@ -384,13 +384,13 @@ public class DialogueEvent : MonoBehaviour
             {
                 case "FREEZE_CHAR_ZOOM":
                     //zoom char
-                    if (characters["RU"].GetComponentInChildren<DOFControl>() == null)
+                    if (GameObject.Find("RU_TARGET").GetComponentInChildren<DOFControl>() == null)
                     {
-                        dofControl = GameObject.Instantiate(DialogueEventController.dofController, characters["RU"].transform);
+                        dofControl = GameObject.Instantiate(DialogueEventController.dofController, GameObject.Find("RU_TARGET").transform);
                     }
                     else
                     {
-                        dofControl = characters["RU"].GetComponentInChildren<DOFControl>().gameObject;
+                        dofControl = GameObject.Find("RU_TARGET").GetComponentInChildren<DOFControl>().gameObject;
                     }
                     if (currentDialogue.interactionEffects.Contains("STATIC")) // zoom in a ton if it's static
                         dofControl.GetComponent<DOFControl>().additionalOffset = new Vector3(4f, -1.5f, 4f);
@@ -404,7 +404,7 @@ public class DialogueEvent : MonoBehaviour
                     GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>().canMove = false;
 
                     // turn player to look at what we're focusing on
-                    GameObject.FindGameObjectWithTag("Player").transform.LookAt(new Vector3(characters["RU"].transform.position.x, GameObject.FindGameObjectWithTag("Player").transform.position.y, characters["RU"].transform.position.z));
+                    GameObject.FindGameObjectWithTag("Player").transform.LookAt(new Vector3(GameObject.Find("RU_TARGET").transform.position.x, GameObject.FindGameObjectWithTag("Player").transform.position.y, GameObject.Find("RU_TARGET").transform.position.z));
 
                     break;
                 default: break;

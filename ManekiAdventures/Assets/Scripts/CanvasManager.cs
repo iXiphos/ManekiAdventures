@@ -6,6 +6,11 @@ public class CanvasManager : MonoBehaviour
 {
     static public string canvasState;
     Dictionary<string, Canvas> canvases;
+
+    //public GameObject pauseMenuController;
+
+    public static bool isPaused = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +26,19 @@ public class CanvasManager : MonoBehaviour
 
         canvasState = "MainMenuCanvas"; // set default to main menu
         SetGamestateByCanvas(canvases[canvasState]);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            TogglePauseMenu();
+        }
+    }
+
+    public void TogglePauseMenu()
+    {
+        SetGamestateByCanvasName("PauseMenuCanvas");
     }
 
     void SetCanvasActive(Canvas canvas, bool isActive)
@@ -57,7 +75,12 @@ public class CanvasManager : MonoBehaviour
 
                 break;
             case "PauseMenuCanvas":
-                GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>().canMove = false;
+                // toggle
+                isPaused = !isPaused;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>().canMove = !isPaused;
+                //pauseMenuController.GetComponent<MainMenuViewSwitcher>().ShowView("MainPauseView");
+                SetCanvasActive(canvases[canvas.name], isPaused);
+
                 // disable interacting with all canvases except this one
                 // ******************************************************
                 break;
@@ -127,7 +150,7 @@ public class CanvasManager : MonoBehaviour
     IEnumerator ZoomCameraIn()
     {
         float timeElapsed = 0f;
-        float duration = 0.4f;
+        float duration = 0.3f;
         DynamicCamera3D dc = GameObject.Find("DynamicCamera3D").GetComponent<DynamicCamera3D>();
         while(timeElapsed < duration)
         {

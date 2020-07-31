@@ -32,7 +32,7 @@ public class DialogueEventController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (DialogueEvent.inDialogue)
+        if (DialogueEvent.inDialogue && !CanvasManager.isPaused)
         {
             if (!DialogueEvent.isChoosing)
             {

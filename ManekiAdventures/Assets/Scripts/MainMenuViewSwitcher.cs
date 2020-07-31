@@ -5,11 +5,12 @@ using UnityEngine;
 public class MainMenuViewSwitcher : MonoBehaviour
 {
     public List<GameObject> views;
+    public string defaultView = "MainView";
 
     // Start is called before the first frame update
     void Start()
     {
-        ShowView("MainView");
+        ShowView(defaultView);
     }
 
     // Update is called once per frame
