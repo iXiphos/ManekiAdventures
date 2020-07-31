@@ -80,6 +80,10 @@ public class tossPotion : MonoBehaviour
                 Destroy(potion);
                 potionItem = null;
                 potion = null;
+                for (int i = 1; i <= 30; i++)
+                {
+                    lineRenderer.SetPosition(i - 1, Vector3.zero);
+                }
                 break;
             }
             if (debugPath)
