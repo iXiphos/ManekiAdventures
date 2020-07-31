@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 1984259586786494307}
   - component: {fileID: 1984259586786494304}
   - component: {fileID: 1984259586786494305}
-  - component: {fileID: 1984259586786494318}
   - component: {fileID: 1984259586786494319}
   - component: {fileID: 1984259586786494316}
+  - component: {fileID: 6433410775490133384}
+  - component: {fileID: 8686802479329731734}
   m_Layer: 0
   m_Name: Friction
   m_TagString: Respawnable
@@ -30,7 +31,7 @@ RectTransform:
   m_GameObject: {fileID: 1984259586786494317}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 17.77}
-  m_LocalScale: {x: 1.70142, y: 1.409748, z: 1.652808}
+  m_LocalScale: {x: 17.252096, y: 14.294595, z: 16.75918}
   m_Children:
   - {fileID: 1984259587047658590}
   - {fileID: 7527403493478857665}
@@ -89,19 +90,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &1984259586786494318
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1984259586786494317}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1984259586786494319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +113,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1984259586786494317}
   m_CullTransparentMesh: 0
+--- !u!65 &6433410775490133384
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984259586786494317}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.151933, y: 5.7029653, z: 11.213497}
+  m_Center: {x: -0.50395954, y: 0.40086547, z: -0.13944493}
+--- !u!114 &8686802479329731734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984259586786494317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62104b6175d813a479a31f387285da28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 1984259587047658591}
 --- !u!1 &1984259587047658591
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,16 +166,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1984259587047658591}
-  m_LocalRotation: {x: 0.31724858, y: -0, z: -0, w: 0.94834244}
+  m_LocalRotation: {x: 0.031048456, y: -0, z: -0, w: 0.9995179}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.393104, y: 1.393104, z: 1.393104}
   m_Children: []
   m_Father: {fileID: 1984259586786494307}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 36.993, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 3.558, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.01, y: -0.11}
+  m_AnchoredPosition: {x: 9.18, y: -0.11}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &1984259587047658578
@@ -237,9 +251,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Friction
-
-'
+  m_text: Press E To Pick Up
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -305,13 +317,13 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 15.979987, w: 3.6802518}
+  m_margin: {x: 0, y: 0, z: 12.236219, w: 3.6802518}
   m_textInfo:
     textComponent: {fileID: 1984259587047658577}
-    characterCount: 9
+    characterCount: 18
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 1
+    spaceCount: 4
+    wordCount: 5
     linkCount: 0
     lineCount: 1
     pageCount: 1

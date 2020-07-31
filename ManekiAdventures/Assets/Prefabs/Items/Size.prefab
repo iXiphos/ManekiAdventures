@@ -27,16 +27,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 387360818272325227}
-  m_LocalRotation: {x: 0.31724858, y: -0, z: -0, w: 0.94834244}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.00043752603, y: -0, z: -0, w: 0.99999994}
+  m_LocalPosition: {x: 0, y: 0, z: -0.58}
+  m_LocalScale: {x: 1.4961, y: 1.4961, z: 1.4961}
   m_Children: []
   m_Father: {fileID: 387360819566027971}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 36.993, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.05, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.31, y: -0.11}
+  m_AnchoredPosition: {x: 10.41, y: 0.15}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &387360818272325216
@@ -112,9 +112,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Size
-
-'
+  m_text: Press E to Pick Up
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -180,13 +178,13 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 15.979987, w: 3.6802518}
+  m_margin: {x: 0, y: 0, z: 13.178318, w: 3.6802518}
   m_textInfo:
     textComponent: {fileID: 387360818272325229}
-    characterCount: 5
+    characterCount: 18
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 1
+    spaceCount: 4
+    wordCount: 5
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -297,11 +295,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 387360819566027982}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 17.319891, y: 3.0860016, z: 18.992283}
+  m_Center: {x: 0.25989756, y: 1.0430008, z: 0.09063803}
 --- !u!114 &387360819566027983
 MonoBehaviour:
   m_ObjectHideFlags: 0
