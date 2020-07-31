@@ -570,7 +570,8 @@ MonoBehaviour:
     type: 3}
   clickMask:
     serializedVersion: 2
-    m_Bits: 531
+    m_Bits: 535
+  potionItem: {fileID: 0}
   speed: 10
   hand: {fileID: 6728987230307614460}
   h: 6
