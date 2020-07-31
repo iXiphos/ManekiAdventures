@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerPickup : MonoBehaviour
 {
     public int radius;
 
-
+    Collider[] hitColliders;
 
     // Start is called before the first frame update
     void Start()
@@ -17,13 +18,14 @@ public class PlayerPickup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             // play pickup animation
             gameObject.GetComponent<Movement>().AnimatePickup();
 
             // pickup item
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
+            hitColliders = Physics.OverlapSphere(transform.position, radius);
             if (hitColliders.Length != 0)
             {
                 for(int i = 0; i < hitColliders.Length; i++)

@@ -39,20 +39,6 @@ public class PlayerController : MonoBehaviour
         //    }
         //}
 
-        if (Input.GetMouseButtonDown(1)) //using right mouse click will interact with an object
-        {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, 100))
-            {
-                Interactable interactable = hit.collider.GetComponent<Interactable>();
-                if (interactable != null)
-                {
-                    SetFocus(interactable);
-                }
-            }
-        }
     }
 
     void SetFocus (Interactable newFocus) //sets the camera focus to not be the player

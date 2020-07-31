@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6888528504672595333}
   - component: {fileID: 6888528504672595338}
   - component: {fileID: 6888528504672595339}
+  - component: {fileID: 6201854472430999361}
   m_Layer: 0
   m_Name: Increase
   m_TagString: Respawnable
@@ -92,11 +93,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6888528504672595336}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 37.73899, y: 12.095228, z: 39.851612}
+  m_Center: {x: -1.0180501, y: 5.547614, z: 0.35642314}
 --- !u!114 &6888528504672595339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +113,19 @@ MonoBehaviour:
   radius: 3
   interactionTransform: {fileID: 6888528504672595335}
   item: {fileID: 11400000, guid: d1d434d299b63554a9800a34efcb62a9, type: 2}
+--- !u!114 &6201854472430999361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6888528504672595336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62104b6175d813a479a31f387285da28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 6888528505044062250}
 --- !u!1 &6888528505044062250
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,16 +153,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6888528505044062250}
-  m_LocalRotation: {x: 0.31724858, y: -0, z: -0, w: 0.94834244}
-  m_LocalPosition: {x: 0, y: 0, z: 1.01}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.045434803, y: -0, z: -0, w: 0.99896735}
+  m_LocalPosition: {x: 0, y: 0, z: -2.22}
+  m_LocalScale: {x: 2.8298156, y: 2.8298156, z: 2.8298156}
   m_Children: []
   m_Father: {fileID: 6888528504672595335}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 36.993, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 5.208, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8.36, y: 1.47}
+  m_AnchoredPosition: {x: 17.37, y: 4.97}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &6888528505044062241
@@ -224,7 +238,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Increase
+  m_text: 'Press E To Pick Up
 
 '
   m_isRightToLeft: 0
@@ -292,13 +306,13 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 15.979987, w: 3.6802518}
+  m_margin: {x: 0, y: 0, z: 10.011016, w: 3.6802518}
   m_textInfo:
     textComponent: {fileID: 6888528505044062244}
-    characterCount: 9
+    characterCount: 19
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 1
+    spaceCount: 5
+    wordCount: 5
     linkCount: 0
     lineCount: 1
     pageCount: 1
