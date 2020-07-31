@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayRockAnim : MonoBehaviour
 {
+    public GameObject animatorObj;
     public GameObject rock;
     public GameObject bridge;
     public GameObject particles;
@@ -13,8 +14,8 @@ public class PlayRockAnim : MonoBehaviour
     private void Awake()
     {
         //bridge.SetActive(false);
-        bridge.GetComponent<Rigidbody>().Sleep();
-        bridge.GetComponent<Rigidbody>().useGravity = false;
+        //bridge.GetComponent<Rigidbody>().Sleep();
+        //bridge.GetComponent<Rigidbody>().useGravity = false;
         bridge.GetComponent<Collider>().enabled = false;
     }
 
@@ -26,7 +27,7 @@ public class PlayRockAnim : MonoBehaviour
         }
     }
 
-    static int frameCount = 0;
+    /*static int frameCount = 0;
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player")
@@ -46,23 +47,22 @@ public class PlayRockAnim : MonoBehaviour
         {
             bridge.GetComponent<Rigidbody>().Sleep();
         }
-    }
-
+    }*/
 
 
     IEnumerator AnimateAfterDelay(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        
-        rock.GetComponent<Animator>().SetTrigger("rockGrow");
+
+        animatorObj.GetComponent<Animator>().SetTrigger("rockGrow");
         GameObject particlesObj = Instantiate(particles);
         particlesObj.transform.position = rock.transform.position;
         //bridge.SetActive(true);
-        bridge.GetComponent<Collider>().enabled = true;
-        bridge.GetComponent<Rigidbody>().useGravity = true;
+        //bridge.GetComponent<Collider>().enabled = true;
+       // bridge.GetComponent<Rigidbody>().useGravity = true;
         hasFired = true;
 
         yield return new WaitForSeconds(1f);
-        rock.GetComponent<Animator>().enabled = false;
+        //rock.GetComponent<Animator>().enabled = false;
     }
 }

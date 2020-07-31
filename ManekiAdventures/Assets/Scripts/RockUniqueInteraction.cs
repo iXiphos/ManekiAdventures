@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RockUniqueInteraction : UniquePotionInteraction
 {
+    public GameObject animatorObj;
+
     public override void ExecuteUniqueInteraction()
     {
         if (StoryEventHandler.uniqueEventTracker.ContainsKey("UNIQUE_THROWPOTION")) // if the player has seen this dialogue, do not execute
@@ -13,5 +15,6 @@ public class RockUniqueInteraction : UniquePotionInteraction
 
         // fire event
         GameObject.Find("DialogueEventController").GetComponent<DialogueEventController>().ExecuteEvent("UNIQUE_THROWPOTION");
+        animatorObj.GetComponent<Animator>().SetTrigger("rockSmall");
     }
 }
