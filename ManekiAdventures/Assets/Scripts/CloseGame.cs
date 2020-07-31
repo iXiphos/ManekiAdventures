@@ -7,7 +7,7 @@ public class CloseGame : MonoBehaviour
    public void QuitApplication()
     {
         //IF IN EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
 
         //IF IN EXECUTABLE
         Application.Quit();
