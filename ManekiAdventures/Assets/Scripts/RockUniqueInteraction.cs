@@ -5,6 +5,7 @@ using UnityEngine;
 public class RockUniqueInteraction : UniquePotionInteraction
 {
     public GameObject animatorObj;
+    public GameObject bridgeCollider;
 
     public override void ExecuteUniqueInteraction()
     {
@@ -16,5 +17,6 @@ public class RockUniqueInteraction : UniquePotionInteraction
         // fire event
         GameObject.Find("DialogueEventController").GetComponent<DialogueEventController>().ExecuteEvent("UNIQUE_THROWPOTION");
         animatorObj.GetComponent<Animator>().SetTrigger("rockSmall");
+        bridgeCollider.SetActive(true);
     }
 }
