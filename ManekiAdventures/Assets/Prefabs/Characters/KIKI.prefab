@@ -525,10 +525,12 @@ MonoBehaviour:
     type: 3}
   clickMask:
     serializedVersion: 2
-    m_Bits: 563
+    m_Bits: 531
   speed: 10
-  smooth: 1
   hand: {fileID: 6728987230307614460}
+  h: 6
+  gravity: -18
+  debugPath: 1
 --- !u!114 &89952041
 MonoBehaviour:
   m_ObjectHideFlags: 0
