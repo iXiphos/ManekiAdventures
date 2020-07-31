@@ -42,7 +42,8 @@ public class InventorySlot : MonoBehaviour
             {
                 GameObject.Find("KIKI").GetComponent<tossPotion>().createPotion(item);
                 StartCoroutine(GameObject.Find("KIKI").GetComponent<tossPotion>().createTarget());
-                Inventory.instance.Remove(item);
+                GameObject.Find("KIKI").GetComponent<tossPotion>().potionItem = item;
+               Inventory.instance.Remove(item);
             }
             else if(craftingSystem.activeSelf)
             {

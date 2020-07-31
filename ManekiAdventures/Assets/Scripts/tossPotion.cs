@@ -12,6 +12,8 @@ public class tossPotion : MonoBehaviour
 
     public LayerMask clickMask;
 
+    public Item potionItem;
+
     bool active;
 
     public float speed;
@@ -72,6 +74,14 @@ public class tossPotion : MonoBehaviour
                 lineRenderer.endColor = Color.red;
             }
 
+            if (Input.GetMouseButtonDown(1))
+            {
+                Inventory.instance.Add(potionItem);
+                Destroy(potion);
+                potionItem = null;
+                potion = null;
+                break;
+            }
             if (debugPath)
             {
                 DrawPath();
@@ -91,7 +101,9 @@ public class tossPotion : MonoBehaviour
                 potion.transform.parent = null;
                 Launch();
                 lineRenderer.enabled = false;
-                yield return null;
+                potion = null;
+                active = false;
+                break;
             }
             yield return null;
         }
