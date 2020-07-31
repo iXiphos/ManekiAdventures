@@ -209,7 +209,7 @@ public class DialogueEvent : MonoBehaviour
                 //dialogueBox.StartCoroutine(ShakeUIItem(dialogueBox));
                 break;
             case LineEffect.SLOW:
-                typingSpeed = 0.15f;
+                typingSpeed = 0.3f;
                 break;
             case LineEffect.FAST:
                 typingSpeed = 0.0001f;

@@ -44,9 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultFocus: 10
-  defaultAperture: 5.6
+  defaultAperture: 0.35
   focusValue: 3
-  apertureValue: 3
+  apertureValue: 1
   rotationSpeed: 15
   playerHeight: 3
-  postProcProf: {fileID: 11400000, guid: 885382809ee86be4a8e1792213cb41ed, type: 2}
+  additionalOffset: {x: 0, y: 0, z: 0}
+  postProcProf: {fileID: 11400000, guid: 0de84edb538cf754880e0d59214faf32, type: 2}

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1984259586786494319}
   - component: {fileID: 1984259586786494316}
   - component: {fileID: 4279011363153212747}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Weight
   m_TagString: Respawnable
   m_Icon: {fileID: 0}
@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 1984259587047658579}
   - component: {fileID: 1984259587047658576}
   - component: {fileID: 1984259587047658577}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 5384115021557328986}
   - component: {fileID: 5384115021557328984}
   - component: {fileID: 5384115021557328985}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5185,6 +5185,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MA_EnvArt_WeightP_v02
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: edabc27e69d4737438d8be48ab83cc10,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5149667974664665055, guid: edabc27e69d4737438d8be48ab83cc10,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edabc27e69d4737438d8be48ab83cc10, type: 3}

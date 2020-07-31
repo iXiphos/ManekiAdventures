@@ -55,6 +55,7 @@ public class PotionCreation : MonoBehaviour
         {
             potionText.text = piece1.getAttribute().ToString() + " " + piece2.getDiscriptor().ToString() + " Potion";
             craftingImage3.sprite = potionSprite;
+            craftingImage3.GetComponent<RectTransform>().localScale = new Vector3(2, 2, 2);
             craftingImage3.enabled = true;
         }
         

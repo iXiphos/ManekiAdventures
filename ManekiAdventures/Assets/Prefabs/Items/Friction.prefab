@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1984259586786494316}
   - component: {fileID: 6433410775490133384}
   - component: {fileID: 8686802479329731734}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Friction
   m_TagString: Respawnable
   m_Icon: {fileID: 0}
@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 1984259587047658579}
   - component: {fileID: 1984259587047658576}
   - component: {fileID: 1984259587047658577}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 5883756356972742448}
   - component: {fileID: 5883756356972742450}
   - component: {fileID: 5883756356972742451}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5106,6 +5106,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1984259586786494307}
     m_Modifications:
+    - target: {fileID: -7003570966456688740, guid: f18e57a0f05ef1a4389a38672def0cab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: f18e57a0f05ef1a4389a38672def0cab,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5180,6 +5185,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MA_EnvArt_FrictionP_01
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: f18e57a0f05ef1a4389a38672def0cab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3864119991472983721, guid: f18e57a0f05ef1a4389a38672def0cab,
         type: 3}

@@ -155,7 +155,7 @@ public class CanvasManager : MonoBehaviour
         while(timeElapsed < duration)
         {
             timeElapsed += Time.deltaTime;
-            dc.scrollValue = 1f * Time.deltaTime;
+            dc.scrollValue = 0.5f * Time.deltaTime;
             yield return new WaitForSecondsRealtime(Time.deltaTime);
         }
 

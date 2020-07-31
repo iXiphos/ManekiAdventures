@@ -9,9 +9,9 @@ using UnityEngine.PostProcessing;
 public class DOFControl : MonoBehaviour
 {
     public float defaultFocus = 10f;
-    public float defaultAperture = 5.6f;
-    public float focusValue = 0.5f; // what the DOF changes to upon interaction
-    public float apertureValue = 3.0f; // what the aperature changes to upon interaction
+    public float defaultAperture = 0.35f;
+    public float focusValue = 3f; // what the DOF changes to upon interaction
+    public float apertureValue = 1f; // what the aperature changes to upon interaction
     public float rotationSpeed = 15f;
     public float playerHeight = 2f;
 
@@ -81,9 +81,9 @@ public class DOFControl : MonoBehaviour
         {
             // reset DOF settings
             postProcProf.depthOfField.settings = defaultDOFVal;
-           // dof.focusDistance = defaultFocus;
-           // dof.aperture = defaultAperture;
-           // postProcProf.depthOfField.settings = dof;
+            dof.focusDistance = defaultFocus;
+            dof.aperture = defaultAperture;
+            postProcProf.depthOfField.settings = dof;
             ReturnToDefaultState();
         }
     }

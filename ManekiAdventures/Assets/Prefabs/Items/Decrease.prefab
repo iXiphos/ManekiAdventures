@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3565534502665313915}
   - component: {fileID: 8042445200743661011}
   - component: {fileID: 5249998351823045321}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TMP SubMesh [LiberationSans SDF Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 1984574063542792307}
   - component: {fileID: 1984574063542792316}
   - component: {fileID: 1984574063542792317}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,7 +322,7 @@ GameObject:
   - component: {fileID: 1984574064010897972}
   - component: {fileID: 1984574064010897960}
   - component: {fileID: 1389128831606715932}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Decrease
   m_TagString: Respawnable
   m_Icon: {fileID: 0}
@@ -458,7 +458,7 @@ GameObject:
   - component: {fileID: 9194044165945284286}
   - component: {fileID: 9194044165945284284}
   - component: {fileID: 9194044165945284285}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5282,6 +5282,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MA_EnvArt_DecreaseP_v01
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: f566c76aa6b36cf4c9ed12d7c1f80df2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6862445377086027691, guid: f566c76aa6b36cf4c9ed12d7c1f80df2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f566c76aa6b36cf4c9ed12d7c1f80df2, type: 3}

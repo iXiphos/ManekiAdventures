@@ -6,6 +6,7 @@ using TMPro;
 
 public class DialogueBoxFollow : DialogueBox
 {
+    public GameObject followParent;
     public GameObject characterToFollow;
     public Vector3 worldDisplacement = new Vector3(0, 5f, 0);
 
@@ -29,9 +30,9 @@ public class DialogueBoxFollow : DialogueBox
         if (characterToFollow != null)
         {
             // calculate box dimentions
-            boxDimentions = gameObject.GetComponent<Image>().sprite.rect.size/4;
-            boxScale = gameObject.GetComponent<RectTransform>().lossyScale;
-            pixelsPerUnit = gameObject.GetComponent<Image>().sprite.pixelsPerUnit;
+            boxDimentions = followParent.GetComponent<Image>().sprite.rect.size/4;
+            boxScale = followParent.GetComponent<RectTransform>().lossyScale;
+            pixelsPerUnit = followParent.GetComponent<Image>().sprite.pixelsPerUnit;
             boxDimentions /= pixelsPerUnit/10;
             boxDimentions = new Vector3(boxDimentions.x * boxScale.x, boxDimentions.y * boxScale.y, boxDimentions.z * boxScale.z);// * pixelsPerUnit;
             boxDimentions.x *= 3f / 2f;
@@ -95,7 +96,7 @@ public class DialogueBoxFollow : DialogueBox
             }
 
             // set position
-            gameObject.GetComponent<RectTransform>().position = Vector3.Lerp(gameObject.GetComponent<RectTransform>().position, uiPos, Time.deltaTime * 4f);
+            followParent.GetComponent<RectTransform>().position = Vector3.Lerp(followParent.GetComponent<RectTransform>().position, uiPos, Time.deltaTime * 4f);
 
         }
 
@@ -105,13 +106,4 @@ public class DialogueBoxFollow : DialogueBox
             textUI.text = currLine;
         }
     }
-    /*
-    private void Update()
-    {
-        // NOTE THAT THIS IS HARDCODED AND SHOULD BE FIXED!!!!!!!!!!1 ********************
-        //GameObject ru = GameObject.Find("RU");
-        //GameObject kiki = GameObject.Find("KIKI");
-        //displacement = new Vector3(0, Vector3.Distance(ru.transform.position, kiki.transform.position), 0);
-        worldDisplacement = new Vector3(0, 4.5f, 0);
-    }*/
 }

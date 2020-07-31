@@ -13,7 +13,9 @@ public class PlayRockAnim : MonoBehaviour
     private void Awake()
     {
         //bridge.SetActive(false);
+        bridge.GetComponent<Rigidbody>().Sleep();
         bridge.GetComponent<Rigidbody>().useGravity = false;
+        bridge.GetComponent<Collider>().enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -51,10 +53,12 @@ public class PlayRockAnim : MonoBehaviour
     IEnumerator AnimateAfterDelay(float seconds)
     {
         yield return new WaitForSeconds(seconds);
+        
         rock.GetComponent<Animator>().SetTrigger("rockGrow");
         GameObject particlesObj = Instantiate(particles);
         particlesObj.transform.position = rock.transform.position;
         //bridge.SetActive(true);
+        bridge.GetComponent<Collider>().enabled = true;
         bridge.GetComponent<Rigidbody>().useGravity = true;
         hasFired = true;
 
