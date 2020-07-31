@@ -94123,6 +94123,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: fd11d60f5af9d7345b11dddd15064816, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98220b40d4548f048a17c495b04ebe75, type: 3}
+--- !u!1 &1196622097 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1619648351924886219, guid: f15139a30d0ca4e498d2ea6437cdd73d,
+    type: 3}
+  m_PrefabInstance: {fileID: 249426955}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1199063407 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 07a412694284f3043820cc4938c81789,
@@ -143537,6 +143543,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueTriggers
       objectReference: {fileID: 0}
+    - target: {fileID: 3622339764120648046, guid: 10e167edebb2cc94284b58c87c30bd62,
+        type: 3}
+      propertyPath: scrollEventController
+      value: 
+      objectReference: {fileID: 1196622097}
+    - target: {fileID: 4326683389172341278, guid: 10e167edebb2cc94284b58c87c30bd62,
+        type: 3}
+      propertyPath: scrollEventController
+      value: 
+      objectReference: {fileID: 1196622097}
     - target: {fileID: 7733097917902131386, guid: 10e167edebb2cc94284b58c87c30bd62,
         type: 3}
       propertyPath: m_LocalPosition.x
