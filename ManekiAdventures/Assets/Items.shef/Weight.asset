@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Weight
   m_EditorClassIdentifier: 
   name: Weight
-  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: -6294579386604472112, guid: 295b13d589be5ce45aaf14609174c0c3, type: 3}
   isDefaultItem: 1
   Discriptor: 3
   Attribute: 0

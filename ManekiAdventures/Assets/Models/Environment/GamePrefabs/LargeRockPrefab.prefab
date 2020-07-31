@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3130414230250693543}
   - component: {fileID: 5242972038645241427}
   - component: {fileID: 5380011638732869757}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,9 +105,9 @@ GameObject:
   - component: {fileID: 8193640926980833833}
   - component: {fileID: 2955729869185567345}
   - component: {fileID: 3814570670832158125}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LargeRockPrefab
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

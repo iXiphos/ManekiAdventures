@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3847754318467340962}
   - component: {fileID: 5205878137370943636}
   - component: {fileID: 1946249925226159213}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BigRockPrefab 1
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 4405513456400525490}
   - component: {fileID: 5943383942570830801}
   - component: {fileID: 8469657700764062646}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

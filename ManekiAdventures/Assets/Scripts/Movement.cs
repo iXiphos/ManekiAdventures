@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-
+    public LayerMask layerMask;
     public bool canMove;
     Vector3 inputMovement;
     public float moveSpeed;
@@ -94,7 +94,7 @@ public class Movement : MonoBehaviour
         RaycastHit hit;
         Ray ray = new Ray(gameObject.transform.position + new Vector3(0,2,0) + (gameObject.transform.forward * rayDisplacement), Vector3.down);
         //Debug.DrawLine(gameObject.transform.position + new Vector3(0, 2, 0) + (gameObject.transform.forward * rayDisplacement), gameObject.transform.position + (gameObject.transform.forward * rayDisplacement) + new Vector3(0, -10, 0));
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, 100f, layerMask))
         {
             if (hit.collider != null && hit.transform.tag == "Terrain")
             {
@@ -111,7 +111,7 @@ public class Movement : MonoBehaviour
         RaycastHit hit;
         Ray ray = new Ray(gameObject.transform.position + new Vector3(0, 4f, 0) + (gameObject.transform.forward * rayDisplacement*2), Vector3.down);
         //Debug.DrawLine(gameObject.transform.position + new Vector3(0, 4f, 0) + (gameObject.transform.forward * rayDisplacement*2), gameObject.transform.position + (gameObject.transform.forward * rayDisplacement) + new Vector3(0, -10, 0));
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, 100f, layerMask))
         {
             if (hit.collider != null && hit.transform.tag == "Terrain")
             {

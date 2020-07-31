@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Size
   m_EditorClassIdentifier: 
   name: Size
-  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 5854930571029627891, guid: 295b13d589be5ce45aaf14609174c0c3, type: 3}
   isDefaultItem: 1
   Discriptor: 3
   Attribute: 1
