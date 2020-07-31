@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2218735111786009712}
   - component: {fileID: 7575188488872491093}
   - component: {fileID: 3275563299963513800}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 6888528504672595333}
   - component: {fileID: 6888528504672595338}
   - component: {fileID: 6888528504672595339}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Increase
   m_TagString: Respawnable
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 6888528505044062246}
   - component: {fileID: 6888528505044062247}
   - component: {fileID: 6888528505044062244}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Text (TMP) (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,7 +458,7 @@ PrefabInstance:
     - target: {fileID: -973829151976834930, guid: b23d4485e8823ec4a933ed591c84e4fc,
         type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: b23d4485e8823ec4a933ed591c84e4fc,
         type: 3}
@@ -468,7 +468,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: b23d4485e8823ec4a933ed591c84e4fc,
         type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b23d4485e8823ec4a933ed591c84e4fc, type: 3}
@@ -493,7 +493,7 @@ PrefabInstance:
     - target: {fileID: 5516281206953667412, guid: 29bc2370056c6894b96d2f0441e1e51a,
         type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5516281206953667413, guid: 29bc2370056c6894b96d2f0441e1e51a,
         type: 3}

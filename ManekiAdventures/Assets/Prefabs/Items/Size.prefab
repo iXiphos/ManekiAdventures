@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 387360818272325231}
   - component: {fileID: 387360818272325230}
   - component: {fileID: 387360818272325229}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Text (TMP) (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 387360819566027969}
   - component: {fileID: 387360819566027968}
   - component: {fileID: 387360819566027983}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Size
   m_TagString: Respawnable
   m_Icon: {fileID: 0}
@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 4511118917365591248}
   - component: {fileID: 4511118917365591250}
   - component: {fileID: 4511118917365591251}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5083,7 +5083,7 @@ GameObject:
   - component: {fileID: 1481413796355577871}
   - component: {fileID: 4328583106228962831}
   - component: {fileID: 1606729997440162322}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5215,12 +5215,12 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: dc7c42c51920f274abc3654f20e48856,
         type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8733249917552827209, guid: dc7c42c51920f274abc3654f20e48856,
         type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc7c42c51920f274abc3654f20e48856, type: 3}
