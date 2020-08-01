@@ -91,8 +91,6 @@ public class PotionCreation : MonoBehaviour
         };
         Inventory.instance.Add(potion);
 
-        Inventory.instance.Remove(piece1);
-        Inventory.instance.Remove(piece2);
 
         piece1 = null;
         piece2 = null;

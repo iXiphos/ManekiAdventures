@@ -572,9 +572,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 535
   potionItem: {fileID: 0}
-  speed: 10
+  speed: 15
   hand: {fileID: 6728987230307614460}
-  h: 6
+  h: 4
   gravity: -18
   debugPath: 1
 --- !u!114 &89952041
@@ -589,7 +589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec323f2fc22b86941a7a4e2508ac0e57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 4
+  radius: 2
 --- !u!1 &2544277194692903309
 GameObject:
   m_ObjectHideFlags: 0

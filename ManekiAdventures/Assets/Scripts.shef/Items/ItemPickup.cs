@@ -23,7 +23,7 @@ public class ItemPickup : Interactable
 
 
 
-        if (wasPickedUp && gameObject.tag != "Respawnable")
+        if (wasPickedUp)
         { //if the item was picked up and added to the inventory, delete object from the scene
             StartCoroutine(respawn());
         }
