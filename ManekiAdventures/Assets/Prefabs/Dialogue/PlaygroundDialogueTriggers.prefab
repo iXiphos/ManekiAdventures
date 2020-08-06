@@ -796,22 +796,22 @@ PrefabInstance:
     - target: {fileID: 8993927294885125095, guid: 1e4b9af067962b34b97ed94ed8d5f987,
         type: 3}
       propertyPath: m_Size.z
-      value: 33.382645
+      value: 25.170502
       objectReference: {fileID: 0}
     - target: {fileID: 8993927294885125095, guid: 1e4b9af067962b34b97ed94ed8d5f987,
         type: 3}
       propertyPath: m_Center.x
-      value: 1.3651874
+      value: -0.9815465
       objectReference: {fileID: 0}
     - target: {fileID: 8993927294885125095, guid: 1e4b9af067962b34b97ed94ed8d5f987,
         type: 3}
       propertyPath: m_Center.z
-      value: -6.6913295
+      value: -2.5852673
       objectReference: {fileID: 0}
     - target: {fileID: 8993927294885125095, guid: 1e4b9af067962b34b97ed94ed8d5f987,
         type: 3}
       propertyPath: m_Size.x
-      value: 24.077984
+      value: 19.384518
       objectReference: {fileID: 0}
     - target: {fileID: 8993927294885125113, guid: 1e4b9af067962b34b97ed94ed8d5f987,
         type: 3}

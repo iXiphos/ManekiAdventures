@@ -30,6 +30,8 @@ public class tossPotion : MonoBehaviour
     Color output;
     LineRenderer lineRenderer;
 
+    public GameObject focusController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -98,6 +100,13 @@ public class tossPotion : MonoBehaviour
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
                 player.GetComponent<Animator>().SetTrigger("throw");
                 player.transform.LookAt(new Vector3(hit.point.x, player.transform.position.y, hit.point.z));
+
+                // focus camera
+                GameObject cameraFocusPoint = new GameObject();
+                cameraFocusPoint.transform.position = clickPosition;
+                GameObject cameraFocus = Instantiate(focusController, cameraFocusPoint.transform);
+                cameraFocus.transform.localScale = new Vector3(15,15,15);
+                Destroy(cameraFocus, 2f);
 
                 // play throw sound
                 GameObject.Find("AudioManager").GetComponent<AudioManager>().Play("whoosh");

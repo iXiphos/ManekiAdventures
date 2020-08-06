@@ -577,6 +577,8 @@ MonoBehaviour:
   h: 4
   gravity: -18
   debugPath: 1
+  focusController: {fileID: 8993927294885125113, guid: 1e4b9af067962b34b97ed94ed8d5f987,
+    type: 3}
 --- !u!114 &89952041
 MonoBehaviour:
   m_ObjectHideFlags: 0
