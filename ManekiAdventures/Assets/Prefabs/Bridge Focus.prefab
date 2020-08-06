@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 691831808}
   - component: {fileID: 691831807}
   - component: {fileID: 691831814}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: largeRock_low (3)
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 691831806}
   m_LocalRotation: {x: -0.011912943, y: 0.7494852, z: -0.040641952, w: 0.6606651}
   m_LocalPosition: {x: -4.183728, y: -5.575467, z: 3.38232}
-  m_LocalScale: {x: 5.07593, y: 1.790671, z: 3.248633}
+  m_LocalScale: {x: 2.339381, y: 0.8252796, z: 1.4972212}
   m_Children: []
   m_Father: {fileID: 6810873360072380195}
   m_RootOrder: 3
@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animatorObj: {fileID: 6810873360072380194}
+  bridgeCollider: {fileID: 0}
 --- !u!1 &1542414901
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,7 +148,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1542414902}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BridgePivot
   m_TagString: Terrain
   m_Icon: {fileID: 0}
@@ -216,19 +217,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 46
   m_CollisionDetection: 0
---- !u!65 &1081278563
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8296172667470829726}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4.34778, y: 0.3102588, z: 4.1766734}
-  m_Center: {x: -0.0008289816, y: -0.0000076294245, z: 0.00032258045}
 --- !u!114 &6810873359735357398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,7 +245,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6810873360072380195}
   - component: {fileID: 291573244}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Bridge Focus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,6 +289,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &1081278563
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8296172667470829726}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 4.34778, y: 0.3102588, z: 4.1766734}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1776812439
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -316,7 +317,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 2eb0ae26e7f4c0b4c829c02a2623df98,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.17
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2eb0ae26e7f4c0b4c829c02a2623df98,
         type: 3}
@@ -326,22 +327,22 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 2eb0ae26e7f4c0b4c829c02a2623df98,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0062151067
+      value: -0.011069911
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2eb0ae26e7f4c0b4c829c02a2623df98,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000059604645
+      value: -0.00000017881396
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2eb0ae26e7f4c0b4c829c02a2623df98,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.0057607563
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2eb0ae26e7f4c0b4c829c02a2623df98,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99998075
+      value: 0.99992216
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2eb0ae26e7f4c0b4c829c02a2623df98,
         type: 3}
@@ -351,17 +352,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 2eb0ae26e7f4c0b4c829c02a2623df98,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.712
+      value: -1.269
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2eb0ae26e7f4c0b4c829c02a2623df98,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 0.007
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2eb0ae26e7f4c0b4c829c02a2623df98,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -0.66
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2eb0ae26e7f4c0b4c829c02a2623df98,
         type: 3}
@@ -387,6 +388,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 2eb0ae26e7f4c0b4c829c02a2623df98,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2eb0ae26e7f4c0b4c829c02a2623df98, type: 3}
@@ -482,7 +488,7 @@ PrefabInstance:
     - target: {fileID: 8993927294885125095, guid: 1e4b9af067962b34b97ed94ed8d5f987,
         type: 3}
       propertyPath: m_Size.x
-      value: 14.472361
+      value: 24.139944
       objectReference: {fileID: 0}
     - target: {fileID: 8993927294885125095, guid: 1e4b9af067962b34b97ed94ed8d5f987,
         type: 3}
@@ -492,17 +498,17 @@ PrefabInstance:
     - target: {fileID: 8993927294885125095, guid: 1e4b9af067962b34b97ed94ed8d5f987,
         type: 3}
       propertyPath: m_Center.x
-      value: -11.570273
+      value: -6.7365003
       objectReference: {fileID: 0}
     - target: {fileID: 8993927294885125095, guid: 1e4b9af067962b34b97ed94ed8d5f987,
         type: 3}
       propertyPath: m_Center.y
-      value: -1.761694
+      value: -1.7616941
       objectReference: {fileID: 0}
     - target: {fileID: 8993927294885125095, guid: 1e4b9af067962b34b97ed94ed8d5f987,
         type: 3}
       propertyPath: m_Center.z
-      value: 0.060456794
+      value: 0.06043956
       objectReference: {fileID: 0}
     - target: {fileID: 8993927294885125113, guid: 1e4b9af067962b34b97ed94ed8d5f987,
         type: 3}
