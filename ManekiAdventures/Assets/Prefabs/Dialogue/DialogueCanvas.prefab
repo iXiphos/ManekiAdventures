@@ -147,5 +147,9 @@ MonoBehaviour:
     type: 3}
   dialogueBoxPrefabRef: {fileID: 1044516235916537901, guid: cc55dcb4e8af4c049adde47612cb2db8,
     type: 3}
+  dialogueBoxFollowFireflyPrefabRef: {fileID: 1916044231218234782, guid: 99900e57b87dc534e88059d2331b7804,
+    type: 3}
+  dialogueBoxFireflyPrefabRef: {fileID: 4717209592235867985, guid: 85faf6890293a84479f36edae0554d01,
+    type: 3}
   dofControllerRef: {fileID: 3345259042552181859, guid: 85eaf4faf32e57c46a344cff9e785cd3,
     type: 3}

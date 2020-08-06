@@ -7,10 +7,14 @@ public class DialogueEventController : MonoBehaviour
     public GameObject dialogueCanvasRef;
     public GameObject dialogueBoxFollowPrefabRef;
     public GameObject dialogueBoxPrefabRef;
+    public GameObject dialogueBoxFollowFireflyPrefabRef;
+    public GameObject dialogueBoxFireflyPrefabRef;
     public GameObject dofControllerRef;
     public static GameObject dialogueCanvas;
     public static GameObject dialogueBoxFollowPrefab;
     public static GameObject dialogueBoxPrefab;
+    public static GameObject dialogueBoxFollowFireflyPrefab;
+    public static GameObject dialogueBoxFireflyPrefab;
     public static GameObject dofController;
 
     // Start is called before the first frame update
@@ -19,6 +23,8 @@ public class DialogueEventController : MonoBehaviour
         dialogueCanvas = dialogueCanvasRef;
         dialogueBoxPrefab = dialogueBoxPrefabRef;
         dialogueBoxFollowPrefab = dialogueBoxFollowPrefabRef;
+        dialogueBoxFireflyPrefab = dialogueBoxFireflyPrefabRef;
+        dialogueBoxFollowFireflyPrefab = dialogueBoxFollowFireflyPrefabRef;
         dofController = dofControllerRef;
 
 

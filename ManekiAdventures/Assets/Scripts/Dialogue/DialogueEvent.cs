@@ -57,18 +57,38 @@ public class DialogueEvent : MonoBehaviour
             {
                 GameObject currTextBox;
 
-                if (dialogueText.interactionEffects.Contains("STATIC"))
+                if(entry.Key.Contains("RU"))
                 {
-                    inStaticDialogue = true;
-                    GameObject.Find("UICanvases").GetComponent<CanvasManager>().SetGamestateByCanvasName("DialogueCanvas");
-                    currTextBox = GameObject.Instantiate(DialogueEventController.dialogueBoxPrefab, DialogueEventController.dialogueCanvas.transform);
+                    //firefly boxes
+                    if (dialogueText.interactionEffects.Contains("STATIC"))
+                    {
+                        inStaticDialogue = true;
+                        GameObject.Find("UICanvases").GetComponent<CanvasManager>().SetGamestateByCanvasName("DialogueCanvas");
+                        currTextBox = GameObject.Instantiate(DialogueEventController.dialogueBoxFireflyPrefab, DialogueEventController.dialogueCanvas.transform);
+                    }
+                    else // default to moving box
+                    {
+                        inStaticDialogue = false;
+                        currTextBox = GameObject.Instantiate(DialogueEventController.dialogueBoxFollowFireflyPrefab, DialogueEventController.dialogueCanvas.transform);
+                        currTextBox.GetComponent<DialogueBoxFollow>().characterToFollow = entry.Value;
+                    }
                 }
-                else // default to moving box
+                else // cat boxes
                 {
-                    inStaticDialogue = false;
-                    currTextBox = GameObject.Instantiate(DialogueEventController.dialogueBoxFollowPrefab, DialogueEventController.dialogueCanvas.transform);
-                    currTextBox.GetComponent<DialogueBoxFollow>().characterToFollow = entry.Value;
+                    if (dialogueText.interactionEffects.Contains("STATIC"))
+                    {
+                        inStaticDialogue = true;
+                        GameObject.Find("UICanvases").GetComponent<CanvasManager>().SetGamestateByCanvasName("DialogueCanvas");
+                        currTextBox = GameObject.Instantiate(DialogueEventController.dialogueBoxPrefab, DialogueEventController.dialogueCanvas.transform);
+                    }
+                    else // default to moving box
+                    {
+                        inStaticDialogue = false;
+                        currTextBox = GameObject.Instantiate(DialogueEventController.dialogueBoxFollowPrefab, DialogueEventController.dialogueCanvas.transform);
+                        currTextBox.GetComponent<DialogueBoxFollow>().characterToFollow = entry.Value;
+                    }
                 }
+                
                 
                 currTextBox.SetActive(false); // hide when not in use
 
