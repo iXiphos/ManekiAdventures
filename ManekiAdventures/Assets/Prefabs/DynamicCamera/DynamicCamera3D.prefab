@@ -99,10 +99,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   focusObj: {fileID: 0}
+  inInteraction: 0
   cameraOffsetX: -6
   cameraOffsetY: 7
   cameraOffsetZ: -6
-  minCameraSize: 8
+  scrollValue: 0
   lerpSpeed: 6
 --- !u!114 &1992070590
 MonoBehaviour:

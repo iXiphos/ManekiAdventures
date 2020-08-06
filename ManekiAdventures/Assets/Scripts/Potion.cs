@@ -36,7 +36,7 @@ public class Potion : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if(collision.tag == "Interactable")
+        if(collision.tag == "Interactable" || collision.tag == "SoccerBall")
         {
             StartCoroutine(Explosion(collision.gameObject));
             if(collision.gameObject.GetComponent<UniquePotionInteraction>() != null)

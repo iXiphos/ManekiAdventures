@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 444740645}
   - component: {fileID: 444740647}
   - component: {fileID: 444740646}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: BeforeBridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 843680189}
   - component: {fileID: 843680191}
   - component: {fileID: 843680190}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: MusicMachine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 1098746847}
   - component: {fileID: 1098746849}
   - component: {fileID: 1098746848}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 1244573987}
   - component: {fileID: 1244573986}
   - component: {fileID: 1244573985}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 1261236657}
   - component: {fileID: 1261236659}
   - component: {fileID: 1261236658}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: Garden
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -440,7 +440,7 @@ GameObject:
   - component: {fileID: 1912266815}
   - component: {fileID: 1912266817}
   - component: {fileID: 1912266816}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: AfterBridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,7 +498,7 @@ GameObject:
   - component: {fileID: 1937014103}
   - component: {fileID: 1937014105}
   - component: {fileID: 1937014104}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: SoccerField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -592,6 +592,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7733097917902131386}
     m_Modifications:
+    - target: {fileID: 1030855152164619899, guid: 456abf828a55d014ea07931e8eda842d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1030855152372354404, guid: 456abf828a55d014ea07931e8eda842d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -667,6 +672,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tutorial1
       objectReference: {fileID: 0}
+    - target: {fileID: 1030855152372354405, guid: 456abf828a55d014ea07931e8eda842d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1030855152372354406, guid: 456abf828a55d014ea07931e8eda842d,
         type: 3}
       propertyPath: m_Sprite
@@ -703,6 +713,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7733097917902131386}
     m_Modifications:
+    - target: {fileID: 1030855152164619899, guid: 456abf828a55d014ea07931e8eda842d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1030855152372354404, guid: 456abf828a55d014ea07931e8eda842d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -763,6 +778,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Letter2
       objectReference: {fileID: 0}
+    - target: {fileID: 1030855152372354405, guid: 456abf828a55d014ea07931e8eda842d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1030855152372354409, guid: 456abf828a55d014ea07931e8eda842d,
         type: 3}
       propertyPath: scrollEventController
@@ -793,6 +813,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7733097917902131386}
     m_Modifications:
+    - target: {fileID: 1030855152164619899, guid: 456abf828a55d014ea07931e8eda842d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1030855152372354404, guid: 456abf828a55d014ea07931e8eda842d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -868,6 +893,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tutorial3
       objectReference: {fileID: 0}
+    - target: {fileID: 1030855152372354405, guid: 456abf828a55d014ea07931e8eda842d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1030855152372354406, guid: 456abf828a55d014ea07931e8eda842d,
         type: 3}
       propertyPath: m_Sprite
@@ -904,6 +934,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7733097917902131386}
     m_Modifications:
+    - target: {fileID: 1030855152164619899, guid: 456abf828a55d014ea07931e8eda842d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1030855152372354404, guid: 456abf828a55d014ea07931e8eda842d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -979,6 +1014,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tutorial2
       objectReference: {fileID: 0}
+    - target: {fileID: 1030855152372354405, guid: 456abf828a55d014ea07931e8eda842d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1030855152372354406, guid: 456abf828a55d014ea07931e8eda842d,
         type: 3}
       propertyPath: m_Sprite
@@ -1015,6 +1055,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7733097917902131386}
     m_Modifications:
+    - target: {fileID: 1030855152164619899, guid: 456abf828a55d014ea07931e8eda842d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1030855152372354404, guid: 456abf828a55d014ea07931e8eda842d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1074,6 +1119,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Letter1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030855152372354405, guid: 456abf828a55d014ea07931e8eda842d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1030855152372354409, guid: 456abf828a55d014ea07931e8eda842d,
         type: 3}

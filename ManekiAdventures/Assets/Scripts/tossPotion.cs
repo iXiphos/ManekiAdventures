@@ -63,7 +63,7 @@ public class tossPotion : MonoBehaviour
             {
                 clickPosition = hit.point;
             }
-            if(hit.collider.tag == "Interactable" || hit.collider.tag == "AltInteractable")
+            if(hit.collider.tag == "Interactable" || hit.collider.tag == "AltInteractable" || hit.collider.tag == "SoccerBall")
             {
                 lineRenderer.startColor = Color.green;
                 lineRenderer.endColor = Color.green;
@@ -90,7 +90,7 @@ public class tossPotion : MonoBehaviour
             {
                 DrawPath();
             }
-            if (Input.GetMouseButtonDown(0) && (hit.collider.tag == "Interactable" || hit.collider.tag == "AltInteractable"))
+            if (Input.GetMouseButtonDown(0) && (hit.collider.tag == "Interactable" || hit.collider.tag == "AltInteractable" || hit.collider.tag == "SoccerBall"))
             {
                 Debug.LogError(clickPosition);
                 potion.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
