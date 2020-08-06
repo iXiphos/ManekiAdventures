@@ -31,6 +31,7 @@ public class ItemPickup : Interactable
     }
     IEnumerator respawn()
     {
+        Debug.LogError("Respawn");
         gameObject.SetActive(false);
         yield return new WaitForSeconds(30f);
         gameObject.SetActive(true);
