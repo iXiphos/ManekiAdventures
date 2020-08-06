@@ -27,6 +27,7 @@ public class SpawnFireworks : MonoBehaviour
 
         other.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         other.gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        other.gameObject.transform.rotation = Quaternion.Euler(Vector3.zero);
         other.gameObject.transform.position = respawn.transform.position;
 
         yield return new WaitForSeconds(5f);
