@@ -497,6 +497,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1984574063542792319}
+  radius: 4
+  player:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1 &9194044165945284287
 GameObject:
   m_ObjectHideFlags: 0

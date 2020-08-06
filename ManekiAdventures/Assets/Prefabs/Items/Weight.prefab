@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6197203174187632392}
-  - component: {fileID: 5993409209331538922}
   - component: {fileID: 961339349650356662}
   m_Layer: 8
   m_Name: GameObject
@@ -37,19 +36,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!65 &5993409209331538922
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1910744424010441614}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 9.009143, y: 2.9075472, z: 8.63193}
-  m_Center: {x: 0.049434517, y: 0.9537737, z: -0.20649797}
 --- !u!114 &961339349650356662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,6 +49,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1984259587047658591}
+  radius: 4
+  player:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1 &1984259586786494317
 GameObject:
   m_ObjectHideFlags: 0

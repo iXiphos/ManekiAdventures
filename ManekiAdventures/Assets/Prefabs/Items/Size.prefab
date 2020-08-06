@@ -5082,7 +5082,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1481413796355577871}
   - component: {fileID: 4328583106228962831}
-  - component: {fileID: 1606729997440162322}
   m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
@@ -5117,19 +5116,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 387360818272325227}
---- !u!65 &1606729997440162322
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6330756139289634280}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 10.091722, y: 3.0860016, z: 12.170806}
-  m_Center: {x: -0.023279915, y: 1.0430008, z: 0.009315709}
+  radius: 4
+  player:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1001 &5241300392902260583
 PrefabInstance:
   m_ObjectHideFlags: 0
