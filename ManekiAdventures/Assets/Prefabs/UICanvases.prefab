@@ -2156,6 +2156,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseMenuCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3689126638033037301, guid: 92b9fb108e7f04340b78603be05b9564,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6750545794714749252}
+    - target: {fileID: 3689126638033037301, guid: 92b9fb108e7f04340b78603be05b9564,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetGamestateByCanvasName
+      objectReference: {fileID: 0}
+    - target: {fileID: 3689126638033037301, guid: 92b9fb108e7f04340b78603be05b9564,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5552563897248023948, guid: 92b9fb108e7f04340b78603be05b9564,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
