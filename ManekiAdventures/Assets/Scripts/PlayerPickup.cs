@@ -36,11 +36,19 @@ public class PlayerPickup : MonoBehaviour
                             Debug.LogError(hitColliders[i].GetComponent<ItemPickup>().item);
                             GameObject.FindGameObjectWithTag("GameController").GetComponent<StoryEventHandler>().PickedUpEvent(hitColliders[i].GetComponent<ItemPickup>().item.name); // execute dialogue as needed
                             Inventory.instance.Add(hitColliders[i].GetComponent<ItemPickup>().item);
-                            Destroy(hitColliders[i].gameObject);
+                            StartCoroutine(respawn(hitColliders[i].gameObject));
                             break;
                         }
                 }
             }
         }
     }
+    IEnumerator respawn(GameObject temp)
+    {
+        Debug.LogError("Respawn");
+        temp.SetActive(false);
+        yield return new WaitForSeconds(30f);
+        temp.SetActive(true);
+    }
 }
+

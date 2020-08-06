@@ -86,6 +86,10 @@ public class Potion : MonoBehaviour
                 else if (pDiscriptor == discriptor.Decreases)
                 {
                     coll.gameObject.transform.localScale /= SizeDecrease;
+                    if (coll.gameObject.transform.localScale.x < 0.15f && coll.gameObject.transform.localScale.y < 0.15f && coll.gameObject.transform.localScale.z < 0.15f)
+                    {
+                        coll.gameObject.transform.localScale = new Vector3(0.15f, 0.15f, 0.15f);
+                    }
                     Debug.Log("Shrink");
                     Destroy(gameObject);
                 }
@@ -104,11 +108,14 @@ public class Potion : MonoBehaviour
                 else if(pDiscriptor == discriptor.Decreases)
                 {
                     coll.GetComponent<Rigidbody>().mass /= WeightDecrease;
+                    if (coll.GetComponent<Rigidbody>().mass < 1)
+                    {
+                        coll.GetComponent<Rigidbody>().mass = 1;
+                    }
                     Destroy(gameObject);
                 }
                 else
                 {
-                    Debug.LogError("Fuck if I know what this is supposed to do");
                 }
                 break;
 
