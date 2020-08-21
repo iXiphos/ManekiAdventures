@@ -16,7 +16,7 @@ public class BambooPipe : MonoBehaviour
     public void PlaySoundBasedOnSize()
     {
         float distance = Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, gameObject.transform.position);
-        Debug.Log("DISTANCE: " + distance);
+        //Debug.Log("DISTANCE: " + distance);
         if (distance <= playDistance)
         {
             float expSize = currSize / baseSize;

@@ -64,6 +64,8 @@ public class tossPotion : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 100f, clickMask))
             {
                 clickPosition = hit.point;
+                //DEBUG
+                //Debug.Log(hit.collider.tag);
             }
             if(hit.collider.tag == "Interactable" || hit.collider.tag == "AltInteractable" || hit.collider.tag == "SoccerBall")
             {
