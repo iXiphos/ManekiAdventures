@@ -158,7 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 3
   interactionTransform: {fileID: 1984259586786494307}
-  item: {fileID: 11400000, guid: 80d3658750f651a43ac58a90b9eebe5c, type: 2}
+  item: {fileID: 11400000, guid: 5867009d92925c0468f330ae95ad44fd, type: 2}
 --- !u!222 &1984259586786494316
 CanvasRenderer:
   m_ObjectHideFlags: 0

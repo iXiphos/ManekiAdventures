@@ -57,6 +57,7 @@ public class tossPotion : MonoBehaviour
         clickPosition = -Vector3.one;
         active = true;
         potion.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
+        potion.GetComponent<SphereCollider>().enabled = false;
         while (active)
         {
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -98,6 +99,7 @@ public class tossPotion : MonoBehaviour
             {
                 Debug.LogError(clickPosition);
                 potion.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                potion.GetComponent<SphereCollider>().enabled = true;
                 // Throw animation & turn player
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
                 player.GetComponent<Animator>().SetTrigger("throw");
