@@ -5,3 +5,5 @@ The intent of Maneki Adventure is to create a single-player, 3D “puzzle”-exp
 It is a potion-crafting puzzle game with a cute and cozy basis in discovery, friendship, love, and a focus on exploration.
 
 The gameplay is slow and cozy with an emphasis on exploration and the creative use of potions to solve puzzles. 
+
+Check out our Trailer at here: https://youtu.be/Zo2ooFmIKIw
